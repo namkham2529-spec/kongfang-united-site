@@ -110,6 +110,20 @@ nav.links a:hover::after{width:100%;}
 .nav-cta:hover{background:var(--gold);border-color:var(--gold);color:#04102A;}
 .burger{display:none;background:none;border:0;cursor:pointer;flex-direction:column;gap:5px;}
 .burger span{width:26px;height:2px;background:var(--white);display:block;}
+nav.links{gap:26px;align-items:center;}
+.nav-item{position:relative;display:flex;}
+.nav-top{background:none;border:0;cursor:pointer;color:var(--text-soft);font:inherit;font-family:var(--font-display);font-weight:500;font-size:15px;line-height:1;padding:6px 0;display:inline-flex;align-items:center;gap:7px;transition:color .2s ease;text-decoration:none;position:relative;}
+.nav-top::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--blue-bright);transition:width .25s ease;}
+.nav-item:hover > .nav-top,.nav-item:focus-within > .nav-top{color:var(--white);}
+.nav-item:hover > .nav-top::after,.nav-item:focus-within > .nav-top::after{width:100%;}
+.caret{width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid currentColor;opacity:.65;transition:transform .2s ease;}
+.nav-item:hover .caret,.nav-item:focus-within .caret{transform:rotate(180deg);}
+.nav-sub{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);min-width:196px;background:#0B1F45;border:1px solid var(--line-strong);border-radius:7px;padding:8px;display:flex;flex-direction:column;gap:2px;box-shadow:0 24px 48px -16px rgba(0,0,0,.7);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .16s ease,transform .16s ease,visibility .16s;z-index:120;}
+.nav-sub::before{content:"";position:absolute;top:-14px;left:0;right:0;height:14px;}
+.nav-item:hover .nav-sub,.nav-item:focus-within .nav-sub{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(6px);}
+.nav-sub a{padding:9px 14px;border-radius:5px;font-size:14px;color:var(--text-soft);white-space:nowrap;transition:background .15s ease,color .15s ease;}
+.nav-sub a::after{content:none;display:none;}
+.nav-sub a:hover{background:rgba(47,128,237,.18);color:var(--white);}
 
 /* ---------- HERO ---------- */
 .hero{
@@ -484,6 +498,15 @@ footer{background:var(--bg-3);color:var(--muted);padding:66px 0 28px;border-top:
 @media (max-width:980px){
   nav.links{display:none;}
   .burger{display:flex;}
+  nav.links .nav-item{width:100%;flex-direction:column;align-items:stretch;}
+  nav.links .nav-top{width:100%;justify-content:space-between;color:#0C2149;font-size:16px;font-weight:600;padding:10px 0;}
+  nav.links .nav-item:hover > .nav-top,nav.links .nav-item:focus-within > .nav-top{color:#0C2149;}
+  nav.links .nav-top::after{display:none;}
+  .caret{display:none;}
+  .nav-sub{position:static;transform:none;opacity:1;visibility:visible;pointer-events:auto;min-width:0;background:transparent;border:0;box-shadow:none;padding:0 0 6px 16px;gap:0;}
+  .nav-sub::before{display:none;}
+  .nav-sub a{color:#31456e;padding:8px 6px;font-size:14.5px;}
+  .nav-sub a:hover{background:transparent;color:#0C2149;}
   .hero-grid{grid-template-columns:1fr;}
   .about-grid{grid-template-columns:1fr;}
   .board-grid{grid-template-columns:repeat(2,1fr);}
@@ -529,19 +552,41 @@ footer{background:var(--bg-3);color:var(--muted);padding:66px 0 28px;border-top:
       </div>
     </a>
     <nav class="links">
-      <a href="#about">ประวัติ</a>
-      <a href="#history">เส้นทาง</a>
-      <a href="#standings">ตารางคะแนน</a>
-      <a href="#fixtures">โปรแกรมแข่ง</a>
-      <a href="#bla">บุรีรัมย์ลีก</a>
-      <a href="#cup">KONGFANG CUP</a>
-      <a href="#board">คณะบริหาร</a>
-      <a href="#shop">ร้านค้า</a>
-      <a href="#order">สั่งเสื้อ</a>
-      <a href="#registry">ทะเบียนนักกีฬา</a>
-      <a href="#news">ข่าวสาร</a>
-      <a href="#video">วิดีโอ</a>
-      <a href="#sponsors">ผู้สนับสนุน</a>
+      <div class="nav-item has-sub">
+        <button type="button" class="nav-top">สโมสร<i class="caret"></i></button>
+        <div class="nav-sub">
+          <a href="#about">ประวัติกองฟาง</a>
+          <a href="#history">เส้นทางสโมสร</a>
+          <a href="#board">คณะบริหาร</a>
+          <a href="#sponsors">ผู้สนับสนุน</a>
+        </div>
+      </div>
+      <div class="nav-item has-sub">
+        <button type="button" class="nav-top">แข่งขัน<i class="caret"></i></button>
+        <div class="nav-sub">
+          <a href="#standings">ตารางคะแนน</a>
+          <a href="#fixtures">โปรแกรมแข่ง</a>
+          <a href="#bla">บุรีรัมย์ลีก</a>
+          <a href="#cup">KONGFANG CUP</a>
+        </div>
+      </div>
+      <div class="nav-item has-sub">
+        <button type="button" class="nav-top">ข่าว &amp; วิดีโอ<i class="caret"></i></button>
+        <div class="nav-sub">
+          <a href="#news">ข่าวสาร</a>
+          <a href="#video">วิดีโอกองฟาง</a>
+        </div>
+      </div>
+      <div class="nav-item has-sub">
+        <button type="button" class="nav-top">ร้านค้า<i class="caret"></i></button>
+        <div class="nav-sub">
+          <a href="#shop">สินค้าที่ระลึก</a>
+          <a href="#order">สั่งเสื้อ</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="#registry" class="nav-top nav-plain">สมัครนักกีฬา</a>
+      </div>
     </nav>
     <a href="#shop" class="nav-cta">ร้านค้าทีม</a>
     <button class="burger" aria-label="เมนู"><span></span><span></span><span></span></button>
