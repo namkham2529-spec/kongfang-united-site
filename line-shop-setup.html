@@ -1,0 +1,670 @@
+<title>ระบบสั่งเสื้อผ่านไลน์ กองฟาง</title>
+<meta name="description" content="คู่มือติดตั้งระบบสั่งซื้อชุดแข่งผ่าน LINE Official Account + ฟอร์มเว็บ + ตรวจสลิปอัตโนมัติ สำหรับ กองฟาง ยูไนเต็ด">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=Sarabun:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#F4F1E8; --surface:#FFFFFF; --sunk:#EDE8D9;
+  --ink:#16233F; --ink-soft:#525C77; --line:#DDD5C0;
+  --navy:#123B7A; --navy-soft:#3A63A6;
+  --gold:#A9741A; --gold-bright:#E4A11B;
+  --ok:#2E7D32; --warn:#A96A00; --stop:#A63A3A;
+  --shadow:0 1px 2px rgba(22,35,63,.06),0 8px 24px -12px rgba(22,35,63,.16);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0B1A35; --surface:#122549; --sunk:#0B1730;
+    --ink:#E7ECF8; --ink-soft:#9EABC7; --line:#25396B;
+    --navy:#5A8CDB; --navy-soft:#4877BC;
+    --gold:#E7B152; --gold-bright:#F1C060;
+    --ok:#74C078; --warn:#E0A64C; --stop:#E58080;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 30px -14px rgba(0,0,0,.55);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0B1A35; --surface:#122549; --sunk:#0B1730;
+  --ink:#E7ECF8; --ink-soft:#9EABC7; --line:#25396B;
+  --navy:#5A8CDB; --navy-soft:#4877BC;
+  --gold:#E7B152; --gold-bright:#F1C060;
+  --ok:#74C078; --warn:#E0A64C; --stop:#E58080;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 30px -14px rgba(0,0,0,.55);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Sarabun","Tahoma",sans-serif;font-size:16px;line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:"Bai Jamjuree","Trebuchet MS",sans-serif;text-wrap:balance;line-height:1.25;margin:0}
+code,pre,.mono{font-family:"IBM Plex Mono","Consolas",monospace}
+a{color:var(--navy);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--gold-bright);outline-offset:2px;border-radius:4px}
+
+/* ---------- top bar ---------- */
+.topbar{
+  position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+}
+.topbar-inner{max-width:1000px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{font-family:"Bai Jamjuree",sans-serif;font-weight:700;font-size:14px;letter-spacing:.02em;white-space:nowrap}
+.brand b{color:var(--gold)}
+.navchips{display:flex;gap:6px;flex-wrap:wrap;flex:1;min-width:200px}
+.navchips a{
+  font-family:"Bai Jamjuree",sans-serif;font-size:12.5px;font-weight:600;text-decoration:none;
+  color:var(--ink-soft);padding:3px 9px;border:1px solid var(--line);border-radius:999px;white-space:nowrap;
+}
+.navchips a:hover{color:var(--ink);border-color:var(--navy-soft)}
+.tprog{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-soft);white-space:nowrap}
+.tprog-bar{width:84px;height:6px;border-radius:999px;background:var(--sunk);overflow:hidden;border:1px solid var(--line)}
+.tprog-fill{height:100%;width:0;background:var(--gold-bright);transition:width .3s}
+.tbtn{
+  font:inherit;font-size:12px;cursor:pointer;background:var(--surface);color:var(--ink);
+  border:1px solid var(--line);border-radius:999px;padding:4px 10px;
+}
+
+/* ---------- layout ---------- */
+.wrap{max-width:820px;margin:0 auto;padding:0 20px 96px}
+.hero{padding:52px 0 30px;border-bottom:2px solid var(--gold-bright)}
+.eyebrow{font-family:"Bai Jamjuree",sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-size:clamp(28px,5vw,42px);font-weight:700;margin:12px 0 14px}
+.hero p{font-size:17px;color:var(--ink-soft);max-width:62ch;margin:0}
+.lede-meta{margin-top:22px;display:flex;gap:8px;flex-wrap:wrap}
+.pill{font-family:"Bai Jamjuree",sans-serif;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--ink-soft)}
+
+section{padding:44px 0 8px;border-bottom:1px solid var(--line)}
+section > .kicker{font-family:"Bai Jamjuree",sans-serif;font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:10px}
+section > .kicker .part{
+  display:inline-grid;place-items:center;width:26px;height:26px;border-radius:7px;
+  background:var(--navy);color:#fff;font-size:13px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) section > .kicker .part{color:#0B1A35}}
+:root[data-theme="dark"] section > .kicker .part{color:#0B1A35}
+:root[data-theme="light"] section > .kicker .part{color:#fff}
+section h2{font-size:clamp(21px,3.4vw,27px);font-weight:700;margin:10px 0 6px}
+section > p{color:var(--ink-soft)}
+section .sub{color:var(--ink-soft);margin:0 0 8px}
+
+/* ---------- diagram ---------- */
+.diagram-scroll{overflow-x:auto;margin:22px 0 6px;padding-bottom:6px}
+.diagram{display:block;min-width:760px;width:100%}
+.diagram .node{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+.diagram .node-navy{fill:var(--navy);stroke:none}
+.diagram .node-gold{fill:var(--gold-bright);stroke:none}
+.diagram .lbl{fill:var(--ink);font-family:"Bai Jamjuree",sans-serif;font-size:13px;font-weight:600}
+.diagram .lbl-sm{fill:var(--ink-soft);font-family:"Sarabun",sans-serif;font-size:11px}
+.diagram .lbl-on{fill:#fff;font-family:"Bai Jamjuree",sans-serif;font-size:13px;font-weight:700}
+.diagram .lbl-on-d{fill:#12244A;font-family:"Bai Jamjuree",sans-serif;font-size:13px;font-weight:700}
+.diagram .flow{stroke:var(--navy-soft);stroke-width:2;fill:none;marker-end:url(#arw)}
+.diagram .arw{fill:var(--navy-soft)}
+
+/* ---------- status split ---------- */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0 6px}
+@media (max-width:640px){.split{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;box-shadow:var(--shadow)}
+.panel h3{font-size:15px;display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.panel.done h3{color:var(--ok)}
+.panel.todo h3{color:var(--warn)}
+.panel ul{margin:0;padding-left:20px}
+.panel li{margin:5px 0;font-size:14.5px}
+.panel li::marker{color:var(--ink-soft)}
+
+/* ---------- steps ---------- */
+.steps{list-style:none;margin:20px 0 4px;padding:0;counter-reset:s}
+.steps > li{
+  counter-increment:s;display:grid;grid-template-columns:auto 1fr;gap:16px;
+  padding:16px 0;border-top:1px solid var(--line);
+}
+.steps > li:first-child{border-top:none}
+.chk{position:relative;width:30px;height:30px;flex:none}
+.chk input{position:absolute;inset:0;opacity:0;cursor:pointer;margin:0;width:100%;height:100%}
+.chk span{
+  position:absolute;inset:0;display:grid;place-items:center;border:1.5px solid var(--navy-soft);
+  border-radius:8px;background:var(--surface);color:transparent;font-size:16px;font-weight:700;transition:.15s;
+}
+.chk span::before{content:"✓"}
+.chk input:checked + span{background:var(--gold-bright);border-color:var(--gold-bright);color:var(--navy)}
+.chk input:focus-visible + span{outline:2px solid var(--gold-bright);outline-offset:2px}
+.step-body h4{font-size:16px;margin-bottom:3px}
+.step-body h4::before{content:counter(s) ".  ";color:var(--gold);font-family:"IBM Plex Mono",monospace;font-weight:600}
+.step-body p{margin:4px 0;color:var(--ink-soft);font-size:14.5px}
+.step-body .hint{font-size:13px;border-left:2px solid var(--line);padding-left:12px;color:var(--ink-soft)}
+.done-strike input:checked ~ .step-body h4{text-decoration:line-through;text-decoration-color:var(--line);color:var(--ink-soft)}
+
+/* ---------- snippet ---------- */
+.snippet{position:relative;margin:12px 0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--sunk)}
+.snippet pre{
+  margin:0;padding:16px 16px;overflow-x:auto;font-size:13px;line-height:1.65;color:var(--ink);
+  white-space:pre-wrap;word-break:break-word;
+}
+.snippet.code pre{white-space:pre;word-break:normal}
+.snippet .copy{
+  position:absolute;top:8px;right:8px;font:inherit;font-family:"Bai Jamjuree",sans-serif;font-size:11.5px;font-weight:600;
+  cursor:pointer;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:4px 10px;
+}
+.snippet .copy:hover{border-color:var(--navy-soft)}
+.snippet .copy.ok{color:var(--ok);border-color:var(--ok)}
+
+/* ---------- tables ---------- */
+.tbl-scroll{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:460px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{font-family:"Bai Jamjuree",sans-serif;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);border-bottom:2px solid var(--line)}
+td.mono,.tnum{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+tbody tr:hover{background:color-mix(in srgb,var(--gold-bright) 7%,transparent)}
+
+.chip{display:inline-block;font-family:"Bai Jamjuree",sans-serif;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;border:1px solid currentColor}
+.chip.link{color:var(--navy-soft)}
+.chip.msg{color:var(--gold)}
+
+.callout{display:flex;gap:12px;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--gold-bright);border-radius:10px;padding:14px 16px;margin:16px 0;font-size:14px;color:var(--ink-soft)}
+.callout b{color:var(--ink)}
+
+.linklist{list-style:none;padding:0;margin:14px 0}
+.linklist li{padding:8px 0;border-bottom:1px solid var(--line);display:flex;gap:12px;flex-wrap:wrap;align-items:baseline}
+.linklist .k{font-family:"Bai Jamjuree",sans-serif;font-weight:600;font-size:13px;min-width:180px}
+.linklist a,.linklist .v{font-family:"IBM Plex Mono",monospace;font-size:12.5px;word-break:break-all}
+
+footer{max-width:820px;margin:0 auto;padding:28px 20px 60px;color:var(--ink-soft);font-size:13px}
+</style>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="brand"><b>◆</b> กองฟาง ยูไนเต็ด · LINE SHOP</span>
+    <nav class="navchips" aria-label="ไปยังส่วน">
+      <a href="#overview">ภาพรวม</a>
+      <a href="#partA">A · LINE OA</a>
+      <a href="#partB">B · ต้อนรับ</a>
+      <a href="#partC">C · เมนู</a>
+      <a href="#partD">D · ตอบอัตโนมัติ</a>
+      <a href="#partE">E · ชำระเงิน</a>
+      <a href="#partF">F · ตรวจสลิป</a>
+      <a href="#partG">G · งานรายวัน</a>
+      <a href="#partH">H · โปรโมชั่น</a>
+      <a href="#ref">รวมลิงก์</a>
+    </nav>
+    <span class="tprog"><span class="tprog-bar"><span class="tprog-fill" id="progFill"></span></span><span id="progTxt">0/0</span></span>
+    <button class="tbtn" id="themeBtn" type="button">◑ ธีม</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">คู่มือติดตั้ง · ฉบับเริ่มฟรี + เติมตรวจสลิปอัตโนมัติ</div>
+    <h1>รับออเดอร์ชุดแข่งผ่าน LINE ตั้งแต่ต้นจนจบ</h1>
+    <p>วางระบบให้ลูกค้าทักไลน์ กดเมนู สั่งซื้อ แนบสลิป แล้วระบบตรวจสลิปให้อัตโนมัติ ออเดอร์ไหลเข้า Google Sheet เอง — ทำตามทีละส่วน A ถึง H ติ๊กช่องเมื่อทำเสร็จ ความคืบหน้าจะถูกจำไว้ในเครื่องนี้</p>
+    <div class="lede-meta">
+      <span class="pill">ชุดละ 350 บาท + ส่ง 50 บาท/ชุด</span>
+      <span class="pill">LINE OA แพ็กฟรี</span>
+      <span class="pill">SlipOK ~150–250 บาท/เดือน</span>
+      <span class="pill">ไม่ต้องเขียนโค้ดเพิ่ม</span>
+    </div>
+  </header>
+
+  <section id="overview">
+    <div class="kicker"><span class="part">◆</span> ภาพรวมระบบ</div>
+    <h2>สามชิ้นประกอบกัน</h2>
+    <p class="sub"><b>LINE OA</b> คือหน้าร้านที่ลูกค้าคุยด้วย · <b>ฟอร์มเว็บ + Google Sheet</b> คือที่เก็บออเดอร์ · <b>SlipOK</b> คือคนตรวจสลิปแทนคุณ</p>
+
+    <div class="diagram-scroll">
+      <svg class="diagram" viewBox="0 0 960 330" role="img" aria-label="แผนผัง: ลูกค้าทักไลน์ กดเมนูสั่งซื้อ ไปที่ฟอร์มเว็บ ส่งเข้า Apps Script แล้วแยกไป Google Sheet, Google Drive, SlipOK และอีเมลแจ้งแอดมิน">
+        <defs>
+          <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path class="arw" d="M0 0 L10 5 L0 10 z"/>
+          </marker>
+        </defs>
+        <!-- row 1 -->
+        <rect class="node node-gold" x="16" y="40" width="180" height="60" rx="12"/>
+        <text class="lbl-on-d" x="106" y="66" text-anchor="middle">ลูกค้า + LINE OA</text>
+        <text class="lbl-on-d" x="106" y="85" text-anchor="middle" style="font-size:11px;font-weight:600">กดเมนู “สั่งซื้อชุดแข่ง”</text>
+
+        <path class="flow" d="M196 70 H262"/>
+        <rect class="node" x="262" y="40" width="180" height="60" rx="12"/>
+        <text class="lbl" x="352" y="65" text-anchor="middle">ฟอร์มสั่งซื้อบนเว็บ</text>
+        <text class="lbl-sm" x="352" y="84" text-anchor="middle">kongfang-united · #order + แนบสลิป</text>
+
+        <path class="flow" d="M442 70 H508"/>
+        <rect class="node node-navy" x="508" y="40" width="180" height="60" rx="12"/>
+        <text class="lbl-on" x="598" y="66" text-anchor="middle">Apps Script v4</text>
+        <text class="lbl-on" x="598" y="85" text-anchor="middle" style="font-size:11px;font-weight:600">doPost() หลังบ้าน</text>
+
+        <!-- fan out -->
+        <path class="flow" d="M598 100 V132 H236 V168"/>
+        <path class="flow" d="M598 100 V150 H598 V168"/>
+        <path class="flow" d="M598 100 V132 H860 V168"/>
+
+        <rect class="node" x="120" y="168" width="232" height="58" rx="12"/>
+        <text class="lbl" x="236" y="192" text-anchor="middle">Google Sheet “สั่งเสื้อ”</text>
+        <text class="lbl-sm" x="236" y="210" text-anchor="middle">1 แถว = 1 ออเดอร์ (ORD-xxxx)</text>
+
+        <rect class="node" x="484" y="168" width="232" height="58" rx="12"/>
+        <text class="lbl" x="600" y="192" text-anchor="middle">Google Drive</text>
+        <text class="lbl-sm" x="600" y="210" text-anchor="middle">เก็บไฟล์รูปสลิปอัตโนมัติ</text>
+
+        <rect class="node" x="744" y="168" width="200" height="58" rx="12"/>
+        <text class="lbl" x="844" y="192" text-anchor="middle">SlipOK</text>
+        <text class="lbl-sm" x="844" y="210" text-anchor="middle">ตรวจสลิป → ผู้โอน/ยอด/เลขอ้างอิง</text>
+
+        <path class="flow" d="M236 226 V262 H452 V286"/>
+        <path class="flow" d="M600 226 V286"/>
+        <path class="flow" d="M844 226 V262 H748 V286"/>
+        <rect class="node node-gold" x="360" y="286" width="240" height="40" rx="10"/>
+        <text class="lbl-on-d" x="480" y="311" text-anchor="middle">อีเมล + แจ้งแอดมิน → ยืนยันลูกค้า</text>
+      </svg>
+    </div>
+
+    <div class="split">
+      <div class="panel done">
+        <h3>✔ ทำให้แล้ว (พร้อมใช้)</h3>
+        <ul>
+          <li>ฟอร์มสั่งซื้อบนเว็บ <span class="mono">/#order</span> + ช่องแนบสลิป</li>
+          <li>หลังบ้าน Apps Script v4 — บันทึกลง Sheet “สั่งเสื้อ” + เซฟรูปสลิปเข้า Drive + อีเมลแจ้งเตือน</li>
+          <li>โค้ดเรียก SlipOK ฝังไว้แล้ว รอแค่ใส่คีย์</li>
+          <li>ภาพ Rich Menu 2500×1686 (ส่งให้ในแชท)</li>
+          <li>ชุดข้อความต้อนรับ / ตอบอัตโนมัติ / ยืนยันออเดอร์ (ส่วน B, D, G)</li>
+        </ul>
+      </div>
+      <div class="panel todo">
+        <h3>☐ คุณต้องทำเอง</h3>
+        <ul>
+          <li>สมัคร LINE Official Account (ส่วน A)</li>
+          <li>ตั้งข้อความต้อนรับ + อัปโหลด Rich Menu + ผูกปุ่ม (B, C)</li>
+          <li>ใส่ข้อความตอบอัตโนมัติตามคีย์เวิร์ด (D)</li>
+          <li>สมัคร SlipOK → เอา API Key + Branch ID มาใส่ในหลังบ้าน แล้ว Deploy เวอร์ชันใหม่ (F)</li>
+          <li>เพิ่มหัวคอลัมน์ใหม่ในชีต “สั่งเสื้อ” (F ขั้นที่ 4)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="partA">
+    <div class="kicker"><span class="part">A</span> ขั้นแรก</div>
+    <h2>สมัคร LINE Official Account</h2>
+    <p class="sub">บัญชีธุรกิจของ LINE ใช้ฟรี แชทตอบลูกค้า 1:1 ได้ไม่จำกัด บรอดแคสต์ได้ 500 ข้อความ/เดือน</p>
+    <ol class="steps done-strike">
+      <li><label class="chk"><input type="checkbox" data-step="a1"><span></span></label><div class="step-body">
+        <h4>เข้า LINE Official Account Manager</h4>
+        <p>เปิด <a href="https://manager.line.biz" target="_blank" rel="noopener">manager.line.biz</a> ล็อกอินด้วยบัญชี LINE ของร้าน (แนะนำใช้เบอร์/อีเมลกลางของร้าน ไม่ใช่ไลน์ส่วนตัว)</p>
+      </div></li>
+      <li><label class="chk"><input type="checkbox" data-step="a2"><span></span></label><div class="step-body">
+        <h4>สร้างบัญชีใหม่</h4>
+        <p>กด “สร้างบัญชี” → ชื่อบัญชี: <b>กองฟาง ยูไนเต็ด · ชุดแข่ง</b> · หมวดหมู่: สินค้า/ค้าปลีก — เสื้อผ้า · ประเทศ: ไทย</p>
+        <p class="hint">ชื่อเปลี่ยนภายหลังได้ แต่จะเปลี่ยนได้จำกัดรอบ ตั้งให้ตรงตั้งแต่แรก</p>
+      </div></li>
+      <li><label class="chk"><input type="checkbox" data-step="a3"><span></span></label><div class="step-body">
+        <h4>ยืนยันอีเมล แล้วเข้าหน้าจัดการบัญชี</h4>
+        <p>จำ <b>LINE ID (@ตามด้วยตัวอักษร)</b> และลิงก์เพิ่มเพื่อน ไว้ใช้ในส่วนถัดไป</p>
+      </div></li>
+      <li><label class="chk"><input type="checkbox" data-step="a4"><span></span></label><div class="step-body">
+        <h4>เพิ่มแอดมิน (ถ้ามีทีมงาน)</h4>
+        <p>ตั้งค่า → จัดการสมาชิก → เชิญด้วยอีเมล/ไลน์ กำหนดสิทธิ์เป็น “ผู้ดูแล” หรือ “ผู้ตอบแชท”</p>
+      </div></li>
+      <li><label class="chk"><input type="checkbox" data-step="a5"><span></span></label><div class="step-body">
+        <h4>เปิดโหมดแชท</h4>
+        <p>ตั้งค่าตอบกลับ → เปิด “แชท” (เพื่อให้แอดมินพิมพ์คุยได้) และเปิด “ตอบกลับอัตโนมัติ” ควบคู่กัน — ส่วน D จะมาตั้งคีย์เวิร์ดตรงนี้</p>
+      </div></li>
+    </ol>
+    <div class="callout"><span>ℹ️</span><span>ชื่อเมนูในหน้า LINE OA อาจต่างจากคู่มือเล็กน้อยตามเวอร์ชัน แต่ลำดับงานเหมือนกัน · การทำบัญชี “ยืนยันตัวตน” (มีโล่) ไม่บังคับ มีค่าธรรมเนียมแยก ทำภายหลังได้</span></div>
+  </section>
+
+  <section id="partB">
+    <div class="kicker"><span class="part">B</span> หน้าร้าน</div>
+    <h2>ข้อความต้อนรับ</h2>
+    <p class="sub">ตั้งค่า → ข้อความต้อนรับเมื่อเพิ่มเพื่อน — วางข้อความนี้ (แก้เบอร์/เวลาให้ตรงจริง)</p>
+    <div class="snippet"><button class="copy" type="button" data-copy>คัดลอก</button><pre>สวัสดีครับ 🙏 ยินดีต้อนรับสู่ร้านชุดแข่ง กองฟาง ยูไนเต็ด
+
+ชุดแข่งอย่างเป็นทางการ (เสื้อ + กางเกง)
+• ราคาชุดละ 350 บาท
+• ค่าจัดส่ง 50 บาท/ชุด
+
+เริ่มสั่งซื้อได้เลยที่เมนูด้านล่าง 👇
+• สั่งซื้อชุดแข่ง — กรอกฟอร์ม แนบสลิปได้ในขั้นตอนเดียว
+• ตารางไซซ์ · วิธีชำระเงิน · แจ้งสลิป · เช็คสถานะ
+
+หรือพิมพ์บอกแอดมินได้เลยว่าต้องการไซซ์ไหน กี่ชุด
+แอดมินตอบแชท ทุกวัน 09:00–20:00 น. ครับ</pre></div>
+    <ol class="steps done-strike">
+      <li><label class="chk"><input type="checkbox" data-step="b1"><span></span></label><div class="step-body">
+        <h4>วางข้อความต้อนรับ + บันทึก</h4>
+      </div></li>
+      <li><label class="chk"><input type="checkbox" data-step="b2"><span></span></label><div class="step-body">
+        <h4>ใส่รูปโปรไฟล์ + รูปหน้าปก</h4>
+        <p>ใช้โลโก้ กองฟาง เป็นรูปโปรไฟล์ · รูปหน้าปกใช้ภาพชุดแข่งจริง</p>
+      </div></li>
+    </ol>
+  </section>
+
+  <section id="partC">
+    <div class="kicker"><span class="part">C</span> หน้าร้าน</div>
+    <h2>Rich Menu — เมนู 6 ปุ่มด้านล่างแชท</h2>
+    <p class="sub">ตั้งค่า → เมนูริชเมนู → สร้างใหม่ · เลือกเทมเพลตแบบ 6 ช่อง (ใหญ่) แล้วอัปโหลดภาพที่เตรียมไว้</p>
+    <ol class="steps done-strike">
+      <li><label class="chk"><input type="checkbox" data-step="c1"><span></span></label><div class="step-body">
+        <h4>อัปโหลดภาพ Rich Menu</h4>
+        <p>ใช้ไฟล์ <b>kongfang-richmenu.png</b> (2500×1686) ที่ส่งให้ในแชท · ชื่อเมนู (ลูกค้าไม่เห็น): “เมนูหลักร้านชุดแข่ง” · ตั้งค่า “แสดงเมนูเป็นค่าเริ่มต้น” = เปิด</p>
+      </li></div>
+      <li><label class="chk"><input type="checkbox" data-step="c2"><span></span></label><div class="step-body">
+        <h4>ผูกการทำงานของแต่ละช่อง</h4>
+        <p>ช่องเรียงซ้าย→ขวา บน→ล่าง ตามนี้:</p>
+      </div></li>
+    </ol>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>ช่อง</th><th>ปุ่ม</th><th>ชนิด</th><th>ค่าที่ใส่</th></tr></thead>
+      <tbody>
+        <tr><td class="tnum">1</td><td>สั่งซื้อชุดแข่ง</td><td><span class="chip link">ลิงก์</span></td><td class="mono">https://kongfang-united.netlify.app/#order</td></tr>
+        <tr><td class="tnum">2</td><td>ตารางไซซ์</td><td><span class="chip msg">ส่งข้อความ</span></td><td class="mono">ตารางไซซ์</td></tr>
+        <tr><td class="tnum">3</td><td>วิธีชำระเงิน</td><td><span class="chip msg">ส่งข้อความ</span></td><td class="mono">วิธีชำระเงิน</td></tr>
+        <tr><td class="tnum">4</td><td>แจ้งสลิปโอนเงิน</td><td><span class="chip msg">ส่งข้อความ</span></td><td class="mono">แจ้งสลิป</td></tr>
+        <tr><td class="tnum">5</td><td>เช็คสถานะ / พัสดุ</td><td><span class="chip msg">ส่งข้อความ</span></td><td class="mono">เช็คสถานะ</td></tr>
+        <tr><td class="tnum">6</td><td>คุยกับแอดมิน</td><td><span class="chip msg">ส่งข้อความ</span></td><td class="mono">คุยกับแอดมิน</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout"><span>💡</span><span>ปุ่มชนิด <b>“ส่งข้อความ”</b> จะทำให้ลูกค้าส่งคำนั้นเข้าแชท แล้วไปกระตุ้น “ตอบกลับอัตโนมัติ” ในส่วน D — ต้องตั้งคีย์เวิร์ดให้ตรงกับคอลัมน์ “ค่าที่ใส่” ด้านบนเป๊ะ ๆ</span></div>
+    <ol class="steps done-strike" start="3" style="counter-reset:s 2">
+      <li><label class="chk"><input type="checkbox" data-step="c3"><span></span></label><div class="step-body">
+        <h4>กด “บันทึก” แล้ว “เผยแพร่”</h4>
+      </div></li>
+    </ol>
+  </section>
+
+  <section id="partD">
+    <div class="kicker"><span class="part">D</span> หน้าร้าน</div>
+    <h2>ข้อความตอบกลับอัตโนมัติ</h2>
+    <p class="sub">ตั้งค่า → ตอบกลับอัตโนมัติ → เพิ่มข้อความใหม่ ทีละหัวข้อ ใส่ “คีย์เวิร์ด” ตามที่ระบุ แล้ววางเนื้อหาด้านล่าง</p>
+
+    <h3 style="margin:22px 0 4px;font-size:15px;color:var(--gold)">1) คีย์เวิร์ด: ตารางไซซ์, ไซซ์, ไซส์, size, รอบอก</h3>
+    <div class="snippet"><button class="copy" type="button" data-copy>คัดลอก</button><pre>📏 ตารางไซซ์ ชุดแข่ง กองฟาง ยูไนเต็ด (เสื้อ + กางเกง)
+
+ไซซ์ / รอบอก (นิ้ว) / ส่วนสูงโดยประมาณ
+XS   [__]  [__]
+SSS  [__]  [__]
+SS   [__]  [__]
+S    [__]  [__]
+M    [__]  [__]
+L    [__]  [__]
+XL   [__]  [__]
+XXL  [__]  [__]
+XXXL [__]  [__]
+
+* แทนค่าในวงเล็บด้วยสเปกจริงจากผู้ผลิตก่อนเปิดใช้งาน
+* ถ้าไม่แน่ใจ พิมพ์ส่วนสูง + น้ำหนัก มาได้เลย เดี๋ยวแอดมินเลือกให้ครับ</pre></div>
+
+    <h3 style="margin:22px 0 4px;font-size:15px;color:var(--gold)">2) คีย์เวิร์ด: วิธีชำระเงิน, โอน, บัญชี, ชำระเงิน, จ่ายเงิน</h3>
+    <div class="snippet"><button class="copy" type="button" data-copy>คัดลอก</button><pre>💳 ชำระเงินโดยโอนเข้าบัญชี
+
+ธนาคารกรุงไทย
+เลขที่บัญชี  665-6-83480-9
+ชื่อบัญชี   น.ส.สุณิสา ชัยสุวรรณ์
+สาขา       โรบินสัน บุรีรัมย์
+
+ยอดชำระ = (จำนวนชุด × 350) + (จำนวนชุด × 50 ค่าส่ง)
+ตัวอย่าง 2 ชุด = 700 + 100 = 800 บาท
+
+โอนแล้วกดปุ่ม “แจ้งสลิปโอนเงิน” ที่เมนูด้านล่าง
+หรือส่งรูปสลิปเข้ามาในแชทนี้ได้เลย ระบบจะตรวจสลิปให้อัตโนมัติครับ</pre></div>
+
+    <h3 style="margin:22px 0 4px;font-size:15px;color:var(--gold)">3) คีย์เวิร์ด: แจ้งสลิป, สลิป, ส่งสลิป, โอนแล้ว</h3>
+    <div class="snippet"><button class="copy" type="button" data-copy>คัดลอก</button><pre>📸 แจ้งสลิปโอนเงิน
+
+วิธีที่ 1 (เร็วสุด) — กรอกฟอร์มแล้วแนบสลิปในหน้าเดียว
+https://kongfang-united.netlify.app/#order
+
+วิธีที่ 2 — ส่งในแชทนี้ ให้ครบ 3 อย่าง
+1) รูปสลิป 1 รูป
+2) ชื่อ – ที่อยู่ – เบอร์โทร สำหรับจัดส่ง
+3) ไซซ์ + จำนวน + ชื่อ/เบอร์หลังเสื้อ (ถ้าต้องการพิมพ์)
+
+แอดมินจะยืนยันออเดอร์กลับภายในวันทำการครับ</pre></div>
+
+    <h3 style="margin:22px 0 4px;font-size:15px;color:var(--gold)">4) คีย์เวิร์ด: เช็คสถานะ, สถานะ, พัสดุ, เลขพัสดุ, ติดตาม, ของถึงไหน</h3>
+    <div class="snippet"><button class="copy" type="button" data-copy>คัดลอก</button><pre>🚚 เช็คสถานะออเดอร์
+
+พิมพ์ “เช็คสถานะ” ตามด้วย ชื่อผู้สั่ง หรือเลขออเดอร์ (ORD-xxxx)
+แล้วแอดมินจะตรวจให้ครับ
+
+ระยะเวลาโดยปกติหลังยืนยันการชำระเงิน
+• ตัดชุด / พิมพ์ชื่อ  2–4 วันทำการ
+• จัดส่งด้วยขนส่งเอกชน 2–4 วันทำการ
+รวมประมาณ 5–8 วันทำการครับ</pre></div>
+
+    <h3 style="margin:22px 0 4px;font-size:15px;color:var(--gold)">5) คีย์เวิร์ด: คุยกับแอดมิน, แอดมิน, สอบถาม, ติดต่อ</h3>
+    <div class="snippet"><button class="copy" type="button" data-copy>คัดลอก</button><pre>💬 รอสักครู่นะครับ กำลังต่อให้แอดมิน
+
+เวลาตอบแชท: ทุกวัน 09:00–20:00 น.
+นอกเวลานี้ ทิ้งข้อความไว้ได้เลย เดี๋ยวตอบกลับโดยเร็วครับ
+ด่วน โทร/ไลน์: 093-909-1602</pre></div>
+
+    <h3 style="margin:22px 0 4px;font-size:15px;color:var(--gold)">6) คีย์เวิร์ด: สมัครนักกีฬา, สมัคร, ฝึกซ้อม, รับสมัคร</h3>
+    <div class="snippet"><button class="copy" type="button" data-copy>คัดลอก</button><pre>⚽ สมัครนักกีฬาใหม่ กองฟาง ยูไนเต็ด
+ฝึกซ้อม พุธ–เสาร์ 17:30–19:30 น.
+ใบสมัครออนไลน์: https://kongfang-united.netlify.app/#registry
+สอบถาม 093-909-1602</pre></div>
+
+    <h3 style="margin:22px 0 4px;font-size:15px;color:var(--gold)">7) คีย์เวิร์ด: ตารางฝึกซ้อม, ฝึกซ้อม, ซ้อม, สนาม, ที่ตั้ง, แผนที่</h3>
+    <div class="snippet"><button class="copy" type="button" data-copy>คัดลอก</button><pre>⚽ ตารางฝึกซ้อม กองฟาง ยูไนเต็ด
+
+วัน: พุธ – เสาร์
+เวลา: 17:30 – 19:30 น.
+สนาม: กองฟาง สเตเดียม · ต.สองชั้น อ.กระสัง จ.บุรีรัมย์
+
+แผนที่: https://maps.app.goo.gl/ZkHbwZDKQH6iagMs7
+
+รุ่นอายุ U8–U16 · สมัครใหม่กดปุ่ม “สมัครนักกีฬา” ที่เมนู
+สอบถาม 093-909-1602</pre></div>
+
+    <ol class="steps done-strike">
+      <li><label class="chk"><input type="checkbox" data-step="d1"><span></span></label><div class="step-body"><h4>ใส่ครบทุกหัวข้อ แล้วเปิดใช้งาน</h4></div></li>
+      <li><label class="chk"><input type="checkbox" data-step="d2"><span></span></label><div class="step-body"><h4>ทดสอบ: แอดไลน์ตัวเองเข้าไป กดทุกปุ่มในเมนู ดูว่าตอบถูกหัวข้อ</h4></div></li>
+    </ol>
+  </section>
+
+  <section id="partE">
+    <div class="kicker"><span class="part">E</span> การเงิน</div>
+    <h2>ช่องทางชำระเงิน</h2>
+    <p class="sub">ใช้เลขบัญชีธนาคารรับโอน (เหมือนที่แสดงบนเว็บอยู่แล้ว)</p>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>รายการ</th><th>ข้อมูล</th></tr></thead>
+      <tbody>
+        <tr><td>ธนาคาร</td><td>กรุงไทย · สาขาโรบินสัน บุรีรัมย์</td></tr>
+        <tr><td>เลขที่บัญชี</td><td class="mono">665-6-83480-9</td></tr>
+        <tr><td>ชื่อบัญชี</td><td>น.ส.สุณิสา ชัยสุวรรณ์</td></tr>
+        <tr><td>ยอดต่อชุด</td><td class="mono">350 + 50 (ส่ง) = 400 บาท</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout"><span>✅</span><span><b>ไม่บังคับ แต่แนะนำ:</b> สมัคร <b>พร้อมเพย์</b> ให้บัญชีร้าน (ฟรี ทำผ่านแอปธนาคาร) จะได้ 2 อย่าง — ลูกค้าสแกน QR จ่ายได้ทันที และการตรวจสลิปอัตโนมัติในส่วน F จะแม่นขึ้น เพราะระบบเทียบปลายทางกับพร้อมเพย์ได้ตรง</span></div>
+  </section>
+
+  <section id="partF">
+    <div class="kicker"><span class="part">F</span> ระบบอัตโนมัติ</div>
+    <h2>ตรวจสลิปอัตโนมัติด้วย SlipOK</h2>
+    <p class="sub">เมื่อลูกค้าแนบสลิปผ่านฟอร์มเว็บ หลังบ้านจะส่งรูปไป SlipOK แล้วบันทึกผล (ผ่าน / สลิปซ้ำ / ไม่ผ่าน) พร้อมชื่อผู้โอน–ยอด–เลขอ้างอิง ลงชีตให้เอง</p>
+    <ol class="steps done-strike">
+      <li><label class="chk"><input type="checkbox" data-step="f1"><span></span></label><div class="step-body">
+        <h4>สมัคร SlipOK</h4>
+        <p>ที่ <a href="https://slipok.com" target="_blank" rel="noopener">slipok.com</a> → สร้างบัญชี → เพิ่ม “ร้านค้า/สาขา” 1 รายการ ใส่บัญชีรับเงินของร้าน (กรุงไทย 665-6-83480-9) · เลือกแพ็กเริ่มต้น (มีเครดิตฟรีให้ทดสอบ)</p>
+      </div></li>
+      <li><label class="chk"><input type="checkbox" data-step="f2"><span></span></label><div class="step-body">
+        <h4>คัดลอก API Key และ Branch ID</h4>
+        <p>อยู่ในหน้า ตั้งค่า / เชื่อมต่อ API ของ SlipOK · Branch ID คือตัวเลขสาขา · API Key เป็นสตริงยาว</p>
+      </div></li>
+      <li><label class="chk"><input type="checkbox" data-step="f3"><span></span></label><div class="step-body">
+        <h4>ใส่คีย์ในหลังบ้าน แล้ว Deploy เวอร์ชันใหม่</h4>
+        <p>เปิดโปรเจกต์ Apps Script → แก้ 2 บรรทัดนี้ในบล็อกตั้งค่า → บันทึก → <b>Deploy › Manage deployments › ดินสอ (Edit) › Version = New version › Deploy</b></p>
+      </div></li>
+    </ol>
+    <div class="snippet code"><button class="copy" type="button" data-copy>คัดลอก</button><pre>var SLIP_API_KEY   = 'SLIPOKxxxxxxxxxxxxxxxx';  // API Key จาก slipok.com
+var SLIP_BRANCH_ID = '12345';                    // Branch ID (เลขสาขา)</pre></div>
+    <ol class="steps done-strike" style="counter-reset:s 3">
+      <li><label class="chk"><input type="checkbox" data-step="f4"><span></span></label><div class="step-body">
+        <h4>เพิ่มหัวคอลัมน์ใหม่ในชีต “สั่งเสื้อ” (ทำครั้งเดียว)</h4>
+        <p>หลังบ้าน v4 จะเขียนข้อมูลลงคอลัมน์ <b>M–Q</b> พิมพ์หัวคอลัมน์ที่แถว 1 ให้ตรง:</p>
+      </div></li>
+    </ol>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>คอลัมน์</th><th>หัวข้อ</th><th>ค่าที่จะได้</th></tr></thead>
+      <tbody>
+        <tr><td class="tnum">M</td><td>ผลตรวจสลิป</td><td>ผ่าน / สลิปซ้ำ / ตรวจไม่ผ่าน: … / ยังไม่ตั้งค่า SlipOK</td></tr>
+        <tr><td class="tnum">N</td><td>ชื่อผู้โอน</td><td>ชื่อบัญชีต้นทางจากสลิป</td></tr>
+        <tr><td class="tnum">O</td><td>ยอดตามสลิป</td><td class="tnum">เช่น 400</td></tr>
+        <tr><td class="tnum">P</td><td>เลขอ้างอิงสลิป</td><td>transRef</td></tr>
+        <tr><td class="tnum">Q</td><td>วันเวลาโอน</td><td class="mono">dd/mm/yyyy hh:mm:ss</td></tr>
+      </tbody>
+    </table></div>
+    <ol class="steps done-strike" style="counter-reset:s 4">
+      <li><label class="chk"><input type="checkbox" data-step="f5"><span></span></label><div class="step-body">
+        <h4>ทดสอบ 1 ออเดอร์จริง</h4>
+        <p>เปิด <span class="mono">/#order</span> กรอกออเดอร์จริงยอดเล็ก โอนเข้าบัญชีร้าน แนบสลิปจริง กดส่ง · เปิดชีต “สั่งเสื้อ” ดูว่าคอลัมน์ M ขึ้น “ผ่าน” และ N–Q มีข้อมูล · ลบแถวทดสอบออกได้</p>
+        <p class="hint">ถ้า M ขึ้น “ยังไม่ตั้งค่า SlipOK” = คีย์ยังไม่เข้า /exec → กลับไป Deploy “New version” อีกครั้ง</p>
+      </div></li>
+    </ol>
+    <div class="callout"><span>🔒</span><span>SlipOK จะปฏิเสธสลิปที่ถูกใช้ยืนยันไปแล้ว (สลิปซ้ำ) และสลิปปลอมให้อัตโนมัติ · ระบบยังไม่บังคับว่ายอดต้องตรงเป๊ะ (เพราะค่าส่งแปรผัน) — ให้แอดมินเทียบยอดในคอลัมน์ O กับออเดอร์อีกชั้นก่อนกดยืนยัน</span></div>
+  </section>
+
+  <section id="partG">
+    <div class="kicker"><span class="part">G</span> ใช้งานจริง</div>
+    <h2>ขั้นตอนต่อ 1 ออเดอร์</h2>
+    <p class="sub">ลำดับงานหลังลูกค้ากดส่งฟอร์ม — เลียนแบบร้านที่ทำ LINE commerce เต็มรูปแบบ</p>
+    <ol class="steps">
+      <li><label class="chk"><input type="checkbox" data-step="g1"><span></span></label><div class="step-body">
+        <h4>ออเดอร์เข้า</h4>
+        <p>ได้อีเมลแจ้งเตือน + แถวใหม่ในชีต “สั่งเสื้อ” (ORD-xxxx) · ดูคอลัมน์ M “ผลตรวจสลิป”</p>
+      </div></li>
+      <li><label class="chk"><input type="checkbox" data-step="g2"><span></span></label><div class="step-body">
+        <h4>ตรวจยอด + สต๊อกไซซ์</h4>
+        <p>เทียบยอดคอลัมน์ O กับ (จำนวนชุด×350 + ค่าส่ง) · เช็คไซซ์ที่ลูกค้าเลือกมีของ</p>
+      </div></li>
+      <li><label class="chk"><input type="checkbox" data-step="g3"><span></span></label><div class="step-body">
+        <h4>ตอบยืนยันในไลน์</h4>
+      </div></li>
+    </ol>
+    <div class="snippet"><button class="copy" type="button" data-copy>คัดลอก</button><pre>✅ ยืนยันออเดอร์ #ORD-____
+รายการ: ชุดแข่งกองฟาง ไซซ์ ___ จำนวน ___ ชุด
+พิมพ์หลังเสื้อ: ___  เบอร์ ___
+ยอดรวม: ___ บาท (รวมค่าส่งแล้ว)
+จัดส่งถึง: ___
+
+สถานะการชำระเงิน: ตรวจสอบสลิปสำเร็จ ✔
+เริ่มดำเนินการผลิต/แพ็กของ จะแจ้งเลขพัสดุให้ทราบครับ</pre></div>
+    <ol class="steps" style="counter-reset:s 3">
+      <li><label class="chk"><input type="checkbox" data-step="g4"><span></span></label><div class="step-body">
+        <h4>ผลิต / พิมพ์ชื่อหลังเสื้อ / แพ็ก</h4>
+        <p>อัปเดตคอลัมน์ “สถานะ” (K) เป็น “กำลังทำ” → “พร้อมส่ง”</p>
+      </div></li>
+      <li><label class="chk"><input type="checkbox" data-step="g5"><span></span></label><div class="step-body">
+        <h4>ส่งของ + แจ้งเลขพัสดุ</h4>
+      </div></li>
+    </ol>
+    <div class="snippet"><button class="copy" type="button" data-copy>คัดลอก</button><pre>📦 จัดส่งแล้ว ออเดอร์ #ORD-____
+ขนส่ง: Flash / Kerry / J&T (เลือกตามจริง)
+เลขพัสดุ: ___
+ติดตามสถานะ: ___
+ของถึงประมาณ 2–4 วันทำการครับ ขอบคุณที่อุดหนุนครับ 🙏</pre></div>
+    <ol class="steps" style="counter-reset:s 5">
+      <li><label class="chk"><input type="checkbox" data-step="g6"><span></span></label><div class="step-body">
+        <h4>ติดตามหลังการขาย (2–3 วันหลังส่ง)</h4>
+      </div></li>
+    </ol>
+    <div class="snippet"><button class="copy" type="button" data-copy>คัดลอก</button><pre>🙏 ขอบคุณที่อุดหนุนชุดแข่ง กองฟาง ยูไนเต็ด
+ได้รับของครบถ้วน ไซซ์พอดี เรียบร้อยดีไหมครับ?
+
+รบกวนรีวิว/ติชมสั้น ๆ เพื่อให้เราพัฒนาบริการ: [ใส่ลิงก์ Google Form]
+ทำแบบประเมินเสร็จ รับโค้ดส่วนลด 30 บาท สำหรับออเดอร์ถัดไปครับ</pre></div>
+    <div class="callout"><span>🗒️</span><span>เก็บทุกอย่างไว้ในชีต “สั่งเสื้อ” คอลัมน์เดียว: <b>K = สถานะงาน</b> (ใหม่ / กำลังทำ / ส่งแล้ว) · เพิ่มคอลัมน์ R “เลขพัสดุ” เองได้ถ้าต้องการบันทึก</span></div>
+  </section>
+
+  <section id="partH">
+    <div class="kicker"><span class="part">H</span> การตลาด</div>
+    <h2>ยิงโปร / โพสต์สินค้าเข้าไลน์</h2>
+    <p class="sub">แพ็กฟรีบรอดแคสต์ได้ 500 ข้อความ/เดือน (นับตามจำนวนผู้รับ) — ใช้เท่าที่จำเป็น</p>
+    <ol class="steps done-strike">
+      <li><label class="chk"><input type="checkbox" data-step="h1"><span></span></label><div class="step-body">
+        <h4>บรอดแคสต์</h4>
+        <p>หน้าหลัก → บรอดแคสต์ → สร้างใหม่ → ใส่รูป + ราคา + ปุ่ม “สั่งซื้อ” (ลิงก์ <span class="mono">/#order</span>) → ส่งเลย หรือตั้งเวลา</p>
+      </div></li>
+      <li><label class="chk"><input type="checkbox" data-step="h2"><span></span></label><div class="step-body">
+        <h4>คูปอง (ถ้าต้องการ)</h4>
+        <p>เครื่องมือ → คูปอง → สร้างส่วนลด เช่น “ลด 30 บาท ออเดอร์ถัดไป” แนบท้ายข้อความติดตามหลังการขายในส่วน G</p>
+      </div></li>
+    </ol>
+  </section>
+
+  <section id="ref">
+    <div class="kicker"><span class="part">◆</span> ภาคผนวก</div>
+    <h2>รวมลิงก์ + ค่าใช้จ่าย</h2>
+    <ul class="linklist">
+      <li><span class="k">LINE OA Manager</span><a href="https://manager.line.biz" target="_blank" rel="noopener">manager.line.biz</a></li>
+      <li><span class="k">SlipOK</span><a href="https://slipok.com" target="_blank" rel="noopener">slipok.com</a></li>
+      <li><span class="k">ฟอร์มสั่งซื้อ</span><span class="v">https://kongfang-united.netlify.app/#order</span></li>
+      <li><span class="k">Google Sheet (สั่งเสื้อ)</span><span class="v">docs.google.com/spreadsheets/d/1HDoPo4Hh0eulvm6glpIbh9ncF4FTVRa7P1FTMu9jI3k</span></li>
+      <li><span class="k">ไฟล์หลังบ้าน</span><span class="v">kongfang-form-backend-พร้อมใช้.gs (v4)</span></li>
+      <li><span class="k">ภาพ Rich Menu</span><span class="v">kongfang-richmenu.png · 2500×1686 (ส่งในแชท)</span></li>
+    </ul>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>ส่วน</th><th>บริการ</th><th>ค่าใช้จ่าย</th></tr></thead>
+      <tbody>
+        <tr><td>หน้าร้านไลน์</td><td>LINE OA — แพ็กฟรี</td><td>0 บาท · บรอดแคสต์ 500 ข้อความ/เดือน · แชท 1:1 ไม่จำกัด</td></tr>
+        <tr><td>ฟอร์ม + ฐานข้อมูล</td><td>Netlify + Google Sheet/Drive/Apps Script</td><td>0 บาท</td></tr>
+        <tr><td>ตรวจสลิปอัตโนมัติ</td><td>SlipOK</td><td>มีเครดิตฟรีให้เริ่ม · แพ็กรายเดือนเริ่มประมาณ 150–250 บาท (เช็คราคาล่าสุดที่เว็บ)</td></tr>
+        <tr><td>โล่ยืนยันบัญชี</td><td>LINE OA Verified — ไม่บังคับ</td><td>มีค่าธรรมเนียมแยก ทำภายหลังได้</td></tr>
+        <tr><td><b>รวมขั้นต่ำ</b></td><td></td><td><b>0–250 บาท/เดือน</b></td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+</div>
+
+<footer>
+  ทำตามส่วน A → H ตามลำดับ · ความคืบหน้า (ช่องติ๊ก) เก็บไว้ในเบราว์เซอร์เครื่องนี้เท่านั้น ไม่ถูกส่งไปที่ไหน<br>
+  จัดทำสำหรับ ศูนย์ฝึกฟุตบอลกองฟาง ยูไนเต็ด · กระสัง บุรีรัมย์
+</footer>
+
+<script>
+(function(){
+  var KEY='kfu-line-guide-v1';
+  var boxes=[].slice.call(document.querySelectorAll('input[type=checkbox][data-step]'));
+  var fill=document.getElementById('progFill'), txt=document.getElementById('progTxt');
+  var saved={};
+  try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){saved={};}
+  function refresh(){
+    var done=0;
+    boxes.forEach(function(b){ if(b.checked) done++; });
+    var pct=boxes.length?Math.round(done/boxes.length*100):0;
+    if(fill) fill.style.width=pct+'%';
+    if(txt) txt.textContent=done+'/'+boxes.length;
+  }
+  boxes.forEach(function(b){
+    if(saved[b.dataset.step]) b.checked=true;
+    b.addEventListener('change',function(){
+      saved[b.dataset.step]=b.checked;
+      try{localStorage.setItem(KEY,JSON.stringify(saved));}catch(e){}
+      refresh();
+    });
+  });
+  refresh();
+
+  document.querySelectorAll('[data-copy]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var pre=btn.parentNode.querySelector('pre');
+      var t=pre?pre.textContent:'';
+      function ok(){ var o=btn.textContent; btn.textContent='คัดลอกแล้ว ✓'; btn.classList.add('ok'); setTimeout(function(){btn.textContent=o;btn.classList.remove('ok');},1600); }
+      if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(ok,fallback); } else { fallback(); }
+      function fallback(){
+        var ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select();
+        try{document.execCommand('copy');ok();}catch(e){} document.body.removeChild(ta);
+      }
+    });
+  });
+
+  var tb=document.getElementById('themeBtn');
+  var order=['light','dark'];
+  tb.addEventListener('click',function(){
+    var cur=document.documentElement.getAttribute('data-theme');
+    var next = cur==='dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme',next);
+    try{localStorage.setItem('kfu-line-guide-theme',next);}catch(e){}
+  });
+  try{var st=localStorage.getItem('kfu-line-guide-theme'); if(st) document.documentElement.setAttribute('data-theme',st);}catch(e){}
+})();
+</script>

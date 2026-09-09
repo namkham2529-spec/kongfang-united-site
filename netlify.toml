@@ -1,0 +1,17 @@
+# Kongfang United — Netlify continuous deployment
+# แหล่งที่เผยแพร่จริงคือโฟลเดอร์ _deploy/ (สร้างจาก build.ps1 + externalize-inline.js ก่อน commit)
+# Netlify แค่เสิร์ฟไฟล์ในนั้น ไม่ต้อง build บนคลาวด์
+
+[build]
+  publish = "_deploy"
+  command = ""
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"

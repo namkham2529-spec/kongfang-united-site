@@ -1,0 +1,11 @@
+{
+  "headline": "KONGFANG UNITED    ชุดแข่งอย่างเป็นทางการ",
+  "cells": [
+    { "en": "ORDER JERSEY", "th": "สั่งซื้อชุดแข่ง" },
+    { "en": "SIZE CHART",    "th": "ตารางไซซ์" },
+    { "en": "HOW TO PAY",    "th": "วิธีชำระเงิน" },
+    { "en": "SEND SLIP",     "th": "แจ้งสลิปโอนเงิน" },
+    { "en": "TRACK ORDER",   "th": "เช็คสถานะ / พัสดุ" },
+    { "en": "CHAT ADMIN",    "th": "คุยกับแอดมิน" }
+  ]
+}

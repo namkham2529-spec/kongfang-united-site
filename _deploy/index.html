@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ศูนย์ฝึกฟุตบอลกองฟาง ยูไนเต็ด | KONGFANG UNITED · กระสัง บุรีรัมย์</title>
+<link rel="icon" type="image/png" href="images/x_0a559aae302989b3.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Sarabun:wght@300;400;500;600;700&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* ---- Buriram-United-style dark navy palette ---- */
+  --bg:#071633;
+  --bg-2:#0A1D42;
+  --bg-3:#050F26;
+  --panel:#0C2149;
+  --panel-2:#102a5b;
+  --line:rgba(255,255,255,.09);
+  --line-strong:rgba(255,255,255,.16);
+  --blue:#2F80ED;
+  --blue-bright:#4DA3FF;
+  --blue-deep:#123B7A;
+  --gold:#F2B807;
+  --white:#FFFFFF;
+  --text:#EAF1FB;
+  --text-soft:#C4D2EA;
+  --muted:#93A7CB;
+  --muted-dim:#6E82A6;
+
+  /* ---- aliases kept so inline var() in markup still resolves ---- */
+  --straw:var(--blue);
+  --straw-light:var(--blue-bright);
+  --straw-pale:var(--muted);
+  --earth:var(--text);
+  --earth-deep:var(--bg-3);
+  --paddy:var(--blue);
+  --paddy-deep:var(--blue-deep);
+  --saffron:var(--blue-bright);
+  --paper:var(--bg);
+  --paper-deep:var(--bg-2);
+  --ink:var(--text);
+  --cream-text:var(--text);
+
+  --font-display:'Kanit','Sarabun',sans-serif;
+  --font-body:'Sarabun','Kanit',sans-serif;
+  --font-cond:'Saira Condensed','Kanit',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--blue-bright);color:#04102A;}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+}
+h1,h2,h3,.display{font-family:var(--font-display);font-weight:800;letter-spacing:-.01em;line-height:1.06;}
+.mono{font-family:var(--font-cond);}
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;max-width:100%;}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px;}
+.eyebrow{
+  font-family:var(--font-cond);
+  font-size:14px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--blue-bright);
+  font-weight:700;
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:16px;
+}
+.eyebrow::before{content:"";width:30px;height:3px;background:var(--blue-bright);display:inline-block;}
+
+/* ---------- accent divider (was straw weave) ---------- */
+.weave-divider{height:5px;width:100%;position:relative;overflow:hidden;background:linear-gradient(90deg,var(--blue-deep),var(--blue),var(--blue-bright) 60%,var(--gold));}
+.weave-divider svg{display:none;}
+
+/* ---------- NAV ---------- */
+header.nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(5,15,38,.82);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:1200px;margin:0 auto;padding:14px 28px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.brand{display:flex;align-items:center;gap:13px;}
+.brand-mark{width:44px;height:44px;flex-shrink:0;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4));}
+.brand-text{line-height:1.05;}
+.brand-text .th{font-family:var(--font-display);font-weight:700;font-size:20px;color:var(--white);letter-spacing:0;}
+.brand-text .en{font-family:var(--font-cond);font-size:10.5px;letter-spacing:.24em;color:var(--blue-bright);text-transform:uppercase;font-weight:600;}
+nav.links{display:flex;gap:32px;font-weight:500;font-size:15px;font-family:var(--font-display);}
+nav.links a{position:relative;padding:6px 0;color:var(--text-soft);transition:color .2s ease;}
+nav.links a:hover{color:var(--white);}
+nav.links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--blue-bright);transition:width .25s ease;}
+nav.links a:hover::after{width:100%;}
+.nav-cta{
+  background:var(--blue);color:var(--white);
+  padding:10px 22px;border-radius:3px;font-weight:600;font-size:14px;
+  font-family:var(--font-display);
+  border:1px solid var(--blue);transition:background .2s ease,border-color .2s ease;
+}
+.nav-cta:hover{background:var(--gold);border-color:var(--gold);color:#04102A;}
+.burger{display:none;background:none;border:0;cursor:pointer;flex-direction:column;gap:5px;}
+.burger span{width:26px;height:2px;background:var(--white);display:block;}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;
+  background-image:
+    linear-gradient(180deg, rgba(11,35,80,.85) 0%, rgba(7,22,51,.9) 45%, rgba(4,16,42,.97) 100%),
+    radial-gradient(1100px 520px at 78% -8%, rgba(47,128,237,.28), transparent 60%),
+    url("images/hero_pitch.jpg");
+  background-size:cover, cover, cover;
+  background-position:center, center, center 68%;
+  background-repeat:no-repeat;
+  color:var(--text);
+  padding:108px 0 0;
+  overflow:hidden;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(115deg,transparent 0 58%,rgba(77,163,255,.08) 58% 62%,transparent 62%);
+  pointer-events:none;
+}
+.hero-grid{
+  max-width:1200px;margin:0 auto;padding:0 28px;
+  display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center;
+  position:relative;z-index:3;
+}
+.hero .eyebrow{color:var(--blue-bright);}
+.hero .eyebrow::before{background:var(--blue-bright);}
+.hero h1{
+  font-size:clamp(44px,6vw,78px);
+  line-height:1.02;
+  color:var(--white);
+  margin-bottom:22px;
+  text-transform:uppercase;
+}
+.hero h1 .accent{color:var(--blue-bright);}
+.hero p.lede{
+  font-size:17.5px;line-height:1.8;color:var(--text-soft);max-width:540px;margin-bottom:34px;font-weight:400;
+}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:15px 30px;border-radius:3px;font-weight:600;font-size:15px;
+  font-family:var(--font-display);
+  transition:transform .2s ease, background .2s ease, color .2s ease;
+  border:1px solid transparent;text-transform:uppercase;letter-spacing:.02em;
+}
+.btn-primary{background:var(--blue);color:var(--white);}
+.btn-primary:hover{background:var(--blue-bright);transform:translateY(-2px);}
+.btn-ghost{border-color:var(--line-strong);color:var(--white);}
+.btn-ghost:hover{border-color:var(--blue-bright);color:var(--blue-bright);transform:translateY(-2px);}
+
+.hero-stats{display:flex;gap:44px;flex-wrap:wrap;padding-bottom:44px;}
+.hstat b{display:block;font-family:var(--font-cond);font-weight:700;font-size:clamp(30px,4vw,46px);color:var(--blue-bright);line-height:1;}
+.hstat span{font-family:var(--font-cond);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:6px;display:block;}
+
+/* next-match card */
+.next-match-card{
+  background:linear-gradient(180deg,rgba(47,128,237,.16),rgba(255,255,255,.03));
+  border:1px solid var(--line-strong);
+  border-top:3px solid var(--blue-bright);
+  border-radius:5px;padding:28px;
+  box-shadow:0 30px 60px -28px rgba(0,0,0,.7);
+}
+.next-match-card .tag{
+  font-family:var(--font-cond);font-size:11.5px;letter-spacing:.16em;
+  color:var(--blue-bright);text-transform:uppercase;margin-bottom:18px;display:block;font-weight:600;
+}
+.match-teams{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+.match-team{text-align:center;flex:1;}
+.match-team .crest-mini{width:54px;height:54px;margin:0 auto 10px;object-fit:contain;}
+.crest-chip{background:#fff;border-radius:50%;padding:4px;box-shadow:0 2px 8px rgba(0,0,0,.3);}
+.match-team .name{font-size:13.5px;font-weight:600;font-family:var(--font-display);}
+.match-vs{font-family:var(--font-cond);font-weight:700;color:var(--gold);font-size:22px;padding:0 12px;}
+.match-meta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;font-family:var(--font-cond);letter-spacing:.04em;}
+
+.hero-fields{position:absolute;left:0;right:0;bottom:0;height:120px;z-index:1;opacity:.5;}
+.hero-fields svg{width:100%;height:100%;}
+
+/* ---------- SECTION SHELL ---------- */
+section{padding:100px 0;position:relative;background:var(--bg);}
+.section-head{max-width:680px;margin-bottom:56px;}
+.section-head h2{font-size:clamp(30px,4vw,48px);color:var(--white);text-transform:uppercase;}
+.section-head h2::after{content:"";display:block;width:60px;height:4px;background:var(--blue-bright);margin-top:18px;}
+.section-head p{margin-top:18px;font-size:16px;line-height:1.75;color:var(--muted);font-weight:400;}
+
+/* ---------- ABOUT ---------- */
+.about{background:var(--bg);}
+.about-grid{display:block;}
+.about-grid .about-copy{max-width:780px;}
+.about-copy p{font-size:15.5px;line-height:1.9;color:var(--text-soft);margin-bottom:18px;font-weight:400;}
+.about-copy p b{font-weight:600;color:var(--white);}
+
+
+.principle-list li{
+  list-style:none;font-size:13px;font-weight:500;color:var(--text-soft);
+  padding:11px 0 11px 16px;border-left:3px solid var(--blue);line-height:1.45;
+  font-family:var(--font-display);background:linear-gradient(90deg,rgba(47,128,237,.08),transparent);
+}
+
+/* ---------- STANDINGS ---------- */
+.standings{background:var(--bg-3);}
+.table-card{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden;}
+table{width:100%;border-collapse:collapse;font-size:14px;}
+thead tr{background:rgba(255,255,255,.04);}
+th{
+  font-family:var(--font-cond);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);text-align:left;padding:16px 14px;font-weight:600;
+}
+th.center,td.center{text-align:center;}
+tbody td{padding:15px 14px;border-top:1px solid var(--line);color:var(--text-soft);}
+tbody tr.highlight{background:linear-gradient(90deg,rgba(77,163,255,.18),rgba(77,163,255,.02));}
+tbody tr.highlight td:first-child{border-left:3px solid var(--blue-bright);}
+tbody tr.highlight td{color:var(--white);font-weight:600;}
+.rank{font-family:var(--font-cond);color:var(--muted);font-weight:700;}
+.team-cell{display:flex;align-items:center;gap:12px;font-weight:600;font-family:var(--font-display);}
+.team-dot{width:9px;height:9px;border-radius:50%;background:var(--blue);flex-shrink:0;}
+.pts{font-family:var(--font-cond);font-weight:700;color:var(--blue-bright);font-size:16px;}
+.form-pill{display:inline-block;width:21px;height:21px;border-radius:4px;font-size:10px;line-height:21px;text-align:center;font-weight:700;margin-right:3px;font-family:var(--font-cond);}
+.form-w{background:var(--blue);color:#fff;}
+.form-d{background:#41547C;color:#fff;}
+.form-l{background:#B4485B;color:#fff;}
+.table-note{font-size:12px;color:var(--muted-dim);padding:16px 4px 0;font-family:var(--font-cond);letter-spacing:.04em;}
+
+/* ---------- FIXTURES ---------- */
+.fixtures{background:var(--bg);}
+.fixture-scroll{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.fixture-card{
+  background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:26px;
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  border-top:3px solid transparent;
+}
+.fixture-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -18px rgba(0,0,0,.6);border-top-color:var(--blue-bright);}
+.fixture-date{font-family:var(--font-cond);font-size:11.5px;letter-spacing:.12em;color:var(--blue-bright);text-transform:uppercase;margin-bottom:18px;font-weight:600;}
+.fixture-teams{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.fixture-team{text-align:center;flex:1;}
+.fixture-team .crest-mini{width:42px;height:42px;margin:0 auto 8px;object-fit:contain;}
+.fixture-team .name{font-size:12.5px;font-weight:600;color:var(--text);font-family:var(--font-display);}
+.fixture-vs{font-family:var(--font-cond);font-weight:700;font-size:16px;color:var(--gold);padding:0 8px;}
+.fixture-venue{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;}
+
+/* ---------- BOARD ---------- */
+.board{background:var(--bg-2);}
+.board-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;}
+.board-card{background:var(--panel);padding:32px 26px;text-align:left;}
+.board-avatar{width:58px;height:58px;border-radius:50%;background:linear-gradient(160deg,var(--blue),var(--blue-deep));color:var(--white);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:22px;margin-bottom:20px;}
+.board-card .role{font-family:var(--font-cond);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-bright);margin-bottom:7px;font-weight:600;}
+.board-card .name{font-weight:600;font-size:16px;color:var(--white);margin-bottom:5px;font-family:var(--font-display);}
+.board-card .sub{font-size:12.5px;color:var(--muted);line-height:1.5;}
+.coaches-strip{margin-top:1px;display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-top:0;border-radius:0 0 8px 8px;overflow:hidden;}
+.coach-chip{background:var(--panel-2);padding:20px;text-align:center;}
+.coach-chip .name{font-weight:600;font-size:13.5px;color:var(--white);font-family:var(--font-display);}
+.coach-chip .fee{font-family:var(--font-cond);font-size:11px;color:var(--blue-bright);margin-top:5px;letter-spacing:.05em;}
+
+/* ---------- SHOP ---------- */
+.shop{background:var(--bg);}
+.shop-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+.product-card{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden;transition:transform .25s ease,border-color .25s ease;}
+.product-card:hover{transform:translateY(-4px);border-color:var(--blue-bright);}
+.product-thumb{aspect-ratio:1/1;position:relative;overflow:hidden;background:var(--bg-3);}
+.product-info{padding:20px;}
+.product-info .cat{font-family:var(--font-cond);font-size:10px;letter-spacing:.14em;color:var(--blue-bright);text-transform:uppercase;font-weight:600;}
+.product-info .pname{font-weight:600;font-size:15px;margin:7px 0 12px;color:var(--white);font-family:var(--font-display);}
+.product-info .price-row{display:flex;justify-content:space-between;align-items:center;}
+.product-info .price{font-family:var(--font-cond);font-weight:700;color:var(--gold);font-size:18px;}
+.add-btn{background:var(--blue);color:var(--white);border:0;padding:9px 15px;border-radius:3px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:var(--font-display);transition:background .2s ease;}
+.add-btn:hover{background:var(--gold);color:#04102A;}
+
+/* ---------- REGISTRY ---------- */
+.registry{background:var(--bg-3);}
+.age-groups{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px;}
+.age-card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:26px;text-align:center;transition:border-color .25s ease;}
+.age-card:hover{border-color:var(--blue-bright);}
+.age-card .num{font-family:var(--font-cond);font-weight:700;font-size:34px;color:var(--blue-bright);}
+.age-card .label{font-family:var(--font-cond);font-size:11px;letter-spacing:.12em;color:var(--muted);margin-top:8px;text-transform:uppercase;}
+.registry-cta{
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;
+  background:linear-gradient(120deg,rgba(47,128,237,.18),rgba(242,184,7,.10));
+  border:1px solid rgba(77,163,255,.3);border-radius:8px;padding:34px;
+}
+.registry-cta h3{font-size:22px;color:var(--white);margin-bottom:10px;text-transform:uppercase;}
+.registry-cta p{color:var(--text-soft);font-size:14.5px;font-weight:400;}
+
+/* ---------- NEWS ---------- */
+.news{background:var(--bg);}
+.news-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:22px;}
+.news-card{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden;transition:transform .25s ease,border-color .25s ease;}
+.news-card:hover{transform:translateY(-4px);border-color:var(--blue-bright);}
+.news-card.featured{grid-row:span 2;}
+.news-thumb{aspect-ratio:16/10;position:relative;overflow:hidden;background:var(--bg-3);}
+.news-card.featured .news-thumb{aspect-ratio:16/12;}
+.news-body{padding:22px;}
+.news-tag{font-family:var(--font-cond);font-size:10px;letter-spacing:.14em;color:var(--blue-bright);text-transform:uppercase;font-weight:600;}
+.news-title{font-weight:600;font-size:16px;margin:9px 0;color:var(--white);line-height:1.45;font-family:var(--font-display);}
+.news-card.featured .news-title{font-size:21px;}
+.news-date{font-size:12px;color:var(--muted-dim);font-family:var(--font-cond);letter-spacing:.05em;}
+
+/* ---------- CTA BANNER ---------- */
+.cta-banner{
+  background:linear-gradient(120deg,var(--blue-deep),var(--blue));
+  color:var(--white);text-align:center;padding:80px 0;
+}
+.cta-banner h2{font-size:clamp(26px,3.6vw,42px);margin-bottom:16px;text-transform:uppercase;}
+.cta-banner p{font-size:16px;margin-bottom:32px;font-weight:400;color:rgba(255,255,255,.85);}
+.cta-banner .btn-primary{background:var(--white);color:var(--blue-deep);}
+.cta-banner .btn-primary:hover{background:var(--gold);color:#04102A;}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--bg-3);color:var(--muted);padding:66px 0 28px;border-top:1px solid var(--line);}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:44px;margin-bottom:50px;}
+.footer-brand .brand-text .th{color:var(--white);}
+.footer-brand p{font-size:13.5px;line-height:1.75;margin-top:16px;max-width:290px;font-weight:400;}
+.footer-col h4{font-family:var(--font-cond);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-bright);margin-bottom:18px;font-weight:600;}
+.footer-col a,.footer-col p{display:block;font-size:13.5px;margin-bottom:11px;color:var(--muted);font-weight:400;transition:color .2s ease;}
+.footer-col a:hover{color:var(--blue-bright);}
+.footer-bottom{border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--muted-dim);font-family:var(--font-cond);letter-spacing:.04em;}
+
+/* ---------- SPONSORS ---------- */
+.sponsors{background:var(--bg-3);}
+.sponsors .section-head{max-width:none;text-align:center;margin-bottom:44px;}
+.sponsors .eyebrow{justify-content:center;}
+.sponsors .section-head h2::after{margin-left:auto;margin-right:auto;}
+.sponsor-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.sponsor-tile{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;aspect-ratio:16/9;transition:border-color .25s ease,transform .25s ease;}
+.sponsor-tile:hover{border-color:var(--blue-bright);transform:translateY(-3px);}
+.sponsor-tile img{width:100%;height:100%;object-fit:cover;display:block;}
+@media (max-width:980px){.sponsor-grid{grid-template-columns:repeat(3,1fr);}}
+@media (max-width:560px){.sponsor-grid{grid-template-columns:repeat(2,1fr);}}
+
+/* ---------- BURIRAM LEAGUE ACADEMY ---------- */
+.bla{background:var(--bg-2);}
+.bla-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:44px;}
+.bla-stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:22px;text-align:center;}
+.bla-stat b{display:block;font-family:var(--font-cond);font-weight:700;font-size:34px;color:var(--blue-bright);line-height:1;}
+.bla-stat span{font-family:var(--font-cond);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:8px;display:block;}
+.bla-subhead{font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--white);margin:44px 0 18px;text-transform:uppercase;}
+.bla .table-card{margin-bottom:6px;}
+.bla td.mono{white-space:nowrap;color:var(--text-soft);}
+.bla tbody tr.highlight td{color:var(--white);}
+.club-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.club-chip{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 16px;font-family:var(--font-display);font-weight:600;font-size:14px;color:var(--text);line-height:1.3;}
+.club-chip span{display:block;font-family:var(--font-body);font-weight:400;font-size:11.5px;color:var(--muted);margin-top:4px;}
+.club-chip.me{border-color:var(--blue-bright);background:linear-gradient(135deg,rgba(77,163,255,.16),transparent);color:var(--white);}
+@media (max-width:980px){ .bla-stats{grid-template-columns:repeat(2,1fr);} .club-grid{grid-template-columns:repeat(2,1fr);} }
+@media (max-width:560px){ .club-grid{grid-template-columns:1fr;} }
+
+/* ---------- NEWS MODAL ---------- */
+.news-readmore{display:inline-block;margin-top:12px;font-family:var(--font-cond);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-bright);font-weight:700;cursor:pointer;}
+.news-readmore:hover{color:var(--white);}
+.news-modal{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:24px;}
+.news-modal[hidden]{display:none;}
+.news-modal-backdrop{position:absolute;inset:0;background:rgba(3,10,24,.8);backdrop-filter:blur(4px);}
+.news-modal-panel{position:relative;z-index:1;max-width:720px;width:100%;max-height:86vh;overflow-y:auto;background:var(--bg-2);border:1px solid var(--line-strong);border-radius:12px;padding:40px 36px;box-shadow:0 40px 90px -20px rgba(0,0,0,.75);}
+.news-modal-x{position:absolute;top:12px;right:16px;background:none;border:0;color:var(--muted);font-size:30px;line-height:1;cursor:pointer;font-family:var(--font-body);}
+.news-modal-x:hover{color:var(--white);}
+.news-modal-body h3{font-family:var(--font-display);font-weight:800;color:var(--white);font-size:23px;line-height:1.28;margin-bottom:8px;letter-spacing:-.01em;}
+.news-modal-body .nm-meta{font-family:var(--font-cond);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-bright);font-weight:700;margin-bottom:20px;}
+.news-modal-body h4{font-family:var(--font-display);font-weight:700;color:var(--blue-bright);font-size:15px;margin:22px 0 8px;}
+.news-modal-body p{font-size:14.5px;line-height:1.85;color:var(--text-soft);margin-bottom:12px;}
+.news-modal-body ul{margin:0 0 14px 20px;color:var(--text-soft);font-size:14px;line-height:1.9;}
+.news-modal-body em{color:var(--muted);font-style:normal;font-size:13px;}
+
+
+/* ---------- HISTORY / TIMELINE ---------- */
+.history{background:var(--bg-3);}
+.timeline{position:relative;max-width:820px;margin:0 auto;padding-left:36px;}
+.timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--blue-bright),var(--blue-deep));}
+.tl-item{position:relative;padding-bottom:40px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-marker{position:absolute;left:-36px;top:3px;width:20px;height:20px;border-radius:50%;background:var(--bg-3);border:3px solid var(--blue-bright);}
+.tl-date{font-family:var(--font-cond);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-bright);font-weight:700;margin-bottom:4px;}
+.tl-title{font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--white);margin-bottom:8px;text-transform:none;line-height:1.3;}
+.tl-content>p{font-size:14px;line-height:1.85;color:var(--text-soft);}
+.tl-img{width:100%;aspect-ratio:16/10;object-fit:contain;background:#04102A;border:1px solid var(--line);border-radius:8px;margin-top:14px;}
+.registry-card{max-width:820px;margin:48px auto 0;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--blue-bright);border-radius:8px;padding:26px 28px;}
+.registry-card .eyebrow{margin-bottom:16px;}
+.reg-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 24px;}
+.reg-grid>div{font-size:13.5px;color:var(--text);line-height:1.5;}
+.reg-grid span{display:block;font-family:var(--font-cond);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
+.reg-grid b.mono{font-family:var(--font-cond);color:var(--blue-bright);font-size:15px;letter-spacing:.06em;font-weight:700;}
+.founder-card{max-width:820px;margin:22px auto 0;background:linear-gradient(135deg,rgba(47,128,237,.12),transparent);border:1px solid rgba(77,163,255,.28);border-radius:12px;padding:32px;display:grid;grid-template-columns:150px 1fr;gap:28px;align-items:start;}
+.founder-photo{width:150px;height:150px;border-radius:50%;object-fit:cover;border:2px solid var(--blue-bright);}
+.founder-card .eyebrow{margin-bottom:6px;}
+.founder-body h3{font-family:var(--font-display);font-weight:800;color:var(--white);font-size:21px;margin:2px 0 8px;text-transform:none;}
+.founder-role{font-size:12.5px;color:var(--muted);line-height:1.7;margin-bottom:14px;}
+.founder-body blockquote{border-left:3px solid var(--blue-bright);padding-left:15px;margin:14px 0;font-family:var(--font-display);font-size:16.5px;color:var(--blue-bright);font-weight:500;font-style:italic;line-height:1.5;}
+.founder-body>p:last-child{font-size:13.5px;line-height:1.8;color:var(--text-soft);}
+@media (max-width:640px){
+  .reg-grid{grid-template-columns:1fr;}
+  .founder-card{grid-template-columns:1fr;justify-items:center;text-align:center;}
+  .founder-body blockquote{text-align:left;}
+}
+
+
+.news-modal-body img{width:100%;border-radius:8px;margin:8px 0 4px;border:1px solid var(--line);display:block;}
+/* ---------- ORDER ---------- */
+.order{background:var(--bg-2);}
+.order-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:26px;align-items:start;}
+.order-form{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:28px;}
+.order-form .hp{position:absolute;left:-9999px;}
+.of-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.order-form label{display:block;font-family:var(--font-display);font-weight:500;font-size:13px;color:var(--text-soft);margin-bottom:16px;}
+.order-form label span{color:var(--blue-bright);}
+.order-form input,.order-form select,.order-form textarea{
+  width:100%;margin-top:6px;background:var(--bg-3);border:1px solid var(--line-strong);border-radius:6px;
+  padding:11px 12px;color:var(--text);font-family:var(--font-body);font-size:14px;
+}
+.order-form input:focus,.order-form select:focus,.order-form textarea:focus{outline:none;border-color:var(--blue-bright);}
+.order-form textarea{resize:vertical;}
+.order-form .btn{margin-top:6px;border:0;cursor:pointer;width:100%;justify-content:center;}
+.of-hint{font-size:12px;color:var(--muted);margin-top:12px;text-align:center;}
+.pay-card{background:linear-gradient(135deg,rgba(47,128,237,.14),transparent);border:1px solid rgba(77,163,255,.3);border-radius:12px;padding:26px;}
+.pay-card .eyebrow{margin-bottom:16px;}
+.pay-bank{font-family:var(--font-display);font-weight:700;color:var(--white);font-size:16px;}
+.pay-no{font-family:var(--font-cond);font-size:24px;font-weight:700;color:var(--blue-bright);letter-spacing:.04em;margin:6px 0;}
+.pay-name{font-size:14px;color:var(--text);font-weight:600;}
+.pay-branch{font-size:12.5px;color:var(--muted);margin-bottom:14px;}
+.pay-note{font-size:12.5px;color:var(--text-soft);line-height:1.6;border-top:1px solid var(--line);padding-top:14px;}
+.pay-price{margin-top:16px;display:flex;align-items:baseline;gap:8px;}
+.pay-price b{font-family:var(--font-cond);font-size:34px;font-weight:800;color:var(--gold);}
+.pay-price span{font-size:12px;color:var(--muted);}
+.pay-ship{font-size:12px;color:var(--muted);margin-top:2px;}
+@media (max-width:860px){
+  .order-grid{grid-template-columns:1fr;}
+  .of-row{grid-template-columns:1fr;}
+}
+
+
+/* ---------- KONGFANG CUP ---------- */
+.cup{background:var(--bg-3);}
+.cup-info{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:26px;}
+.cup-stat{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--blue-bright);border-radius:8px;padding:20px;}
+.cup-stat span{font-family:var(--font-cond);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;}
+.cup-stat b{font-family:var(--font-display);font-weight:700;color:var(--white);font-size:17px;display:block;line-height:1.25;}
+.cup-stat em{font-style:normal;font-size:12px;color:var(--text-soft);display:block;margin-top:5px;line-height:1.5;}
+.cup-prizes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:30px;}
+.cup-prize{border-radius:8px;padding:18px;text-align:center;border:1px solid var(--line);}
+.cup-prize span{font-family:var(--font-cond);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;}
+.cup-prize b{font-family:var(--font-display);font-weight:800;font-size:16px;display:block;}
+.cup-prize.gold{background:linear-gradient(135deg,rgba(242,184,7,.18),transparent);border-color:rgba(242,184,7,.4);}
+.cup-prize.gold b{color:var(--gold);}
+.cup-prize.silver{background:linear-gradient(135deg,rgba(180,195,220,.14),transparent);}
+.cup-prize.silver b{color:#C4D2EA;}
+.cup-prize.bronze{background:linear-gradient(135deg,rgba(196,120,80,.14),transparent);}
+.cup-prize.bronze b{color:#E0A57A;}
+.cup-teams{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:24px;}
+.cup-teams .eyebrow{margin-bottom:14px;}
+.cup-team-list{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;}
+.cup-team-list span{background:var(--bg-3);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-family:var(--font-display);font-weight:600;font-size:13.5px;color:var(--text-soft);}
+.cup-team-list span.me{border-color:var(--blue-bright);background:linear-gradient(135deg,rgba(77,163,255,.18),transparent);color:var(--white);}
+.cup-foot{font-size:12.5px;color:var(--muted);line-height:1.7;border-top:1px solid var(--line);padding-top:14px;}
+.cup-foot a{color:var(--blue-bright);}
+@media (max-width:860px){ .cup-info{grid-template-columns:1fr 1fr;} .cup-prizes{grid-template-columns:1fr;} }
+
+.cup-poster{max-width:440px;margin:0 auto 30px;}
+.cup-poster img{width:100%;border-radius:12px;border:1px solid var(--line-strong);display:block;box-shadow:0 20px 50px -20px rgba(0,0,0,.6);}
+.cup-groups{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.cup-group{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px;}
+.cup-group h4{font-family:var(--font-display);font-weight:700;color:var(--blue-bright);font-size:14px;margin-bottom:8px;text-transform:uppercase;letter-spacing:.08em;}
+.cup-group span{display:block;font-family:var(--font-display);font-weight:600;font-size:13.5px;color:var(--text-soft);padding:7px 0;border-top:1px solid var(--line);}
+.cup-group span:first-of-type{border-top:0;}
+.cup-group span.me{color:var(--white);}
+.cup .table-card td{font-size:12.5px;}
+@media (max-width:560px){ .cup-groups{grid-template-columns:1fr;} }
+.reg-form h4{font-family:var(--font-cond);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-bright);font-weight:700;margin:24px 0 14px;border-top:1px solid var(--line);padding-top:20px;}
+.reg-form h4:first-of-type{border-top:0;padding-top:0;margin-top:4px;}
+.reg-form input[type=file]{padding:10px;background:var(--bg-3);border:1px dashed var(--line-strong);color:var(--text-soft);font-size:13px;cursor:pointer;}
+/* ---------- REVEAL ANIM ---------- */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:980px){
+  nav.links{display:none;}
+  .burger{display:flex;}
+  .hero-grid{grid-template-columns:1fr;}
+  .about-grid{grid-template-columns:1fr;}
+  .board-grid{grid-template-columns:repeat(2,1fr);}
+  .coaches-strip{grid-template-columns:repeat(3,1fr);}
+  .shop-grid{grid-template-columns:repeat(2,1fr);}
+  .fixture-scroll{grid-template-columns:1fr;}
+  .news-grid{grid-template-columns:1fr;}
+  .news-card.featured{grid-row:auto;}
+  .age-groups{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:560px){
+  section{padding:64px 0;}
+  .board-grid{grid-template-columns:1fr;}
+  .coaches-strip{grid-template-columns:1fr 1fr;}
+  table{font-size:12px;}
+  th,tbody td{padding:11px 8px;}
+  .hero{padding-top:92px;}
+  .hero-stats{gap:28px;}
+}
+/* ---- real crest + personnel photos ---- */
+.kf-crest{display:block;background-position:center;background-repeat:no-repeat;background-size:contain;background-image:url("images/crest.png");}
+.board-avatar.photo{padding:0;overflow:hidden;background:var(--panel-2);}
+.board-avatar img{width:100%;height:100%;object-fit:cover;display:block;}
+.board-subhead{font-family:var(--font-cond);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-bright);font-weight:700;margin:46px 0 22px;}
+.board-grid{grid-template-columns:repeat(4,1fr);}
+.board-grid.staff{grid-template-columns:repeat(5,1fr);}
+.board-grid.community{grid-template-columns:repeat(3,1fr);}
+@media (max-width:980px){ .board-grid{grid-template-columns:repeat(2,1fr);} .board-grid.staff{grid-template-columns:repeat(3,1fr);} .board-grid.community{grid-template-columns:repeat(2,1fr);} }
+@media (max-width:560px){ .board-grid{grid-template-columns:1fr;} .board-grid.staff{grid-template-columns:repeat(2,1fr);} .board-grid.community{grid-template-columns:repeat(2,1fr);} }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <span class="brand-mark kf-crest" role="img" aria-label="ตราสัญลักษณ์กองฟาง ยูไนเต็ด"></span>
+      <div class="brand-text">
+        <div class="th">กองฟาง ยูไนเต็ด</div>
+        <div class="en">SPIRIT · DISCIPLINE · ATTENTION · HARMONY</div>
+      </div>
+    </a>
+    <nav class="links">
+      <a href="#about">ประวัติ</a>
+      <a href="#history">เส้นทาง</a>
+      <a href="#standings">ตารางคะแนน</a>
+      <a href="#fixtures">โปรแกรมแข่ง</a>
+      <a href="#bla">บุรีรัมย์ลีก</a>
+      <a href="#cup">KONGFANG CUP</a>
+      <a href="#board">คณะบริหาร</a>
+      <a href="#shop">ร้านค้า</a>
+      <a href="#order">สั่งเสื้อ</a>
+      <a href="#registry">ทะเบียนนักกีฬา</a>
+      <a href="#news">ข่าวสาร</a>
+      <a href="#video">วิดีโอ</a>
+      <a href="#sponsors">ผู้สนับสนุน</a>
+    </nav>
+    <a href="#shop" class="nav-cta">ร้านค้าทีม</a>
+    <button class="burger" aria-label="เมนู"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-grid">
+    <div>
+      <span class="eyebrow">ศูนย์ฝึกฟุตบอลเยาวชน · บ้านสระเพลง ต.สองชั้น อ.กระสัง จ.บุรีรัมย์</span>
+      <h1>ทุกฟ่อนฟาง<br>คือแรงรวม<span class="accent">เป็นทีม</span></h1>
+      <p class="lede">ศูนย์ฝึกฟุตบอลกองฟาง ยูไนเต็ด บ่มเพาะนักฟุตบอลเยาวชนรุ่น U8–U16 กว่า 92 ชีวิต ด้วยหลักอปริหานิยธรรม 7 ผสานวินัยลูกหนัง เพื่อสร้างคนก่อนสร้างนักเตะ ภายใต้การอุปถัมภ์ของพระราชวชิรศาสนวิเทศ ประธานกองฟางพัฒนาสังคมสู่ความเป็นเลิศ</p>
+      <div class="hero-ctas">
+        <a href="#fixtures" class="btn btn-primary">ดูโปรแกรมแข่งขัน</a>
+        <a href="#shop" class="btn btn-ghost">ช้อปสินค้าที่ระลึก</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><b>92</b><span>นักกีฬาทั้งหมด</span></div>
+        <div class="hstat"><b>U8–U16</b><span>รุ่นอายุ</span></div>
+        <div class="hstat"><b>2561</b><span>ก่อตั้ง · เดิมระกาอะคาเดมี่</span></div>
+        <div class="hstat"><b>แชมป์เปียน</b><span>KONGFANG CUP U14 หญิง 2026</span></div>
+      </div>
+    </div>
+    <div class="next-match-card reveal">
+      <span class="tag">ผลล่าสุด · KONGFANG CUP U14 หญิง · รอบชิงชนะเลิศ · อาทิตย์ 6 ก.ย. 69</span>
+      <div class="match-teams">
+        <div class="match-team">
+          <span class="crest-mini kf-crest" role="img" aria-label="กองฟาง ยูไนเต็ด"></span>
+          <div class="name">กองฟาง ยูไนเต็ด</div>
+        </div>
+        <div class="match-vs">2–1</div>
+        <div class="match-team">
+          <img class="crest-mini crest-chip" src="images/x_d9e6729735f5a466.png" alt="หนองพลวง เอฟซี">
+          <div class="name">หนองพลวง เอฟซี</div>
+        </div>
+      </div>
+      <div class="match-meta">
+        <span>คว้าแชมป์ KONGFANG CUP U14 2026 · ฟุตบอลหญิง อายุไม่เกิน 14 ปี · ชนะ 4 นัด (2 นัดต่อเวลา/จุดโทษ)</span>
+        <span>6 ก.ย. 69</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-fields">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M0,60 Q60,20 120,55 T240,50 T360,60 T480,45 T600,58 T720,48 T840,60 T960,50 T1080,58 T1200,52 L1200,120 L0,120 Z" fill="#123B7A" opacity="0.35"/>
+      <path d="M0,80 Q80,50 160,78 T320,72 T480,80 T640,70 T800,80 T960,72 T1120,80 T1200,76 L1200,120 L0,120 Z" fill="#050F26" opacity="0.55"/>
+    </svg>
+  </div>
+</section>
+
+<div class="weave-divider" style="background:var(--earth-deep);">
+  <svg viewBox="0 0 400 26" preserveAspectRatio="none"><g stroke="#2F80ED" stroke-width="1" opacity="0.5">
+    <path d="M0,13 Q10,3 20,13 T40,13 T60,13 T80,13 T100,13 T120,13 T140,13 T160,13 T180,13 T200,13 T220,13 T240,13 T260,13 T280,13 T300,13 T320,13 T340,13 T360,13 T380,13 T400,13"/>
+  </g></svg>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <span class="eyebrow">ประวัติกองฟาง</span>
+        <h2 style="color:var(--earth);font-size:32px;margin-bottom:20px;">เมล็ดพันธุ์แห่งความฝัน</h2>
+        <p>ทุกเรื่องราวย่อมมีจุดเริ่มต้นที่เล็กเกินกว่าจะมองเห็นความยิ่งใหญ่ในอนาคต สำหรับกองฟาง ยูไนเต็ด จุดเริ่มต้นคือเสียงหัวเราะของเด็กกลุ่มหนึ่งที่ชวนกันเตะฟุตบอลในยามเย็น จากความสนุกธรรมดา ค่อย ๆ กลายเป็นการนัดหมายฝึกซ้อมอย่างจริงจัง เด็ก ๆ ทยอยเข้ามาร่วมจนรวมกันเป็นกลุ่มเล็ก ๆ ที่มีเป้าหมายเดียวกัน จึงตั้งชื่อทีมว่า <b>“ระกาอะคาเดมี่”</b> ตามชื่อโรงเรียนบ้านระกา</p>
+        <p>วันนั้นไม่มีแม้แต่สนามเป็นของตนเอง ไม่มีสิ่งอำนวยความสะดวกใด ๆ มีเพียงดวงตาที่เปล่งประกายของเด็กที่อยากเรียนรู้ หยาดเหงื่อของผู้ใหญ่ที่ยืนเคียงข้าง และความเชื่อร่วมกันว่า <b>“ฟุตบอลสามารถสร้างคนได้”</b> จนวันหนึ่ง <b>คุณครูสนธยา เปี่ยมอักโข</b> มองเห็นคุณค่าของสิ่งที่กำลังก่อตัว จึงชักชวนให้ย้ายการฝึกซ้อมมายังพื้นที่กองฟาง</p>
+        <p>วันที่เท้าแรกย่างก้าวเข้าสู่ผืนดินแห่งนั้น กองฟางยังเป็นเพียงพื้นที่ว่างเปล่า ไม่มีสนาม ไม่มีรั้ว ไม่มีอาคารใด ๆ มีเพียงผืนดินที่รอคอยและความฝันที่ยังไม่มีรูปร่าง — ทว่าเมล็ดพันธุ์แห่งความฝันได้ถูกหว่านลงแล้ว วันนี้กองฟาง ยูไนเต็ด เติบโตเป็นศูนย์ฝึกกว่า 92 ชีวิต รุ่น U8–U16 ในสังกัดสมาคมกีฬาฟุตบอลแห่งประเทศไทยฯ (ดูเส้นทางทั้งหมดที่หัวข้อ <b>เส้นทาง</b>)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HISTORY / TIMELINE ============ -->
+<section class="history" id="history">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">เส้นทางกองฟาง ยูไนเต็ด</span>
+      <h2>จากผืนดินว่างเปล่า สู่ศูนย์ฝึกมาตรฐานสมาคมฯ</h2>
+      <p>ไทม์ไลน์การก่อร่างสร้างทีม ตั้งแต่ปี 2561 จนถึงปัจจุบัน — จาก "ระกาอะคาเดมี่" สู่ "กองฟาง ยูไนเต็ด"</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item reveal"><div class="tl-marker"></div><div class="tl-content">
+        <div class="tl-date">11 มีนาคม 2561</div><h3 class="tl-title">หนังสือขอคำปรึกษา</h3>
+        <p>เยาวชนบ้านจอมและบ้านสระเพลงร่วมกันร่างหนังสือ เรียนเชิญผู้นำชุมชนและหน่วยงานราชการในพื้นที่ เพื่อขอคำแนะนำเรื่องการใช้พื้นที่สาธารณะของชุมชนสร้างสนามกีฬาให้เด็กและเยาวชนมีที่ฝึกซ้อมที่เหมาะสม — ก้าวแรกที่กล้าหาญของกลุ่มคนตัวเล็ก ๆ ที่กล้าฝันถึงสิ่งที่ยิ่งใหญ่กว่าตัวเอง</p>
+      </div></div>
+
+      <div class="tl-item reveal"><div class="tl-marker"></div><div class="tl-content">
+        <div class="tl-date">12 มีนาคม 2561</div><h3 class="tl-title">ประชุมผู้นำชุมชน</h3>
+        <p>เพียงหนึ่งวันให้หลัง การประชุมถูกจัดขึ้นโดยมีผู้นำชุมชนและหน่วยงานราชการมาพร้อมหน้า นายสมจิตร ประจันบาน รองนายกเทศมนตรีตำบลสองชั้นในขณะนั้น เป็นประธาน ที่ประชุมเห็นพ้องต้องกันให้ใช้พื้นที่สาธารณประโยชน์เป็นสถานที่ออกกำลังกายของเด็กและเยาวชน</p>
+      </div></div>
+
+      <div class="tl-item reveal"><div class="tl-marker"></div><div class="tl-content">
+        <div class="tl-date">13 มีนาคม 2561</div><h3 class="tl-title">มติเอกฉันท์จากประชาคมบ้านสระเพลง</h3>
+        <p>เวทีประชาคมบ้านสระเพลง หมู่ที่ 13 เจ้าของพื้นที่สาธารณประโยชน์ ภายใต้การเป็นประธานของนายวิระ กิรัมย์ กำนันตำบลสองชั้นในขณะนั้น ที่ประชุมมีมติเห็นชอบเป็นเอกฉันท์ ไม่มีเสียงคัดค้าน อนุญาตให้พื้นที่แห่งนั้นเป็นสนามกีฬาเพื่อเด็กและเยาวชนอย่างเป็นทางการ</p>
+      </div></div>
+
+      <div class="tl-item reveal"><div class="tl-marker"></div><div class="tl-content">
+        <div class="tl-date">ก่อนปรับปรุงสนาม</div><h3 class="tl-title">พิธีขอขมาตายายเจ้าที่</h3>
+        <p>ก่อนพลั่วแรกแตะผืนดิน ผู้นำชุมชนและผู้อาวุโสประจำหมู่บ้านพร้อมใจกันประกอบพิธีบอกกล่าวขอขมาตายายเจ้าที่ ตามความเชื่อและจารีตประเพณีดั้งเดิม เพื่อความเป็นสิริมงคลก่อนเริ่มการก่อสร้าง ดั่งการขอพรจากผืนแผ่นดินให้โอบอุ้มความฝันของเด็ก ๆ ไว้ด้วยความเมตตา</p>
+      </div></div>
+
+      <div class="tl-item reveal"><div class="tl-marker"></div><div class="tl-content">
+        <div class="tl-date">25 เมษายน 2561</div><h3 class="tl-title">แรงหนุนจากองค์การบริหารส่วนจังหวัด</h3>
+        <p>นายสมจิตร ประจันบาน ทำหนังสือประสานองค์การบริหารส่วนจังหวัด ขอรับการสนับสนุนรถปรับพื้นผิวสนาม โดยมี สจ.วิสิทธิ์ เจริญอิทธิกุล ดูแลอย่างใกล้ชิด จนความช่วยเหลือจาก อบจ. มาถึง</p>
+      </div></div>
+
+      <div class="tl-item reveal has-img"><div class="tl-marker"></div><div class="tl-content">
+        <div class="tl-date">2 พฤษภาคม 2561</div><h3 class="tl-title">กำเนิดชื่อ "กองฟาง ยูไนเต็ด"</h3>
+        <p>พระราชวชิรศาสนวิเทศ (ในขณะนั้นคือพระวิมลศาสนวิเทศน์ ดร. เจ้าอาวาสวัดไทยนอร์เวย์) เดินทางมาเยี่ยมชมการฝึกซ้อมด้วยพระองค์เอง และประทานนามให้แก่ทีมว่า "กองฟาง ยูไนเต็ด" — ชื่อที่แฝงความหมายถึงความสามัคคี ดั่งเส้นฟางหลากสายพันธุ์ที่เมื่อกองรวมกันแล้วเกิดประโยชน์มหาศาล เช่นเดียวกับเด็กจากหลายครอบครัวที่มารวมกันเพื่อจุดหมายเดียวกัน</p>
+        <img class="tl-img" src="images/hist_H6.jpg" alt="พิธีประทานนามกองฟาง ยูไนเต็ด" loading="lazy">
+      </div></div>
+
+      <div class="tl-item reveal has-img"><div class="tl-marker"></div><div class="tl-content">
+        <div class="tl-date">1 สิงหาคม 2561</div><h3 class="tl-title">อาคารห้องน้ำ จากศรัทธาชาวไทยในนอร์เวย์</h3>
+        <p>เมื่อกิจกรรมจัดถี่ขึ้น ปัญหาการไม่มีห้องน้ำก็ปรากฏ พระเดชพระคุณพร้อมด้วยพุทธศาสนิกชนชาวไทยในนอร์เวย์ เมตตามอบปัจจัยสร้างอาคารห้องน้ำบริจาคให้แก่กองฟาง เพื่อความสะดวกของผู้มาร่วมกิจกรรมทุกคน</p>
+        <img class="tl-img" src="images/hist_H1.jpg" alt="อาคารห้องน้ำกองฟาง" loading="lazy">
+      </div></div>
+
+      <div class="tl-item reveal has-img"><div class="tl-marker"></div><div class="tl-content">
+        <div class="tl-date">7 มกราคม 2563</div><h3 class="tl-title">เสวนาภาษากองฟาง ครั้งที่ 1</h3>
+        <p>เวที "เสวนาภาษากองฟาง ทิศทางการพัฒนาเด็กและเยาวชน" ครั้งแรก ณ กองฟาง สเตเดียม โดยพระวิมลศาสนวิเทศน์ พระอุปถัมภ์ทีม และ พ.ต.อ.วิษณุ อาภรณ์พงษ์ ผู้กำกับการ สภ.กระสังในขณะนั้น ร่วมเป็นประธาน — จัดต่อเนื่องมาแล้ว 4 ครั้ง เป็นเวทีกำหนดทิศทางการพัฒนาของกองฟาง</p>
+        <img class="tl-img" src="images/hist_H2.jpg" alt="เสวนาภาษากองฟาง" loading="lazy">
+      </div></div>
+
+      <div class="tl-item reveal has-img"><div class="tl-marker"></div><div class="tl-content">
+        <div class="tl-date">27 พฤษภาคม 2564</div><h3 class="tl-title">ปลูกหญ้าสนามฟุตบอล</h3>
+        <p>สามปีผ่านไปนับจากวันที่สนามยังเป็นพื้นดินปรับระดับ คณะกรรมการกองฟางพร้อมพี่น้องในชุมชนร่วมแรงปลูกหญ้าสนามผืนใหม่ทั้งผืน ภายใต้ความเมตตาของพระราชวชิรศาสนวิเทศ ผู้สนับสนุนงบประมาณทั้งหมด — จุดเปลี่ยนสำคัญที่ยกกองฟางสู่มาตรฐานที่สูงขึ้น</p>
+        <img class="tl-img" src="images/hist_H3.jpg" alt="ปลูกหญ้าสนามกองฟาง" loading="lazy">
+      </div></div>
+
+      <div class="tl-item reveal"><div class="tl-marker"></div><div class="tl-content">
+        <div class="tl-date">การระดมทุนจากชุมชน</div><h3 class="tl-title">ทอดผ้าป่าสร้างรั้วและอุปกรณ์กีฬา</h3>
+        <p>เมื่อเด็กเข้ามาฝึกซ้อมมากขึ้น ความขาดแคลนก็ชัดเจนขึ้น เยาวชนบ้านจอมและบ้านสระเพลงร่วมกันจัดงานทอดผ้าป่าระดมทุนสร้างรั้ว ห้องขายเสื้อ และจัดซื้ออุปกรณ์กีฬามอบให้กองฟาง — เครื่องพิสูจน์ว่าเมื่อชุมชนร่วมมือกัน ไม่มีสิ่งใดที่ทำไม่ได้</p>
+      </div></div>
+
+      <div class="tl-item reveal"><div class="tl-marker"></div><div class="tl-content">
+        <div class="tl-date">ก้าวสู่มาตรฐานสมาคมฯ</div><h3 class="tl-title">ขึ้นทะเบียนสมาคมกีฬาฟุตบอลแห่งประเทศไทยฯ</h3>
+        <p>เมื่อองค์ประกอบครบถ้วน ทั้งทีม โค้ช นักกีฬา สนาม ห้องน้ำ และสถานพยาบาลใกล้เคียงตามที่สมาคมกำหนด ผู้จัดการทีมยื่นขอขึ้นทะเบียนเป็นอะคาเดมี่ในสังกัดสมาคมกีฬาฟุตบอลแห่งประเทศไทย ในพระบรมราชูปถัมภ์ และได้รับการรับรอง — "ศูนย์ฝึกฟุตบอลกองฟาง ยูไนเต็ด" มีตัวตนอย่างเป็นทางการในระบบทะเบียนกีฬาฟุตบอล</p>
+      </div></div>
+
+      <div class="tl-item reveal has-img"><div class="tl-marker"></div><div class="tl-content">
+        <div class="tl-date">27 มีนาคม 2569</div><h3 class="tl-title">งบประมาณ 300,000 บาท จากวัดไทยนอร์เวย์</h3>
+        <p>พระราชวชิรศาสนวิเทศ ประธานสหภาพพระธรรมทูตไทยในทวีปยุโรป เจ้าอาวาสวัดไทยนอร์เวย์ มีหนังสือรับรองอย่างเป็นทางการจากวัดไทยนอร์เวย์ ราชอาณาจักรนอร์เวย์ ยืนยันการสนับสนุนงบประมาณ 300,000 บาท เพื่อพัฒนาสนามฟุตบอลกองฟาง ยูไนเต็ด และกองฟาง สเตเดียม บ้านสระเพลง–บ้านจอม ตลอดจนทุกกิจกรรมของทีม</p>
+        <img class="tl-img" src="images/hist_H4.jpg" alt="หนังสือรับรองงบประมาณ 300,000 บาท" loading="lazy">
+      </div></div>
+
+      <div class="tl-item reveal has-img"><div class="tl-marker"></div><div class="tl-content">
+        <div class="tl-date">27 เมษายน 2569</div><h3 class="tl-title">รถตู้ประจำทีม ของขวัญจากท่านเจ้าคุณ</h3>
+        <p>ไม่ถึงหนึ่งเดือนหลังหนังสือรับรองงบประมาณ ท่านเจ้าคุณมอบรถตู้ประจำทีมที่ตกแต่งลวดลาย "KONGFANG UNITED" อย่างสวยงาม เพื่อรับส่งเด็กและเยาวชนไปแข่งขันหรือทำกิจกรรมนอกพื้นที่ได้อย่างสะดวกและปลอดภัย — คลี่คลายปัญหาการเดินทางที่เคยเป็นภาระของหลายครอบครัว</p>
+        <img class="tl-img" src="images/hist_H5.jpg" alt="รถตู้กองฟาง ยูไนเต็ด" loading="lazy">
+      </div></div>
+    </div>
+
+    <div class="registry-card reveal">
+      <span class="eyebrow">ทะเบียนสมาคมกีฬาฟุตบอลแห่งประเทศไทยฯ</span>
+      <div class="reg-grid">
+        <div><span>ชื่อทางการ</span>ศูนย์ฝึกฟุตบอลกองฟาง ยูไนเต็ด (KONGFANG UNITED)</div>
+        <div><span>ที่ตั้ง</span>กองฟาง สเตเดียม หมู่ที่ 13 ต.สองชั้น อ.กระสัง จ.บุรีรัมย์ 31160</div>
+        <div><span>FIFA ID</span><b class="mono">147T9ZC</b></div>
+        <div><span>FA ID</span><b class="mono">academy704</b></div>
+      </div>
+    </div>
+
+    <div class="founder-card reveal">
+      <img class="founder-photo" src="images/hist_founder.jpg" alt="พระราชวชิรศาสนวิเทศ">
+      <div class="founder-body">
+        <span class="eyebrow">ผู้อุปถัมภ์ &amp; ผู้ประทานนาม</span>
+        <h3>พระราชวชิรศาสนวิเทศ</h3>
+        <p class="founder-role">ประธานสหภาพพระธรรมทูตไทยในทวีปยุโรป · เจ้าอาวาสวัดไทยนอร์เวย์ · ประธานที่ปรึกษากิตติมศักดิ์กองฟาง ยูไนเต็ด<br><span style="color:var(--muted-dim)">อดีตสมณศักดิ์ พระวิมลศาสนวิเทศน์ ดร. ในวันที่เข้ามาอุปถัมภ์โครงการครั้งแรก</span></p>
+        <blockquote>"สร้างคนให้เป็นคน โดยใช้กีฬาเป็นเครื่องมือในการพัฒนา"</blockquote>
+        <p>ผู้ประทานนามทีม "กองฟาง ยูไนเต็ด" เมื่อ 2 พฤษภาคม 2561 และสนับสนุนงบประมาณก่อสร้างสนามฟุตบอล อาคารห้องน้ำ ปลูกหญ้าสนาม ตลอดจนมอบรถตู้ประจำทีม ต่อเนื่องมาจนถึงปัจจุบัน</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STANDINGS ============ -->
+<section class="standings" id="standings">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Krasang League Cup U12 2026 · Edition 2</span>
+      <h2>ตารางคะแนน Krasang League Cup U12 2026</h2>
+      <p>สรุปผลอย่างเป็นทางการ หลังปิดฤดูกาล KRASANG LEAGUE CUP U12 2026 (2nd Edition) แข่งครบทุกคู่ (7–8 นัดต่อทีม รวมคู่ตกค้างสัปดาห์ที่ 2) — หนองพลวง เอฟซี คว้าแชมป์แบบไม่แพ้ใคร · กองฟาง ยูไนเต็ด จบอันดับ 3 (4 ชนะ 2 เสมอ 1 แพ้)</p>
+    </div>
+    <div class="table-card reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>อันดับ</th><th>ทีม</th>
+            <th class="center">แข่ง</th><th class="center">ชนะ</th><th class="center">เสมอ</th><th class="center">แพ้</th>
+            <th class="center">ได้</th><th class="center">เสีย</th><th class="center">+/-</th><th class="center">แต้ม</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="rank">1</td><td class="team-cell"><span class="team-dot" style="background:#E4A11B"></span>หนองพลวง เอฟซี</td><td class="center">7</td><td class="center">6</td><td class="center">1</td><td class="center">0</td><td class="center">24</td><td class="center">1</td><td class="center mono">+23</td><td class="center pts">19</td></tr>
+          <tr><td class="rank">2</td><td class="team-cell"><span class="team-dot" style="background:#5E9BE0"></span>NKS บัวถนน</td><td class="center">8</td><td class="center">6</td><td class="center">1</td><td class="center">1</td><td class="center">23</td><td class="center">5</td><td class="center mono">+18</td><td class="center pts">19</td></tr>
+          <tr class="highlight"><td class="rank">3</td><td class="team-cell"><span class="team-dot" style="background:#2F80ED"></span>กองฟาง ยูไนเต็ด</td><td class="center">7</td><td class="center">4</td><td class="center">2</td><td class="center">1</td><td class="center">15</td><td class="center">5</td><td class="center mono">+10</td><td class="center pts">14</td></tr>
+          <tr><td class="rank">4</td><td class="team-cell"><span class="team-dot" style="background:#B85566"></span>ศิษย์หลวงปู่เหลือ สวายสอ อะคาเดมี่</td><td class="center">8</td><td class="center">4</td><td class="center">1</td><td class="center">3</td><td class="center">11</td><td class="center">9</td><td class="center mono">+2</td><td class="center pts">13</td></tr>
+          <tr><td class="rank">5</td><td class="team-cell"><span class="team-dot" style="background:#4DA3FF"></span>โรงเรียนบ้านหนองขอน</td><td class="center">8</td><td class="center">3</td><td class="center">0</td><td class="center">5</td><td class="center">17</td><td class="center">16</td><td class="center mono">+1</td><td class="center pts">9</td></tr>
+          <tr><td class="rank">6</td><td class="team-cell"><span class="team-dot" style="background:#E58A3C"></span>กันทรารมย์ อคาเดมี่</td><td class="center">7</td><td class="center">2</td><td class="center">1</td><td class="center">4</td><td class="center">4</td><td class="center">11</td><td class="center mono">-7</td><td class="center pts">7</td></tr>
+          <tr><td class="rank">7</td><td class="team-cell"><span class="team-dot" style="background:#8DA0C0"></span>โรงเรียนลำปลายมาศ</td><td class="center">8</td><td class="center">1</td><td class="center">0</td><td class="center">7</td><td class="center">7</td><td class="center">41</td><td class="center mono">-34</td><td class="center pts">3</td></tr>
+          <tr><td class="rank">8</td><td class="team-cell"><span class="team-dot" style="background:#C65B6E"></span>ตาราม เอฟซี</td><td class="center">7</td><td class="center">0</td><td class="center">2</td><td class="center">5</td><td class="center">3</td><td class="center">18</td><td class="center mono">-15</td><td class="center pts">2</td></tr>
+        </tbody>
+      </table>
+      <div class="table-note wrap" style="padding-left:20px;padding-right:20px;">จบฤดูกาลอย่างเป็นทางการ · พิธีปิดและมอบถ้วยรางวัล เสาร์ 5 ก.ย. 69 ณ สนามกีฬากองฟาง สเตเดียม · เกณฑ์จัดอันดับ: แต้ม → ผลต่างประตู → ประตูได้ → ผลปะทะตัวต่อตัว</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FIXTURES ============ -->
+<section class="fixtures" id="fixtures">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">โปรแกรมแข่งขัน</span>
+      <h2>ผลการแข่งขันนัดปิดฤดูกาล · เสาร์ 5 ก.ย. 69</h2>
+      <p>KRASANG LEAGUE CUP U12 2026 (2nd Edition) ปิดฤดูกาลแล้ว — กองฟาง ยูไนเต็ด จบอันดับ 3 · ดูตารางคะแนนสุดท้ายที่หัวข้อ &quot;ตารางคะแนน&quot;</p>
+    </div>
+    <div class="reveal" style="text-align:center;"><img src="images/x_abfd3ce925662b78.jpg" alt="โปรแกรมกระสังลีก คัพ U12 สัปดาห์ที่ 4 · เสาร์ 5 ก.ย. 69" loading="lazy" style="max-width:620px;width:100%;border-radius:14px;display:block;margin:0 auto 26px;box-shadow:0 18px 46px rgba(0,0,0,.45);"></div>
+    <div class="fixture-scroll">
+      <div class="fixture-card reveal">
+        <div class="fixture-date">ผล · เสาร์ 5 ก.ย. 69 · 15:00 น. · สนามที่ 1</div>
+        <div class="fixture-teams">
+          <div class="fixture-team"><img class="crest-mini" src="images/x_c780a2683f4a1012.png" alt="กองฟาง ยูไนเต็ด" style="background:#fff;border-radius:50%;padding:3px;"><div class="name">กองฟาง ยูไนเต็ด</div></div>
+          <div class="fixture-vs" style="color:var(--gold);font-size:18px;">4–1</div>
+          <div class="fixture-team"><img class="crest-mini" src="images/x_663929f450af1a5d.png" alt="โรงเรียนลำปลายมาศ" style="background:#fff;border-radius:50%;padding:3px;"><div class="name">โรงเรียนลำปลายมาศ</div></div>
+        </div>
+        <div class="fixture-venue">คู่ของกองฟาง · กระสังลีก คัพ U12 สัปดาห์ที่ 4</div>
+      </div>
+      <div class="fixture-card reveal">
+        <div class="fixture-date">ผล · เสาร์ 5 ก.ย. 69 · 14:00 น. · สนามที่ 1</div>
+        <div class="fixture-teams">
+          <div class="fixture-team"><img class="crest-mini" src="images/x_5c9663ac0142feda.png" alt="หนองพลวง เอฟซี" style="background:#fff;border-radius:50%;padding:3px;"><div class="name">หนองพลวง เอฟซี</div></div>
+          <div class="fixture-vs" style="color:var(--gold);font-size:18px;">4–0</div>
+          <div class="fixture-team"><img class="crest-mini" src="images/x_97235a696966c4fb.png" alt="โรงเรียนบ้านหนองขอน" style="background:#fff;border-radius:50%;padding:3px;"><div class="name">โรงเรียนบ้านหนองขอน</div></div>
+        </div>
+        <div class="fixture-venue">สัปดาห์ที่ 4 · สนามที่ 1 · จ่าฝูงพบอันดับ 4</div>
+      </div>
+      <div class="fixture-card reveal">
+        <div class="fixture-date">ผล · เสาร์ 5 ก.ย. 69 · 14:00 น. · สนามที่ 2</div>
+        <div class="fixture-teams">
+          <div class="fixture-team"><img class="crest-mini" src="images/x_e1bf6b52538695e3.png" alt="NKS บัวถนน" style="background:#fff;border-radius:50%;padding:3px;"><div class="name">NKS บัวถนน</div></div>
+          <div class="fixture-vs" style="color:var(--gold);font-size:18px;">1–0</div>
+          <div class="fixture-team"><img class="crest-mini" src="images/x_05063f63be0b3a7d.png" alt="ศิษย์หลวงปู่เหลือ สวายสอ อะคาเดมี่" style="background:#fff;border-radius:50%;padding:3px;"><div class="name">ศิษย์หลวงปู่เหลือ สวายสอ อะคาเดมี่</div></div>
+        </div>
+        <div class="fixture-venue">สัปดาห์ที่ 4 · สนามที่ 2</div>
+      </div>
+      <div class="fixture-card reveal">
+        <div class="fixture-date">ผล · เสาร์ 5 ก.ย. 69 · 15:00 น. · สนามที่ 2</div>
+        <div class="fixture-teams">
+          <div class="fixture-team"><img class="crest-mini" src="images/x_70c04d460c874584.png" alt="กันทรารมย์ อคาเดมี่" style="background:#fff;border-radius:50%;padding:3px;"><div class="name">กันทรารมย์ อคาเดมี่</div></div>
+          <div class="fixture-vs" style="color:var(--gold);font-size:18px;">1–1</div>
+          <div class="fixture-team"><img class="crest-mini" src="images/x_0f95cd754ae9658e.png" alt="ตาราม เอฟซี" style="background:#fff;border-radius:50%;padding:3px;"><div class="name">ตาราม เอฟซี</div></div>
+        </div>
+        <div class="fixture-venue">สัปดาห์ที่ 4 · สนามที่ 2 · คู่ท้ายตาราง</div>
+      </div>
+      <div class="fixture-card reveal">
+        <div class="fixture-date">ผล · คู่ตกค้าง สัปดาห์ที่ 2 · สนามที่ 1</div>
+        <div class="fixture-teams">
+          <div class="fixture-team"><img class="crest-mini" src="images/x_663929f450af1a5d.png" alt="โรงเรียนลำปลายมาศ" style="background:#fff;border-radius:50%;padding:3px;"><div class="name">โรงเรียนลำปลายมาศ</div></div>
+          <div class="fixture-vs" style="color:var(--gold);font-size:18px;">0–6</div>
+          <div class="fixture-team"><img class="crest-mini" src="images/x_e1bf6b52538695e3.png" alt="NKS บัวถนน" style="background:#fff;border-radius:50%;padding:3px;"><div class="name">NKS บัวถนน</div></div>
+        </div>
+        <div class="fixture-venue">คู่ค้างสัปดาห์ที่ 2 · แข่งจบแล้ว</div>
+      </div>
+      <div class="fixture-card reveal">
+        <div class="fixture-date">ผล · คู่ตกค้าง สัปดาห์ที่ 2 · สนามที่ 2</div>
+        <div class="fixture-teams">
+          <div class="fixture-team"><img class="crest-mini" src="images/x_05063f63be0b3a7d.png" alt="ศิษย์หลวงปู่เหลือ สวายสอ อะคาเดมี่" style="background:#fff;border-radius:50%;padding:3px;"><div class="name">ศิษย์หลวงปู่เหลือ สวายสอ อะคาเดมี่</div></div>
+          <div class="fixture-vs" style="color:var(--gold);font-size:18px;">2–1</div>
+          <div class="fixture-team"><img class="crest-mini" src="images/x_97235a696966c4fb.png" alt="โรงเรียนบ้านหนองขอน" style="background:#fff;border-radius:50%;padding:3px;"><div class="name">โรงเรียนบ้านหนองขอน</div></div>
+        </div>
+        <div class="fixture-venue">คู่ค้างสัปดาห์ที่ 2 · แข่งจบแล้ว</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KONGFANG CUP (HOSTED) ============ -->
+<section class="cup" id="cup">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">เจ้าภาพจัดการแข่งขัน</span>
+      <h2>KONGFANG CUP 2026 · ฟุตบอลหญิง U14</h2>
+      <p>กองฟาง ยูไนเต็ด เป็นเจ้าภาพจัดศึกฟุตบอลเยาวชนหญิงอายุไม่เกิน 14 ปี เมื่ออาทิตย์ 6 ก.ย. 2569 ณ สนามกองฟาง สเตเดียม — และ <b>เจ้าภาพคว้าแชมป์</b> · สรุปผลทั้งรายการด้านล่าง</p>
+    </div>
+    <div class="cup-info reveal">
+      <div class="cup-stat"><span>วันแข่งขัน</span><b>อาทิตย์ 6 ก.ย. 2569</b><em>เริ่ม 14:00 น. · จบพิธีมอบรางวัล 18:30 น.</em></div>
+      <div class="cup-stat"><span>สนามแข่งขัน</span><b>กองฟาง สเตเดียม</b><em>บ้านสระเพลง ต.สองชั้น อ.กระสัง จ.บุรีรัมย์</em></div>
+      <div class="cup-stat"><span>รุ่นอายุ</span><b>หญิง U14</b><em>อายุไม่เกิน 14 ปี · เกิด พ.ศ. 2555</em></div>
+      <div class="cup-stat"><span>จำนวนทีม</span><b>6 ทีม</b><em>แบ่ง 2 กลุ่ม สายละ 3 ทีม → น็อกเอาต์ 4 ทีม → ชิงชนะเลิศ</em></div>
+    </div>
+    <div class="cup-prizes reveal">
+      <div class="cup-prize gold"><span>แชมป์</span><b>กองฟาง ยูไนเต็ด</b></div>
+      <div class="cup-prize silver"><span>รองแชมป์</span><b>หนองพลวง เอฟซี</b></div>
+      <div class="cup-prize bronze"><span>อันดับ 3</span><b>NKS · สวายสอ</b></div>
+    </div>
+    <div class="cup-teams reveal">
+      <span class="eyebrow">ผลการแข่งขัน · รอบแบ่งกลุ่ม</span>
+      <div class="cup-groups">
+        <div class="cup-group">
+          <h4>กลุ่ม A</h4>
+          <span>1. NKS Academy</span>
+          <span>2. Sawaisor FC</span>
+          <span>3. Tasao Academy</span>
+        </div>
+        <div class="cup-group">
+          <h4>กลุ่ม B</h4>
+          <span>1. Nongpluang FC</span>
+          <span class="me">2. Kongfang United</span>
+          <span>3. Seven Academy</span>
+        </div>
+      </div>
+      <div class="table-card" style="margin-top:18px;">
+        <table>
+          <thead><tr><th>รอบ</th><th>เวลา</th><th>สนาม 1 · กลุ่ม A</th><th>สนาม 2 · กลุ่ม B</th></tr></thead>
+          <tbody>
+            <tr><td class="rank">1</td><td class="mono">14:00</td><td>Sawaisor FC <b style="color:var(--gold)">1&ndash;2</b> NKS Academy</td><td>Seven Academy <b style="color:var(--gold)">1&ndash;0</b> Kongfang United</td></tr>
+            <tr><td class="rank">2</td><td class="mono">14:45</td><td>Sawaisor FC <b style="color:var(--gold)">2&ndash;0</b> Tasao Academy</td><td>Seven Academy <b style="color:var(--gold)">1&ndash;2</b> Nongpluang FC</td></tr>
+            <tr><td class="rank">3</td><td class="mono">15:30</td><td>NKS Academy <b style="color:var(--gold)">6&ndash;0</b> Tasao Academy</td><td>Kongfang United <b style="color:var(--gold)">2&ndash;1</b> Nongpluang FC</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h4 class="bla-subhead" style="margin:34px 0 16px;">รอบน็อกเอาต์</h4>
+      <div class="table-card">
+        <table>
+          <tbody>
+            <tr><td class="rank">SF1</td><td class="mono">17:00</td><td>NKS Academy <b style="color:var(--gold)">0&ndash;0</b> Kongfang United &nbsp;·&nbsp; <span style="color:var(--muted)">Kongfang United ชนะจุดโทษ</span></td></tr>
+            <tr><td class="rank">SF2</td><td class="mono">17:00</td><td>Nongpluang FC <b style="color:var(--gold)">1&ndash;1</b> Sawaisor FC &nbsp;·&nbsp; <span style="color:var(--muted)">Nongpluang FC ชนะจุดโทษ</span></td></tr>
+            <tr><td class="rank">3rd</td><td class="mono">17:50</td><td>NKS Academy <b style="color:var(--gold)">v</b> Sawaisor FC · ชิงอันดับ 3</td></tr>
+            <tr class="highlight"><td class="rank">F</td><td class="mono">17:50</td><td><b>Kongfang United <span style="color:var(--gold)">2&ndash;1</span> Nongpluang FC</b> · ชิงชนะเลิศ</td></tr>
+            <tr><td class="rank">🏆</td><td class="mono">18:30</td><td>พิธีมอบรางวัล · แชมป์ <b>กองฟาง ยูไนเต็ด</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="cup-foot">รูปแบบ: กลุ่มละ 3 ทีม พบกันหมด → อันดับ 1&ndash;2 ของแต่ละกลุ่มเข้ารอบน็อกเอาต์ · แต่ละนัดครึ่งละ 15 นาที + พักครึ่ง 5 นาที · รอบน็อกเอาต์เสมอตัดสินด้วยจุดโทษ · แข่งพร้อมกัน 2 สนาม · 🏆 แชมป์ กองฟาง ยูไนเต็ด &nbsp; 🥈 รองแชมป์ หนองพลวง เอฟซี · ติดต่อ 093-909-1602 · ไลน์ @889mucdr หรือ <a href="https://www.facebook.com/Kogfang" target="_blank" rel="noopener">Facebook: กองฟาง ยูไนเต็ด</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BURIRAM LEAGUE ACADEMY ============ -->
+<section class="bla" id="bla">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Buriram League Academy 2026</span>
+      <h2>ลีกเยาวชนเต็มฤดูกาล 12 สโมสร</h2>
+      <p>บุรีรัมย์ ลีก อะคาเดมี่ 2026 (BLA) รวม 12 สโมสรจากบุรีรัมย์และนครราชสีมา แข่งระบบพบกันหมด 4 รุ่นอายุ (U8 · U10 · U12 · U14) เตะทุก 2 สัปดาห์ในวันอาทิตย์ เริ่มนัดแรก 4 ต.ค. 2569 ปิดฤดูกาล 7 มี.ค. 2570 รวม 11 สัปดาห์ 66 นัดต่อรุ่น</p>
+    </div>
+
+    <div class="bla-stats reveal">
+      <div class="bla-stat"><b>12</b><span>สโมสร</span></div>
+      <div class="bla-stat"><b>4</b><span>รุ่นอายุ · U8/U10/U12/U14</span></div>
+      <div class="bla-stat"><b>66</b><span>นัดต่อรุ่น · พบกันหมด</span></div>
+      <div class="bla-stat"><b>11</b><span>สัปดาห์แข่งขัน</span></div>
+    </div>
+
+    <div class="table-note wrap" style="margin-bottom:16px;">รูปแบบการแข่งขัน (มติที่ประชุม): แข่ง 3 ควอเตอร์ นับผลอย่างเป็นทางการ 2 ควอเตอร์ · รุ่น U12–U14 ครึ่งละ 20 นาที / U8–U10 ครึ่งละ 15 นาที · เวลาลงสนามแต่ละรุ่น U14 10:00 · U12 11:00 · U10 13:00 · U8 14:00 น. · ค่าสมัคร 500 บาท/สโมสร · รุ่น U14 อนุญาตนักกีฬาอายุ 15 ปีได้ไม่เกิน 2 คน</div>
+    <h3 class="bla-subhead">โปรแกรมกองฟาง ยูไนเต็ด ตลอดฤดูกาล</h3>
+    <div class="table-card reveal">
+      <table>
+        <thead>
+          <tr><th>สัปดาห์</th><th>วันที่</th><th>คู่แข่ง</th><th class="center">เหย้า/เยือน</th><th>สนาม</th></tr>
+        </thead>
+        <tbody>
+          <tr class="highlight"><td class="rank">1</td><td class="mono">4 ต.ค. 69</td><td class="team-cell">อีเลเว่น</td><td class="center">เหย้า</td><td>อ.กระสัง</td></tr>
+          <tr><td class="rank">2</td><td class="mono">18 ต.ค. 69</td><td class="team-cell">เบส</td><td class="center">เยือน</td><td>อ.คูเมือง</td></tr>
+          <tr><td class="rank">3</td><td class="mono">1 พ.ย. 69</td><td class="team-cell">เซเว่น</td><td class="center">เยือน</td><td>เมืองบุรีรัมย์</td></tr>
+          <tr><td class="rank">4</td><td class="mono">15 พ.ย. 69</td><td class="team-cell">โซล</td><td class="center">เยือน</td><td>เมืองบุรีรัมย์</td></tr>
+          <tr><td class="rank">5</td><td class="mono">29 พ.ย. 69</td><td class="team-cell">ชัยกร อะคาเดมี่</td><td class="center">เยือน</td><td>อ.พุทไธสง</td></tr>
+          <tr><td class="rank">6</td><td class="mono">13 ธ.ค. 69</td><td class="team-cell">แสงเพชร</td><td class="center">เยือน</td><td>สนามกีฬาจังหวัดบุรีรัมย์ · สนามกลาง</td></tr>
+          <tr class="highlight"><td class="rank">7</td><td class="mono">10 ม.ค. 70</td><td class="team-cell">ราชสีมา อะคาเดมี่</td><td class="center">เหย้า</td><td>อ.กระสัง</td></tr>
+          <tr><td class="rank">8</td><td class="mono">24 ม.ค. 70</td><td class="team-cell">เกรียรัมย์</td><td class="center">เยือน</td><td>เมืองบุรีรัมย์ (สามแวง)</td></tr>
+          <tr class="highlight"><td class="rank">9</td><td class="mono">7 ก.พ. 70</td><td class="team-cell">ยูจิน x เอแมน</td><td class="center">เหย้า</td><td>อ.กระสัง</td></tr>
+          <tr class="highlight"><td class="rank">10</td><td class="mono">21 ก.พ. 70</td><td class="team-cell">บัวหลวง อะคาเดมี่</td><td class="center">เหย้า</td><td>อ.กระสัง</td></tr>
+          <tr class="highlight"><td class="rank">11</td><td class="mono">7 มี.ค. 70</td><td class="team-cell">ลำปลายมาศ · นัดปิดฤดูกาล</td><td class="center">เหย้า</td><td>สนามกีฬาจังหวัดบุรีรัมย์ · สนามกลาง</td></tr>
+        </tbody>
+      </table>
+      <div class="table-note wrap" style="padding-left:20px;padding-right:20px;">กองฟาง ยูไนเต็ด เป็นเจ้าภาพที่สนามกระสัง 4 นัด (แถวไฮไลต์ · นัดที่ 1, 7, 9, 10) · นัดที่ 6 (13 ธ.ค. 69) และนัดปิดฤดูกาล นัดที่ 11 (7 มี.ค. 70) แข่งที่สนามกีฬาจังหวัดบุรีรัมย์ (สนามกลาง) · เว้นสัปดาห์สุดท้ายของเดือน ธ.ค. นัดที่ 7 จึงเลื่อนไปเป็น 10 ม.ค. 2570</div>
+    </div>
+
+    <h3 class="bla-subhead">12 สโมสรที่ร่วมแข่งขัน</h3>
+    <div class="club-grid reveal">
+      <div class="club-chip">ราชสีมา อะคาเดมี่<span>อ.ลำทะเมนชัย · นครราชสีมา</span></div>
+      <div class="club-chip">เซเว่น<span>อ.เมือง · บุรีรัมย์</span></div>
+      <div class="club-chip">อีเลเว่น<span>อ.เมือง · บุรีรัมย์</span></div>
+      <div class="club-chip me">กองฟาง ยูไนเต็ด<span>อ.กระสัง · บุรีรัมย์</span></div>
+      <div class="club-chip">โซล<span>อ.เมือง · บุรีรัมย์</span></div>
+      <div class="club-chip">บัวหลวง อะคาเดมี่<span>บ้านบัว อ.เมือง · บุรีรัมย์</span></div>
+      <div class="club-chip">ยูจิน x เอแมน<span>อ.นางรอง · บุรีรัมย์</span></div>
+      <div class="club-chip">ลำปลายมาศ<span>อ.ลำปลายมาศ · บุรีรัมย์</span></div>
+      <div class="club-chip">แสงเพชร<span>อ.ห้วยแถลง · นครราชสีมา</span></div>
+      <div class="club-chip">เบส<span>อ.คูเมือง · บุรีรัมย์</span></div>
+      <div class="club-chip">เกรียรัมย์<span>อ.เมือง · บุรีรัมย์</span></div>
+      <div class="club-chip">ชัยกร อะคาเดมี่<span>อ.พุทไธสง · บุรีรัมย์</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOARD ============ -->
+<section class="board" id="board">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">คณะบริหารสโมสร</span>
+      <h2>ทีมงานเบื้องหลังกองฟาง</h2>
+      <p>ผู้อุปถัมภ์ ผู้บริหาร และโค้ชผู้ฝึกสอนที่ดูแลนักกีฬาทุกรุ่นอายุอย่างใกล้ชิด</p>
+    </div>
+    <div class="board-grid reveal">
+      <div class="board-card">
+        <div class="board-avatar photo"><img src="images/01_monk_pharaachwachirasasanawiwet.jpg" alt="พระราชวชิรศาสนวิเทศ"></div>
+        <div class="role">ประธานที่ปรึกษากิตติมศักดิ์ · ผู้อุปถัมภ์</div>
+        <div class="name">พระราชวชิรศาสนวิเทศ</div>
+        <div class="sub">ผู้ประทานนาม “กองฟาง ยูไนเต็ด” · สนับสนุนงบก่อสร้างสนามและอาคาร · ประธานพระธรรมทูตไทยในทวีปยุโรป</div>
+      </div>
+      <div class="board-card">
+        <div class="board-avatar photo"><img src="images/11_sonthaya.jpg" alt="นายสนธยา เปี่ยมอักโข"></div>
+        <div class="role">ผู้จัดการทีม</div>
+        <div class="name">นายสนธยา เปี่ยมอักโข</div>
+        <div class="sub">ดูแลภาพรวมการบริหารและการแข่งขันของศูนย์ฝึก</div>
+      </div>
+      <div class="board-card">
+        <div class="board-avatar photo"><img src="images/12_sunisa.jpg" alt="นางสุณิสา ชัยสุวรรณ์"></div>
+        <div class="role">เหรัญญิก</div>
+        <div class="name">นางสุณิสา ชัยสุวรรณ์</div>
+        <div class="sub">ดูแลการเงินและงบประมาณสโมสร</div>
+      </div>
+      <div class="board-card">
+        <div class="board-avatar photo"><img src="images/06_kunlathon.jpg" alt="นายกุลธร จีนประโคน"></div>
+        <div class="role">ประธานชมรมผู้ปกครอง · ทีมงานบริหาร</div>
+        <div class="name">นายกุลธร จีนประโคน</div>
+        <div class="sub">ตัวแทนผู้ปกครอง · ดูแลสถานที่ฝึกซ้อม</div>
+      </div>
+    </div>
+    <h3 class="board-subhead">ทีมงานผู้ฝึกสอน</h3>
+    <div class="board-grid staff reveal">
+      <div class="board-card">
+        <div class="board-avatar photo"><img src="images/02_coach_thani.jpg" alt="นายธานี ศรีสวัสดิ์"></div>
+        <div class="role">ผู้อำนวยการฝึกสอน</div>
+        <div class="name">นายธานี ศรีสวัสดิ์</div>
+        <div class="sub">ควบคุมทีมรุ่น 13–16 ปี</div>
+      </div>
+      <div class="board-card">
+        <div class="board-avatar photo"><img src="images/03_coach_sakulchai.jpg" alt="นายสกุลชัย ช่างนาวา โค้ชแดง"></div>
+        <div class="role">ที่ปรึกษาหลักสูตรฝึกซ้อม</div>
+        <div class="name">นายสกุลชัย ช่างนาวา · โค้ชแดง</div>
+        <div class="sub">ดูแลทีมรุ่น 11–12 ปี</div>
+      </div>
+      <div class="board-card">
+        <div class="board-avatar photo"><img src="images/10_coach_tom.jpg" alt="ด.ต.พงษ์ศักดิ์ น้ำคำ โค้ชต้อม"></div>
+        <div class="role">เลขานุการ · ผู้ฝึกสอน 9–10 ปี</div>
+        <div class="name">ด.ต.พงษ์ศักดิ์ น้ำคำ · โค้ชต้อม</div>
+        <div class="sub">อาสาสมัคร ไม่รับค่าตอบแทน · ผู้เขียนหนังสือแนะนำกองฟาง</div>
+      </div>
+      <div class="board-card">
+        <div class="board-avatar photo"><img src="images/04_coach_aun.jpg" alt="โค้ชอั๋น"></div>
+        <div class="role">ผู้ฝึกสอนผู้รักษาประตู</div>
+        <div class="name">โค้ชอั๋น</div>
+        <div class="sub">ดูแลผู้รักษาประตูทุกรุ่น</div>
+      </div>
+      <div class="board-card">
+        <div class="board-avatar photo"><img src="images/05_coach_captain.jpg" alt="โค้ชกัปตัน"></div>
+        <div class="role">ผู้ฝึกสอน</div>
+        <div class="name">โค้ชกัปตัน</div>
+        <div class="sub">ดูแลทีมรุ่น 6–8 ปี</div>
+      </div>
+    </div>
+    <h3 class="board-subhead">ผู้นำชุมชน &amp; ที่ปรึกษา</h3>
+    <div class="board-grid community reveal">
+      <div class="board-card">
+        <div class="board-avatar photo"><img src="images/07_mayor_somjit.jpg" alt="นายสมจิตร ประจันบาน"></div>
+        <div class="role">ประธานที่ปรึกษากองฟาง</div>
+        <div class="name">นายสมจิตร ประจันบาน</div>
+        <div class="sub">นายกเทศมนตรีเทศบาลตำบลสองชั้น</div>
+      </div>
+      <div class="board-card">
+        <div class="board-avatar photo"><img src="images/08_kamnan_tawee.jpg" alt="นายทวี กมลรัมย์"></div>
+        <div class="role">ที่ปรึกษา</div>
+        <div class="name">นายทวี กมลรัมย์</div>
+        <div class="sub">กำนันตำบลสองชั้น</div>
+      </div>
+      <div class="board-card">
+        <div class="board-avatar photo"><img src="images/09_huad_phetlert.jpg" alt="นายฮวด เพ็ชรเลิศ"></div>
+        <div class="role">ที่ปรึกษา</div>
+        <div class="name">นายฮวด เพ็ชรเลิศ</div>
+        <div class="sub">ผู้ใหญ่บ้านจอม หมู่ 7 ตำบลสองชั้น</div>
+      </div>
+      <div class="board-card">
+        <div class="board-avatar photo"><img src="images/x_9b402541340cd2a8.jpg" alt="นายนพรัตน์ กิรัมย์"></div>
+        <div class="role">ที่ปรึกษา</div>
+        <div class="name">นายนพรัตน์ กิรัมย์</div>
+        <div class="sub">ที่ปรึกษานายกเทศมนตรีตำบลสองชั้น</div>
+      </div>
+      <div class="board-card">
+        <div class="board-avatar photo"><img src="images/x_864e277dfde04b47.jpg" alt="นายสิทธิพงษ์ อะภิรัมย์"></div>
+        <div class="role">ที่ปรึกษา</div>
+        <div class="name">นายสิทธิพงษ์ อะภิรัมย์</div>
+        <div class="sub">สมาชิกสภาเทศบาลตำบลสองชั้น เขต 2</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SHOP ============ -->
+<section class="shop" id="shop">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">ร้านค้าสโมสร</span>
+      <h2>ของที่ระลึก &amp; ชุดแข่งขัน</h2>
+      <p>ตอนนี้เปิดจำหน่าย <b>ชุดแข่งขัน กองฟาง ยูไนเต็ด</b> (เสื้อ + กางเกง) ชุดละ 350 บาท · ค่าจัดส่ง +50 บาท/ชุด · สั่งพิมพ์ชื่อ–เบอร์หลังเสื้อได้ที่หัวข้อ <a href="#order">สั่งเสื้อ</a> ด้านล่าง · (ผ้าพันคอ / หมวกแก๊ป ยังไม่เปิดจำหน่าย)</p>
+    </div>
+    <div class="shop-grid">
+      <div class="product-card reveal">
+        <div class="product-thumb">
+          <img src="images/jersey_2026.jpg" alt="ชุดแข่งกองฟาง ยูไนเต็ด 2026 Limited Edition" loading="lazy" style="width:100%;height:100%;object-fit:contain;background:#050F26;">
+        </div>
+        <div class="product-info">
+          <div class="cat">Limited Edition 2026</div>
+          <div class="pname">ชุดแข่งขัน กองฟาง ยูไนเต็ด (เสื้อ + กางเกง)</div>
+          <div class="price-row"><span class="price">฿350</span><a href="#order" class="add-btn">สั่งซื้อ / จองไซซ์</a></div>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-thumb">
+          <img src="images/jersey_2026.jpg" alt="ชุดแข่งกองฟาง สกรีนชื่อ-เบอร์" loading="lazy" style="width:100%;height:100%;object-fit:contain;background:#050F26;">
+        </div>
+        <div class="product-info">
+          <div class="cat">สั่งทำ · Custom</div>
+          <div class="pname">ชุดแข่ง + สกรีนชื่อ–เบอร์นักเตะ</div>
+          <div class="price-row"><span class="price">฿350</span><a href="#order" class="add-btn">สั่งซื้อ / จองไซซ์</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ORDER ============ -->
+<section class="order" id="order">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">สั่งซื้อชุดแข่ง</span>
+      <h2>จองไซซ์ &amp; สั่งพิมพ์ชื่อหลังเสื้อ</h2>
+      <p>ชุดแข่งขัน กองฟาง ยูไนเต็ด (เสื้อ + กางเกง) ชุดละ 350 บาท · ค่าจัดส่ง +50 บาท/ชุด · กรอกฟอร์มด้านล่าง หรือทักไลน์ <a href="https://page.line.me/889mucdr" target="_blank" rel="noopener">LINE: @889mucdr</a> · <a href="https://www.facebook.com/Kogfang" target="_blank" rel="noopener">Facebook</a></p>
+    </div>
+    <div class="order-grid reveal">
+      <form class="order-form" action="https://formsubmit.co/namkham2529@gmail.com" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_subject" value="คำสั่งซื้อชุดแข่ง กองฟาง ยูไนเต็ด">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://kongfang-united.netlify.app/?ordered=1">
+        <input type="hidden" name="form_type" value="order">
+        <p class="hp"><label>อย่ากรอกช่องนี้: <input name="_honey"></label></p>
+        <div class="of-row">
+          <label>ชื่อ–สกุล ผู้สั่ง <span>*</span>
+            <input type="text" name="customer_name" required placeholder="ชื่อ นามสกุล">
+          </label>
+          <label>เบอร์โทร <span>*</span>
+            <input type="tel" name="phone" required placeholder="08x-xxx-xxxx">
+          </label>
+        </div>
+        <div class="of-row">
+          <label>ชื่อที่พิมพ์หลังเสื้อ
+            <input type="text" name="shirt_name" placeholder="เช่น KONGFANG หรือ ชื่อเล่น">
+          </label>
+          <label>เบอร์เสื้อ
+            <input type="text" name="shirt_number" placeholder="เช่น 10" inputmode="numeric">
+          </label>
+        </div>
+        <div class="of-row">
+          <label>ขนาด <span>*</span>
+            <select name="size" required>
+              <option value="">— เลือกขนาด —</option>
+              <option>XS</option>
+              <option>SSS</option>
+              <option>SS</option>
+              <option>S</option>
+              <option>M</option>
+              <option>L</option>
+              <option>XL</option>
+              <option>XXL</option>
+              <option>XXXL</option>
+              <option>อื่นๆ (ระบุในหมายเหตุ)</option>
+            </select>
+          </label>
+          <label>จำนวน (ชุด) <span>*</span>
+            <input type="number" name="qty" min="1" value="1" required>
+          </label>
+        </div>
+        <label>ที่อยู่จัดส่ง <span>*</span>
+          <textarea name="address" rows="3" required placeholder="บ้านเลขที่ / หมู่ / ตำบล / อำเภอ / จังหวัด / รหัสไปรษณีย์ · ระบุชื่อผู้รับถ้าไม่ใช่ผู้สั่ง"></textarea>
+        </label>
+        <label>หมายเหตุเพิ่มเติม
+          <textarea name="note" rows="2" placeholder="ระบุขนาดกรณีเลือก &quot;อื่นๆ&quot; · จำนวนแยกไซซ์ · เวลาสะดวกรับของ"></textarea>
+        </label>
+        <label>แนบสลิปโอนเงิน (ถ้าโอนแล้ว — ช่วยให้ทีมงานยืนยันออเดอร์เร็วขึ้น)
+          <input type="file" name="slip" accept="image/*">
+        </label>
+        <button type="submit" class="btn btn-primary">ส่งคำสั่งซื้อ</button>
+        <p class="of-hint">เมื่อกดส่ง ทีมงานจะติดต่อกลับเพื่อยืนยันยอดและการจัดส่ง</p>
+      </form>
+      <script>
+      (function(){
+        var SCRIPT_URL = window.KFU_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbw1pkOtkKpcBzewWNk0OandG-O7vEaTp_6tGXwj_Ux3RpbL-y8Df4_qs48atVt6JDMM/exec";
+        var form = document.currentScript.previousElementSibling;
+        while (form && form.tagName !== 'FORM') form = form.previousElementSibling;
+        if (!form || SCRIPT_URL.indexOf('script.google.com') < 0) return;
+
+        var fileInput = form.querySelector('input[type=file]');
+        var btn = form.querySelector('button[type=submit]');
+        var done = false;
+        function finish(){ if(done) return; done = true; location.href = 'https://kongfang-united.netlify.app/?ordered=1'; }
+        function fallback(){ if(done) return; done = true; form.submit(); }
+
+        function downscale(file, cb){
+          var fr = new FileReader();
+          fr.onload = function(){
+            var img = new Image();
+            img.onload = function(){
+              var max = 1400, w = img.width, h = img.height;
+              if (w > max || h > max){ if (w > h){ h = Math.round(h*max/w); w = max; } else { w = Math.round(w*max/h); h = max; } }
+              var cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+              cv.getContext('2d').drawImage(img, 0, 0, w, h);
+              cb(cv.toDataURL('image/jpeg', 0.85).split(',')[1], 'image/jpeg');
+            };
+            img.onerror = function(){ cb(String(fr.result).split(',')[1], file.type || 'image/jpeg'); };
+            img.src = fr.result;
+          };
+          fr.readAsDataURL(file);
+        }
+        function send(slip64, stype){
+          var body = new URLSearchParams();
+          Array.prototype.forEach.call(form.elements, function(el){
+            if (!el.name || el.type === 'file' || el.type === 'submit' || el.name.charAt(0) === '_') return;
+            body.append(el.name, el.value);
+          });
+          if (slip64){ body.append('slip_base64', slip64); body.append('slip_type', stype); }
+          fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', body: body }).then(finish, fallback);
+          setTimeout(finish, 5000);
+        }
+        form.addEventListener('submit', function(ev){
+          var hp = form.querySelector('[name=_honey]');
+          if (hp && hp.value) return;
+          ev.preventDefault();
+          if (btn){ btn.disabled = true; btn.textContent = 'กำลังส่ง…'; }
+          var f = fileInput && fileInput.files && fileInput.files[0];
+          if (f) downscale(f, send); else send('', '');
+        });
+      })();
+      </script>
+
+      <aside class="pay-card reveal">
+        <span class="eyebrow">ชำระเงิน · โอนเข้าบัญชี</span>
+        <div class="pay-bank">ธนาคารกรุงไทย</div>
+        <div class="pay-no mono">665-6-83480-9</div>
+        <div class="pay-name">น.ส.สุณิสา ชัยสุวรรณ์</div>
+        <div class="pay-branch">สาขาโรบินสัน บุรีรัมย์</div>
+        <p class="pay-note">โอนแล้ว <b>แนบสลิปในฟอร์มด้านซ้ายได้เลย</b> หรือส่งทาง <a href="https://page.line.me/889mucdr" target="_blank" rel="noopener">LINE: @889mucdr</a> · <a href="https://www.facebook.com/Kogfang" target="_blank" rel="noopener">Facebook</a></p>
+        <div class="pay-price"><b>350.-</b><span>/ ชุด (เสื้อ + กางเกง)</span></div>
+        <div class="pay-ship">+ ค่าจัดส่ง 50 บาท / ชุด</div>
+        <a href="https://page.line.me/889mucdr" target="_blank" rel="noopener" class="btn btn-primary" style="display:block;text-align:center;margin-top:18px;background:#06C755;border-color:#06C755;">เพิ่มเพื่อน LINE · สั่ง/สอบถามในไลน์</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REGISTRY ============ -->
+<section class="registry" id="registry">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">ทะเบียนนักกีฬา</span>
+      <h2>นักเตะเยาวชนของเรา</h2>
+      <p>ครอบคลุมรุ่นอายุ U8 ถึง U16 รวมกว่า 92 คน แบ่งกลุ่มฝึกซ้อมตามช่วงวัยเพื่อพัฒนาการที่เหมาะสม</p>
+    </div>
+    <div class="age-groups reveal">
+      <div class="age-card"><div class="num">U8-U9</div><div class="label">รุ่นเล็ก</div></div>
+      <div class="age-card"><div class="num">U10-U11</div><div class="label">รุ่นกลาง</div></div>
+      <div class="age-card"><div class="num">U12-U13</div><div class="label">รุ่นแข่งขัน</div></div>
+      <div class="age-card"><div class="num">U14-U16</div><div class="label">รุ่นพัฒนาสูงสุด</div></div>
+    </div>
+    <div class="registry-cta reveal" style="display:block;">
+      <h3 style="margin-bottom:8px;">ใบสมัครนักกีฬาใหม่ · ทุกรุ่นอายุ</h3>
+      <p style="margin-bottom:22px;">ฝึกซ้อมทุกวันพุธ–เสาร์ 17:30–19:30 น. · กรอกใบสมัครออนไลน์ด้านล่าง ทีมงานจะติดต่อกลับ · สอบถาม 093-909-1602 · ไลน์ <a href="https://page.line.me/889mucdr" target="_blank" rel="noopener" style="color:var(--blue-bright)">@889mucdr</a> · <a href="https://www.facebook.com/Kogfang" target="_blank" rel="noopener" style="color:var(--blue-bright)">Facebook</a></p>
+      <form class="order-form reg-form" action="https://formsubmit.co/namkham2529@gmail.com" method="POST" enctype="multipart/form-data" style="max-width:none;">
+        <input type="hidden" name="_subject" value="ใบสมัครนักกีฬาใหม่ · กองฟาง ยูไนเต็ด">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://kongfang-united.netlify.app/?registered=1">
+        <p class="hp"><label>อย่ากรอกช่องนี้: <input name="_honey"></label></p>
+        <h4>ข้อมูลนักกีฬา</h4>
+        <div class="of-row">
+          <label>ชื่อ–สกุล นักกีฬา <span>*</span><input type="text" name="ชื่อ-สกุล นักกีฬา" required></label>
+          <label>ชื่อเล่น<input type="text" name="ชื่อเล่น"></label>
+        </div>
+        <div class="of-row">
+          <label>วัน/เดือน/ปีเกิด <span>*</span><input type="date" name="วันเดือนปีเกิด" required></label>
+          <label>เพศ <span>*</span><select name="เพศ" required><option value="">— เลือก —</option><option>ชาย</option><option>หญิง</option></select></label>
+        </div>
+        <div class="of-row">
+          <label>รุ่นที่สมัคร <span>*</span><select name="รุ่นที่สมัคร" required><option value="">— เลือก —</option><option>U8</option><option>U10</option><option>U12</option><option>U14</option><option>U16</option></select></label>
+          <label>ตำแหน่งที่ถนัด<select name="ตำแหน่งที่ถนัด"><option value="">— เลือก —</option><option>ผู้รักษาประตู</option><option>กองหลัง</option><option>กองกลาง</option><option>กองหน้า</option><option>ยังไม่แน่ใจ</option></select></label>
+        </div>
+        <div class="of-row">
+          <label>โรงเรียน <span>*</span><input type="text" name="โรงเรียน" required></label>
+          <label>ระดับชั้น<input type="text" name="ระดับชั้น" placeholder="เช่น ป.4"></label>
+        </div>
+        <div class="of-row">
+          <label>เลขบัตรประชาชน / เลขนักเรียน<input type="text" name="เลขบัตรประชาชน-เลขนักเรียน" inputmode="numeric" placeholder="สำหรับทำบัตรนักกีฬา (กรอกภายหลังได้)"></label>
+          <label>เบอร์เสื้อที่อยากได้<input type="text" name="เบอร์เสื้อ" inputmode="numeric" placeholder="ถ้ามี เช่น 10"></label>
+        </div>
+        <label>ประสบการณ์ฟุตบอล (ถ้ามี)<textarea name="ประสบการณ์ฟุตบอล" rows="2"></textarea></label>
+        <label>โรคประจำตัว / แพ้ยา / แพ้อาหาร<input type="text" name="โรคประจำตัว-แพ้ยา-แพ้อาหาร" placeholder="ถ้าไม่มี ใส่ -"></label>
+        <h4>รูปนักกีฬา (สำหรับทำบัตรประจำตัว)</h4>
+        <label>อัปโหลดรูปถ่ายหน้าตรง เห็นหน้าชัดเจน <span>*</span>
+          <input type="file" name="รูปนักกีฬา" accept="image/*" required>
+        </label>
+        <h4>ข้อมูลผู้ปกครอง</h4>
+        <div class="of-row">
+          <label>ชื่อ–สกุล ผู้ปกครอง <span>*</span><input type="text" name="ชื่อ-สกุล ผู้ปกครอง" required></label>
+          <label>ความสัมพันธ์กับนักกีฬา<input type="text" name="ความสัมพันธ์" placeholder="บิดา / มารดา / ผู้ปกครอง"></label>
+        </div>
+        <div class="of-row">
+          <label>เบอร์โทรผู้ปกครอง <span>*</span><input type="tel" name="เบอร์โทรผู้ปกครอง" required></label>
+          <label>Facebook / Line<input type="text" name="Facebook หรือ Line"></label>
+        </div>
+        <label>ที่อยู่ <span>*</span><textarea name="ที่อยู่" rows="2" required></textarea></label>
+        <div class="of-row">
+          <label>ทราบข่าวการรับสมัครจาก<select name="ทราบข่าวจาก"><option value="">— เลือก —</option><option>Facebook</option><option>เพื่อน/ญาติแนะนำ</option><option>โรงเรียน</option><option>ป้ายประชาสัมพันธ์</option><option>อื่น ๆ</option></select></label>
+          <label>หมายเหตุเพิ่มเติม<input type="text" name="หมายเหตุ"></label>
+        </div>
+        <button type="submit" class="btn btn-primary">ส่งใบสมัคร</button>
+        <p class="of-hint">เมื่อกดส่ง ทีมงานจะติดต่อกลับเพื่อนัดหมายและยืนยัน · ข้อมูลใช้สำหรับการสมัครและทำบัตรประจำตัวนักกีฬาเท่านั้น</p>
+      </form>
+      <script>
+      (function(){
+        /* วาง URL ของ Google Apps Script (Deploy → Web app) ตรงนี้ */
+        var SCRIPT_URL = window.KFU_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbw1pkOtkKpcBzewWNk0OandG-O7vEaTp_6tGXwj_Ux3RpbL-y8Df4_qs48atVt6JDMM/exec";
+        var form = document.currentScript.previousElementSibling;
+        while (form && form.tagName !== 'FORM') form = form.previousElementSibling;
+        if (!form || SCRIPT_URL.indexOf('script.google.com') < 0) return; /* ยังไม่ตั้งค่า → ใช้ระบบเมลเดิม */
+
+        var fileInput = form.querySelector('input[type=file]');
+        var btn = form.querySelector('button[type=submit]');
+        var done = false;
+        function finish(){ if(done) return; done = true; location.href = 'https://kongfang-united.netlify.app/?registered=1'; }
+        function fallback(){ if(done) return; done = true; form.submit(); }
+
+        function downscale(file, cb){
+          var fr = new FileReader();
+          fr.onload = function(){
+            var img = new Image();
+            img.onload = function(){
+              var max = 1000, w = img.width, h = img.height;
+              if (w > max || h > max){ if (w > h){ h = Math.round(h*max/w); w = max; } else { w = Math.round(w*max/h); h = max; } }
+              var c = document.createElement('canvas'); c.width = w; c.height = h;
+              c.getContext('2d').drawImage(img, 0, 0, w, h);
+              cb(c.toDataURL('image/jpeg', 0.82).split(',')[1], 'image/jpeg');
+            };
+            img.onerror = function(){ cb(String(fr.result).split(',')[1], file.type || 'image/jpeg'); };
+            img.src = fr.result;
+          };
+          fr.readAsDataURL(file);
+        }
+        function send(photo64, ptype){
+          var body = new URLSearchParams();
+          Array.prototype.forEach.call(form.elements, function(el){
+            if (!el.name || el.type === 'file' || el.type === 'submit' || el.name.charAt(0) === '_') return;
+            body.append(el.name, el.value);
+          });
+          if (photo64){ body.append('photo_base64', photo64); body.append('photo_type', ptype); }
+          fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', body: body }).then(finish, fallback);
+          setTimeout(finish, 5000);
+        }
+        form.addEventListener('submit', function(ev){
+          var hp = form.querySelector('[name=_honey]');
+          if (hp && hp.value) return;
+          ev.preventDefault();
+          if (btn){ btn.disabled = true; btn.textContent = 'กำลังส่ง…'; }
+          var f = fileInput && fileInput.files && fileInput.files[0];
+          if (f) downscale(f, send); else send('', '');
+        });
+      })();
+      </script>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWS ============ -->
+<section class="news" id="news">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">ข่าวสารและกิจกรรม</span>
+      <h2>ความเคลื่อนไหวล่าสุด</h2>
+    </div>
+    <div class="news-grid">
+      <div class="news-card featured reveal">
+        <div class="news-thumb"><img src="images/x_e4d3a2af429c41d7.jpg" alt="SUPER GIRL กองฟาง แชมป์ KONGFANG CUP U14 2026" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="news-body">
+          <div class="news-tag">KONGFANG CUP</div>
+          <div class="news-title">SUPER GIRL กองฟาง คว้าแชมป์ KONGFANG CUP U14 2026</div>
+          <div class="news-date">6 ก.ย. 2569</div>
+          <span class="news-readmore" data-open-news="9" role="button" tabindex="0">อ่านต่อ &rarr;</span>
+        </div>
+      </div>
+      <div class="news-card reveal">
+        <div class="news-thumb"><img src="images/x_da03462375be933a.jpg" alt="จอห์น คงทรัพย์ อดีตนักกีฬากองฟาง" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="news-body">
+          <div class="news-tag">ศิษย์เก่า</div>
+          <div class="news-title">จากสนามหญ้ากองฟาง สู่นักกีฬาระดับชาติ — ยินดีกับ &quot;จอห์น คงทรัพย์&quot;</div>
+          <div class="news-date">5 ก.ย. 2569</div>
+          <span class="news-readmore" data-open-news="8" role="button" tabindex="0">อ่านต่อ &rarr;</span>
+        </div>
+      </div>
+      <div class="news-card reveal">
+        <div class="news-thumb"><img src="images/x_15db653d656ae017.jpg" alt="พิธีปิด KRASANG LEAGUE CUP U12 2026" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="news-body">
+          <div class="news-tag">กระสังลีก</div>
+          <div class="news-title">ปิดฉาก KRASANG LEAGUE CUP U12 2026 (2nd Edition) — กองฟาง ยูไนเต็ด เจ้าภาพ</div>
+          <div class="news-date">5 ก.ย. 2569</div>
+          <span class="news-readmore" data-open-news="7" role="button" tabindex="0">อ่านต่อ &rarr;</span>
+        </div>
+      </div>
+      <div class="news-card reveal">
+        <div class="news-thumb"><img src="images/x_99ccef702d324a46.jpg" alt="ประชุมผู้ปกครองนักกีฬา กองฟาง ยูไนเต็ด" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="news-body">
+          <div class="news-tag">ข่าวสโมสร</div>
+          <div class="news-title">สรุปประชุมผู้ปกครอง — เห็นชอบส่งนักกีฬาลุยบุรีรัมย์ลีก อะคาเดมี่</div>
+          <div class="news-date">4 ก.ย. 2569</div>
+          <span class="news-readmore" data-open-news="6" role="button" tabindex="0">อ่านต่อ &rarr;</span>
+        </div>
+      </div>
+      <div class="news-card reveal">
+        <div class="news-thumb" style="background:#0B2350;"><img src="images/x_0a3993e2c6c7dc4b.jpg" alt="ผลจับฉลากแบ่งสาย KONGFANG CUP 2026" loading="lazy" style="width:100%;height:100%;object-fit:contain;padding:12px;"></div>
+        <div class="news-body">
+          <div class="news-tag">KONGFANG CUP</div>
+          <div class="news-title">จับฉลากแบ่งสายเสร็จสิ้น — ฟุตบอลหญิง U14 KONGFANG CUP 2026 เตะ 6 ก.ย. นี้</div>
+          <div class="news-date">3 ก.ย. 2569</div>
+          <span class="news-readmore" data-open-news="4" role="button" tabindex="0">อ่านต่อ &rarr;</span>
+        </div>
+      </div>
+      <div class="news-card reveal">
+        <div class="news-thumb" style="background:linear-gradient(135deg,#7a1f4e,#0d2348);display:flex;align-items:center;justify-content:center;font-size:46px;">🏆</div>
+        <div class="news-body">
+          <div class="news-tag">KONGFANG CUP</div>
+          <div class="news-title">ประกาศรายชื่อ 12 นักเตะหญิง U14 กองฟาง ยูไนเต็ด ลุยศึก KONGFANG CUP 2026</div>
+          <div class="news-date">4 ก.ย. 2569</div>
+          <span class="news-readmore" data-open-news="5" role="button" tabindex="0">อ่านต่อ &rarr;</span>
+        </div>
+      </div>
+      <div class="news-card reveal">
+        <div class="news-thumb" style="background:#0B2350;"><img src="images/krasang_logo.jpg" alt="โลโก้ Krasang League Cup U12 2026" loading="lazy" style="width:100%;height:100%;object-fit:contain;padding:18px;"></div>
+        <div class="news-body">
+          <div class="news-tag">กระสังลีก</div>
+          <div class="news-title">ผ่าน 2 สัปดาห์ Krasang League Cup U12 2026 — กองฟางเกาะจ่าฝูง ยังไม่แพ้ใคร</div>
+          <div class="news-date">27 ส.ค. 2569</div>
+          <span class="news-readmore" data-open-news="1" role="button" tabindex="0">อ่านต่อ &rarr;</span>
+        </div>
+      </div>
+      <div class="news-card reveal">
+        <div class="news-thumb" style="background:#0B2350;"><img src="images/bla_logo.jpg" alt="โลโก้ Buriram League Academy" loading="lazy" style="width:100%;height:100%;object-fit:contain;padding:16px;"></div>
+        <div class="news-body">
+          <div class="news-tag">บุรีรัมย์ลีก</div>
+          <div class="news-title">BURIRAM LEAGUE ACADEMY 2026 เปิดฉาก — 12 สโมสร 4 รุ่นอายุ พบกันหมดทั้งฤดูกาล</div>
+          <div class="news-date">28 ส.ค. 2569</div>
+          <span class="news-readmore" data-open-news="2" role="button" tabindex="0">อ่านต่อ &rarr;</span>
+        </div>
+      </div>
+      <div class="news-card reveal">
+        <div class="news-thumb"><img src="images/pitch_panorama.jpg" alt="สนามกองฟาง สเตเดียม" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="news-body">
+          <div class="news-tag">ผลการแข่งขัน</div>
+          <div class="news-title">สรุปสัปดาห์ที่ 3 — กองฟาง พ่ายจ่าฝูงหนองพลวง 0–2 ก่อนกลับมาชนะบ้านหนองขอน 3–0</div>
+          <div class="news-date">29 ส.ค. 2569</div>
+          <span class="news-readmore" data-open-news="3" role="button" tabindex="0">อ่านต่อ &rarr;</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ YOUTUBE ============ -->
+<section class="news" id="video">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">วิดีโอทางการ · YouTube &amp; TikTok</span>
+      <h2>วิดีโอกองฟาง ยูไนเต็ด</h2>
+      <p>ไฮไลต์แมตช์ · คลิปฝึกซ้อม &amp; สกิล · เส้นทางนักเตะ — คลิปใหม่ทุกสัปดาห์ ติดตามได้ทั้ง YouTube และ TikTok</p>
+    </div>
+    <div class="reveal" style="position:relative;padding-top:56.25%;max-width:860px;margin:0 auto;border-radius:14px;overflow:hidden;box-shadow:0 18px 46px rgba(0,0,0,.45);background:#000;">
+      <iframe style="position:absolute;inset:0;width:100%;height:100%;border:0;" src="https://www.youtube.com/embed/videoseries?list=UUrkX31npSocOk1aI1fcUOcw" title="วิดีโอล่าสุด · ช่อง YouTube กองฟาง ยูไนเต็ด" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    <div class="reveal" style="text-align:center;margin-top:24px;">
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="https://www.youtube.com/@kongfangunited?sub_confirmation=1" target="_blank" rel="noopener" class="btn btn-primary" style="background:#FF0000;border-color:#FF0000;">&#9654;&nbsp; กดติดตาม YouTube</a>
+        <a href="https://www.tiktok.com/@kongfang.krasang" target="_blank" rel="noopener" class="btn btn-primary" style="background:#111;border-color:#111;">&#9834;&nbsp; ดู TikTok กองฟาง</a>
+      </div>
+      <p style="margin-top:12px;color:var(--muted);font-size:14px;">YouTube @kongfangunited &nbsp;·&nbsp; TikTok @kongfang.krasang</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BANNER ============ -->
+<section class="cta-banner">
+  <div class="wrap">
+    <h2>ร่วมเป็นแรงหนุนให้ทุกฟ่อนฟาง</h2>
+    <p>สมทบทุนพัฒนาสนามซ้อม อุปกรณ์ฝึก และค่าเดินทางแข่งขันให้นักกีฬาเยาวชนกองฟาง</p>
+    <a href="https://www.facebook.com/Kogfang" target="_blank" rel="noopener" class="btn btn-primary">ติดต่อสนับสนุนผ่าน Facebook</a>
+  </div>
+</section>
+
+<!-- ============ SPONSORS ============ -->
+<section class="sponsors" id="sponsors">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">OFFICIAL PARTNERS</span>
+      <h2>ผู้สนับสนุนสโมสร</h2>
+    </div>
+    <div class="sponsor-grid reveal">
+      <div class="sponsor-tile"><img src="images/sponsor_1_atong.jpg" alt="อาตงมิวสิค Sound Service" loading="lazy"></div>
+      <div class="sponsor-tile"><img src="images/sponsor_2_agsport.jpg" alt="AG Sport" loading="lazy"></div>
+      <div class="sponsor-tile"><img src="images/sponsor_3_kwinday.jpg" alt="KWINDAY LIVE" loading="lazy"></div>
+      <div class="sponsor-tile"><img src="images/sponsor_4_arn.jpg" alt="อาญ มิวสิคซาวด์แอนด์ไลท์" loading="lazy"></div>
+      <div class="sponsor-tile"><img src="images/sponsor_5_masika.jpg" alt="มาซิคะ แฮร์สไตลิสต์" loading="lazy"></div>
+      <div class="sponsor-tile"><img src="images/sponsor_6_ps8.jpg" alt="PS8 Barber" loading="lazy"></div>
+      <div class="sponsor-tile"><img src="images/sponsor_7_an.jpg" alt="บริษัท เอเอ็น รวมเจริญรุ่งโรจน์ จำกัด" loading="lazy"></div>
+      <div class="sponsor-tile"><img src="images/sponsor_8_chokwasana.jpg" alt="โชควาสนา รับขุดสระ ถมที่" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <span class="brand-mark kf-crest" role="img" aria-label="ตราสัญลักษณ์กองฟาง ยูไนเต็ด"></span>
+          <div class="brand-text"><div class="th">กองฟาง ยูไนเต็ด</div><div class="en">KONGFANG UNITED ACADEMY</div></div>
+        </div>
+        <p>ศูนย์ฝึกฟุตบอลเยาวชน บ้านสระเพลง ต.สองชั้น อ.กระสัง จ.บุรีรัมย์ · บ่มเพาะคนและนักกีฬาผ่านหลักอปริหานิยธรรม 7</p>
+      </div>
+      <div class="footer-col">
+        <h4>สโมสร</h4>
+        <a href="#about">ประวัติกองฟาง</a>
+        <a href="#board">คณะบริหาร</a>
+        <a href="#registry">ทะเบียนนักกีฬา</a>
+      </div>
+      <div class="footer-col">
+        <h4>แข่งขัน</h4>
+        <a href="#standings">ตารางคะแนน</a>
+        <a href="#fixtures">โปรแกรมแข่งขัน</a>
+        <a href="#news">ข่าวสาร</a>
+      </div>
+      <div class="footer-col">
+        <h4>ติดต่อ</h4>
+        <p>บ้านสระเพลง ต.สองชั้น อ.กระสัง จ.บุรีรัมย์<br>โทร. 093-909-1602</p>
+        <a href="https://page.line.me/889mucdr" target="_blank" rel="noopener">LINE ทางการ: @889mucdr</a>
+        <a href="https://www.facebook.com/Kogfang" target="_blank" rel="noopener">Facebook: กองฟาง ยูไนเต็ด</a>
+        <a href="https://www.youtube.com/@kongfangunited" target="_blank" rel="noopener">YouTube: @kongfangunited</a>
+        <a href="https://www.tiktok.com/@kongfang.krasang" target="_blank" rel="noopener">TikTok: @kongfang.krasang</a>
+        <a href="#shop">ร้านค้าออนไลน์</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2569 ศูนย์ฝึกฟุตบอลกองฟาง ยูไนเต็ด</span>
+      <span>บ้านสระเพลง ต.สองชั้น อ.กระสัง จ.บุรีรัมย์</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// scroll reveal
+const els = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.14});
+els.forEach(el=>io.observe(el));
+
+// mobile burger -> simple toggle scroll to nav links stacked (fallback: alert-free show)
+const burger = document.querySelector('.burger');
+const linksNav = document.querySelector('nav.links');
+burger.addEventListener('click', ()=>{
+  const isOpen = linksNav.style.display === 'flex';
+  if(isOpen){
+    linksNav.style.display='none';
+  } else {
+    linksNav.style.display='flex';
+    linksNav.style.position='fixed';
+    linksNav.style.top='70px';
+    linksNav.style.left='0';
+    linksNav.style.right='0';
+    linksNav.style.background='#EAF1FB';
+    linksNav.style.flexDirection='column';
+    linksNav.style.padding='20px 28px';
+    linksNav.style.gap='16px';
+    linksNav.style.borderBottom='1px solid rgba(22,38,74,.14)';
+  }
+});
+linksNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  if(window.innerWidth<=980){ linksNav.style.display='none'; }
+}));
+</script>
+
+<!-- ============ NEWS MODAL ============ -->
+<div class="news-modal" id="newsModal" hidden>
+  <div class="news-modal-backdrop" data-close></div>
+  <div class="news-modal-panel" role="dialog" aria-modal="true" aria-label="รายละเอียดข่าว">
+    <button class="news-modal-x" data-close aria-label="ปิด">&times;</button>
+    <div class="news-modal-body" id="nmBody"></div>
+  </div>
+</div>
+<template id="news-9">
+  <img src="images/x_764470639b8f5971.jpg" alt="ทีมฟุตบอลหญิง กองฟาง ยูไนเต็ด แชมป์ KONGFANG CUP U14 2026" style="max-width:100%;margin:0 0 12px;display:block;border-radius:8px;">
+  <h3>🏆 SUPER GIRL กองฟาง…ทำได้!</h3>
+  <div class="nm-meta">ข่าว KONGFANG CUP · อาทิตย์ 6 กันยายน 2569 · สนามกีฬากองฟาง สเตเดียม</div>
+  <p>จากความมุ่งมั่น สู่ความสำเร็จที่ <b>พลิกความคาดหมาย!</b> ทีมฟุตบอลหญิง กองฟาง ยูไนเต็ด <b>คว้าแชมป์ KONGFANG CUP U14 2026</b> มาครองได้สำเร็จ</p>
+  <p>ด้วยหัวใจของสาวน้อย ด้วยความมุ่งมั่นในทุกการแข่งขัน และด้วยจิตวิญญาณของนักสู้กองฟาง 💪🔥 ทุกหยาดเหงื่อ ทุกความพยายาม และทุกนาทีที่ไม่ยอมแพ้ หลอมรวมเป็นพลังให้พวกเธอก้าวไปถึงเป้าหมาย</p>
+  <blockquote style="border-left:3px solid var(--gold);margin:14px 0;padding:6px 0 6px 14px;color:var(--muted);font-style:italic;">&quot;เมื่อเชื่อมั่นในตัวเอง และสู้ไปด้วยกัน ไม่มีคำว่าเป็นไปไม่ได้&quot;</blockquote>
+  <p>🥇 แชมป์ KONGFANG CUP U14 2026<br>💙 แชมป์ของหัวใจ · แชมป์ของความพยายาม · แชมป์ของทีมกองฟาง</p>
+  <p>พวกเธอไม่ได้แค่คว้าถ้วยรางวัล แต่พวกเธอได้สร้างความภาคภูมิใจให้กับกองฟางไปแล้ววันนี้ 👏🔥</p>
+
+  <h4>ผลการแข่งขันทั้งทัวร์นาเมนต์</h4>
+  <div class="nm-meta">6 ทีม · แบ่ง 2 กลุ่ม กลุ่มละ 3 ทีม พบกันหมด · คัดอันดับ 1–2 ของแต่ละกลุ่มเข้ารอบน็อกเอาต์ · ครึ่งละ 15 นาที</div>
+
+  <p style="margin-bottom:4px"><b>รอบแบ่งกลุ่ม — กลุ่ม A</b></p>
+  <ul style="margin-top:4px">
+    <li>สวายสอ เอฟซี 1–2 NKS อะคาเดมี่</li>
+    <li>สวายสอ เอฟซี 2–0 ตาเสา อะคาเดมี่</li>
+    <li>NKS อะคาเดมี่ 6–0 ตาเสา อะคาเดมี่</li>
+  </ul>
+  <p style="color:var(--muted);font-size:.93em">อันดับกลุ่ม A: 1) NKS อะคาเดมี่ 6 แต้ม &nbsp; 2) สวายสอ เอฟซี 3 แต้ม &nbsp; 3) ตาเสา อะคาเดมี่ 0 แต้ม</p>
+
+  <p style="margin-bottom:4px"><b>รอบแบ่งกลุ่ม — กลุ่ม B</b></p>
+  <ul style="margin-top:4px">
+    <li>เซเว่น อะคาเดมี่ 1–0 กองฟาง ยูไนเต็ด</li>
+    <li>เซเว่น อะคาเดมี่ 1–2 หนองพลวง เอฟซี</li>
+    <li>กองฟาง ยูไนเต็ด 2–1 หนองพลวง เอฟซี</li>
+  </ul>
+  <p style="color:var(--muted);font-size:.93em">อันดับกลุ่ม B: 1) หนองพลวง เอฟซี &nbsp; 2) กองฟาง ยูไนเต็ด &nbsp; 3) เซเว่น อะคาเดมี่ (ทั้งกลุ่ม 3 แต้มเท่ากัน ตัดสินด้วยผลต่าง/ประตูได้)</p>
+
+  <p style="margin-bottom:4px"><b>รอบรองชนะเลิศ</b></p>
+  <ul style="margin-top:4px">
+    <li>NKS อะคาเดมี่ 0–0 กองฟาง ยูไนเต็ด &nbsp;— <b>กองฟาง ยูไนเต็ด ชนะจุดโทษ</b></li>
+    <li>หนองพลวง เอฟซี 1–1 สวายสอ เอฟซี &nbsp;— <b>หนองพลวง เอฟซี ชนะจุดโทษ</b></li>
+  </ul>
+
+  <p style="margin-bottom:4px"><b>รอบชิงชนะเลิศ</b></p>
+  <p style="font-size:1.15em;color:var(--gold);font-weight:700;margin:6px 0 2px">กองฟาง ยูไนเต็ด 2–1 หนองพลวง เอฟซี</p>
+  <p>🥇 แชมป์ · <b>กองฟาง ยูไนเต็ด</b> &nbsp;&nbsp; 🥈 รองแชมป์ · หนองพลวง เอฟซี</p>
+
+  <p style="color:var(--muted)">#SuperGirlกองฟาง #KONGFANGCUP2026 #KONGFANGCUPU14 #แชมป์KONGFANGCUP2026 #กองฟางอะคาเดมี่ #จิตวิญญาณนักสู้กองฟาง</p>
+</template>
+<template id="news-8">
+  <img src="images/x_da03462375be933a.jpg" alt="จอห์น คงทรัพย์ ลงสนามให้โรงเรียนเทพศิรินทร์ พุแค" style="max-width:100%;margin:0 0 12px;display:block;border-radius:8px;">
+  <h3>🎉 ขอแสดงความยินดีกับ &quot;จอห์น คงทรัพย์&quot; ⚽</h3>
+  <div class="nm-meta">ข่าวศิษย์เก่ากองฟาง ยูไนเต็ด · กันยายน 2569</div>
+  <p>ย้อนกลับไปหลายปีก่อน มีเด็กชายตัวเล็กๆ คนหนึ่งเข้ามาเป็น นักกีฬากองฟาง สวมเสื้อ Kongfang Academy วิ่งไล่ตามลูกฟุตบอลอยู่บนสนามหญ้าของเรา ตั้งแต่วัย 12-14 ปี</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0;">
+    <img src="images/x_933eb11e01bbc574.jpg" alt="จอห์น คงทรัพย์ ในวัยเด็กที่กองฟาง" style="width:100%;border-radius:8px;">
+    <img src="images/x_5177145c31fe13e9.jpg" alt="นักกีฬากองฟาง อะคาเดมี่ ริมสนาม" style="width:100%;border-radius:8px;">
+  </div>
+  <p>วันนี้เด็กชายคนนั้นเติบโตขึ้นเป็นนักเรียนชั้น ม.5 แห่งโรงเรียนเทพศิรินทร์ พุแค จังหวัดสระบุรี และก้าวไปไกลถึงขั้น <b>ได้รับการคัดเลือกเข้าสู่กลุ่มนักกีฬาระดับชาติ ภายใต้การดูแลของกรมพลศึกษา</b> 🇹🇭🏆</p>
+  <p>กองฟางขอร่วมยินดีกับ น้องจอห์น คงทรัพย์ อดีตนักกีฬากองฟาง ด้วยหัวใจที่เปี่ยมล้นไปด้วยความภาคภูมิใจ</p>
+  <img src="images/x_deea435f4adb8d3e.jpg" alt="ประกาศกรมพลศึกษา ผลการคัดเลือกนักกีฬาตัวแทนนักเรียนไทย" style="max-width:100%;margin:14px 0;display:block;border-radius:8px;">
+  <div class="nm-meta">ประกาศกรมพลศึกษา เรื่อง ผลการคัดเลือกนักกีฬาตัวแทนนักเรียนไทยเข้าร่วมการแข่งขันฟุตบอลชิงชนะเลิศนักเรียนโลก ประจำปี ค.ศ. 2026 ณ สาธารณรัฐประชาชนจีน — น้องจอห์น คงทรัพย์ (โรงเรียนเทพศิรินทร์ พุแค สระบุรี) มีชื่ออยู่ในบัญชีรายชื่อลำดับที่ 30</div>
+  <p>เรื่องราวของน้องจอห์นคือบทพิสูจน์ที่ชัดเจนที่สุดของสิ่งที่เรายึดมั่นมาโดยตลอด…</p>
+  <blockquote style="border-left:3px solid var(--gold);margin:12px 0;padding:6px 0 6px 14px;color:var(--muted);font-style:italic;">&quot;กองฟางไม่ได้สร้างคนให้เก่งได้ในทันที แต่กองฟางสร้างพื้นฐานให้เด็กทุกคนสามารถต่อยอดไปสู่อนาคตที่ดีกว่าได้ด้วยตัวของพวกเขาเอง&quot;</blockquote>
+  <p>เมล็ดพันธุ์เล็กๆ ที่เคยหว่านไว้บนผืนดินธรรมดาๆ แห่งหนึ่ง วันนี้เติบโตไปไกลเกินกว่าที่ใครจะจินตนาการ และนี่คือแรงบันดาลใจให้น้องๆ ทุกคนที่กำลังฝึกซ้อมอยู่ ณ สนามกองฟางในวันนี้ว่า… ความฝันของพวกเธอก็เป็นไปได้เช่นกัน 💙</p>
+  <p>ขอบคุณน้องจอห์นที่ทำให้ทุกคนที่กองฟางภูมิใจ 🙏</p>
+  <p style="color:var(--muted)">#กองฟางยูไนเต็ด #KongfangUnited #ฟุตบอลสร้างคน #ภูมิใจในตัวน้อง #จอห์นคงทรัพย์ #นักกีฬาระดับชาติ #เทพศิรินทร์พุแค</p>
+</template>
+<template id="news-4">
+  <img src="images/x_0a3993e2c6c7dc4b.jpg" alt="ผลจับฉลากแบ่งสาย KONGFANG CUP 2026" style="max-width:100%;margin:0 0 12px;display:block;border-radius:8px;">
+  <h3>จับฉลากแบ่งสายเสร็จสิ้น — ฟุตบอลหญิง U14 KONGFANG CUP 2026</h3>
+  <div class="nm-meta">ข่าวสโมสร · 3 ก.ย. 2569</div>
+  <p>ศึกฟุตบอลเยาวชนหญิงอายุไม่เกิน 14 ปี KONGFANG CUP 2026 ที่ กองฟาง ยูไนเต็ด เป็นเจ้าภาพ ได้ผลจับฉลากแบ่งสายอย่างเป็นทางการแล้ว (สุ่มด้วยระบบ) — 6 ทีมแบ่งเป็น 2 กลุ่ม กลุ่มละ 3 ทีม</p>
+  <h4>ผลแบ่งสาย</h4>
+  <ul>
+    <li><b>กลุ่ม A:</b> Sawaisor FC · NKS Academy · Tasao Academy</li>
+    <li><b>กลุ่ม B:</b> Seven Academy · Kongfang United · Nongpluang FC</li>
+  </ul>
+  <h4>กำหนดการ · อาทิตย์ 6 กันยายน 2569</h4>
+  <p>เริ่ม 14:00 น. แข่งพร้อมกัน 2 สนามตลอดทั้งวัน · รอบแบ่งกลุ่มพบกันหมด แล้วคัดอันดับ 1–2 ของแต่ละกลุ่มเข้ารอบน็อกเอาต์ · รอบรองชนะเลิศ 17:00 น. · ชิงชนะเลิศและชิงอันดับ 3 เวลา 17:50 น. · พิธีมอบรางวัล 18:30 น.</p>
+  <p>สนามแข่งขัน: สนามกองฟาง สเตเดียม บ้านสระเพลง ต.สองชั้น อ.กระสัง จ.บุรีรัมย์ · ดูตารางเต็มทุกคู่ได้ที่หัวข้อ &quot;KONGFANG CUP&quot; ด้านบน</p>
+  <p>RESPECT · PLAY · ENJOY</p>
+</template>
+<template id="news-5">
+  <h3>12 นักเตะหญิง U14 กองฟาง ยูไนเต็ด · KONGFANG CUP 2026</h3>
+  <div class="nm-meta">ข่าวสโมสร · 4 ก.ย. 2569</div>
+  <p>กองฟาง ยูไนเต็ด ประกาศรายชื่อนักกีฬาหญิงรุ่นอายุไม่เกิน 14 ปี ชุดลุยศึกฟุตบอลหญิง KONGFANG CUP 2026 ที่สโมสรเป็นเจ้าภาพ ลงเตะวันอาทิตย์ที่ 6 กันยายน 2569</p>
+  <h4>รายชื่อนักกีฬา (เบอร์เสื้อ · ชื่อเล่น)</h4>
+  <ul>
+    <li>#1 เจนยู &nbsp; #2 นาโน &nbsp; #3 อลิน &nbsp; #4 พอใจ</li>
+    <li>#5 น้ำขิง &nbsp; #6 เมจิ &nbsp; #7 ฟ้าใส &nbsp; #8 หนูนิ่ม</li>
+    <li>#9 มะนาว &nbsp; #10 หยดน้ำ &nbsp; #11 ปิ่น &nbsp; #12 มะปราง</li>
+  </ul>
+  <h4>โปรแกรมรอบแบ่งกลุ่ม (กลุ่ม B)</h4>
+  <p>14:00 น. พบ Seven Academy (สนามที่ 2) · 15:30 น. พบ Nongpluang FC (สนามที่ 2) · อันดับ 1–2 ของกลุ่มเข้ารอบรองชนะเลิศ 17:00 น.</p>
+  <p>สนามแข่งขัน: สนามกองฟาง สเตเดียม อ.กระสัง จ.บุรีรัมย์ · เริ่มทั้งรายการ 14:00 น. ดูตารางเต็มที่หัวข้อ &quot;KONGFANG CUP&quot; ด้านบน</p>
+  <p>สู้ ๆ ทุกคน — RESPECT · PLAY · ENJOY</p>
+</template>
+<template id="news-6">
+  <img src="images/x_99ccef702d324a46.jpg" alt="ประชุมผู้ปกครองนักกีฬา กองฟาง ยูไนเต็ด" style="max-width:100%;margin:0 0 12px;display:block;border-radius:8px;">
+  <h3>สรุปประชุมผู้ปกครอง กองฟาง ยูไนเต็ด</h3>
+  <div class="nm-meta">ข่าวสโมสร · 4 ก.ย. 2569</div>
+  <p>วันนี้การประชุมเป็นไปด้วยความเรียบร้อย และได้รับความร่วมมือจากผู้ปกครองเป็นอย่างดี</p>
+  <p>ผู้ปกครองให้ความร่วมมือในการลงทะเบียนนักกีฬา พร้อมทำความเข้าใจถึงแนวทางการดำเนินงานและการพัฒนาทีมในระยะต่อไป ทุกฝ่ายมีความเข้าใจตรงกันว่าการพัฒนาเด็กต้องอาศัยความร่วมมือจากทีมงาน โค้ช และผู้ปกครอง โดยเฉพาะการช่วยกันดูแล สนับสนุน และส่งเสริมบุตรหลานให้เติบโตทั้งในด้านฟุตบอลและการใช้ชีวิต</p>
+  <p><b>ที่สำคัญ</b> ผู้ปกครองมีความพร้อมและเห็นด้วยกับแนวทางการส่งนักกีฬาเข้าร่วมการแข่งขัน <b>บุรีรัมย์ลีก อะคาเดมี่</b> เพื่อเปิดโอกาสให้เด็ก ๆ ได้เรียนรู้จากการแข่งขันจริง พัฒนาศักยภาพ และเก็บเกี่ยวประสบการณ์</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0;">
+    <img src="images/x_5cd5a5614d8f955d.jpg" style="width:100%;border-radius:8px;">
+    <img src="images/x_51cc51e4c09445fa.jpg" style="width:100%;border-radius:8px;">
+  </div>
+  <img src="images/x_739d1ea95e8a53e4.jpg" style="max-width:100%;border-radius:8px;margin-bottom:14px;display:block;">
+  <p>กองฟาง ยูไนเต็ด จะเดินหน้าพัฒนาไปพร้อมกับเด็ก ๆ และผู้ปกครองทุกคน เพราะเป้าหมายของเราไม่ใช่เพียงแค่การสร้างนักฟุตบอล แต่คือการร่วมกันสร้างเด็กที่มีคุณภาพ เติบโตอย่างมีวินัย และมีความสุขกับเส้นทางฟุตบอล</p>
+  <p>ขอบคุณผู้ปกครองทุกท่านสำหรับความร่วมมือและความไว้วางใจครับ 🙏</p>
+</template>
+<template id="news-7">
+  <img src="images/x_15db653d656ae017.jpg" alt="พิธีปิด KRASANG LEAGUE CUP U12 2026" style="max-width:100%;margin:0 0 12px;display:block;border-radius:8px;">
+  <h3>ปิดฉาก KRASANG LEAGUE CUP U12 2026 (2nd Edition)</h3>
+  <div class="nm-meta">ข่าวกระสังลีก · เสาร์ 5 กันยายน 2569 · สนามกีฬากองฟาง สเตเดียม</div>
+  <p>ศึกฟุตบอลเยาวชนอำเภอกระสัง <b>KRASANG LEAGUE CUP U12 2026 (2nd Edition)</b> ที่ ศูนย์ฝึกฟุตบอลกองฟาง ยูไนเต็ด เป็นเจ้าภาพ ได้จัดพิธีปิดการแข่งขันและมอบถ้วยรางวัลเมื่อวันเสาร์ที่ 5 กันยายน 2569 ณ สนามกีฬากองฟาง สเตเดียม</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0;">
+    <img src="images/x_299544dd2afb507f.jpg" style="width:100%;border-radius:8px;">
+    <img src="images/x_3b75bda19e6df971.jpg" style="width:100%;border-radius:8px;">
+  </div>
+  <h4>ขอขอบพระคุณผู้มีเกียรติในพิธีมอบถ้วยรางวัล</h4>
+  <ul>
+    <li>นายสมจิตร ประจันบาน — นายกเทศมนตรีตำบลสองชั้น (ประธานในพิธี)</li>
+    <li>นายทวี กมลรัมย์ — กำนันตำบลสองชั้น</li>
+    <li>นายฮวด เพ็ชรเลิศ — ผู้ใหญ่บ้านจอม</li>
+    <li>นายนพรัตน์ กิรัมย์ — ที่ปรึกษานายกเทศมนตรีตำบลสองชั้น</li>
+    <li>นายสิทธิพงษ์ อะภิรัมย์ — สมาชิกสภาเทศบาลตำบลสองชั้น เขต 2</li>
+    <li>นายสุนทร มีมาก — ผู้อำนวยการโรงเรียนบ้านสวายสอ</li>
+    <li>นางสุนิษา น้ำคำ — เจ้าพนักงานสาธารณสุขชำนาญงาน รพ.สต.บ้านจอม</li>
+    <li>นายอุทิศ หาญสุด — รองประธานชมรมผู้ปกครองกองฟาง</li>
+    <li>นายสนธยา เปี่ยมอักโข — ผู้จัดการทีม กองฟาง ยูไนเต็ด</li>
+    <li>นายกุลธร จีนประโคน — ประธานชมรมผู้ปกครอง</li>
+  </ul>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0;">
+    <img src="images/x_0d3c7eebe0884e6c.jpg" style="width:100%;border-radius:8px;">
+    <img src="images/x_f3065f81bed153e4.jpg" style="width:100%;border-radius:8px;">
+  </div>
+  <p>ขอขอบคุณผู้จัดการทีมทุกทีม ทีมงานกองฟาง ยูไนเต็ด และผู้ปกครองทุกท่านทุกทีม ที่ร่วมแรงร่วมใจสนับสนุนการแข่งขันจนสำเร็จลุล่วงไปด้วยดี · การสนับสนุนและความเมตตาของทุกท่านคือกำลังใจสำคัญที่ช่วยผลักดันให้เยาวชนของเราเติบโตทั้งด้านกีฬาและจิตใจ</p>
+  <p>⚽ RESPECT · PLAY · ENJOY<br><span style="color:var(--muted)">#KrasangLeagueCup2026 #กองฟางยูไนเต็ด #ฟุตบอลเยาวชนอำเภอกระสัง</span></p>
+</template>
+<template id="news-1">
+  <img src="images/krasang_logo.jpg" alt="Krasang League Cup U12 2026" style="max-width:170px;margin:0 0 10px;display:block;">
+  <h3>ผ่าน 2 สัปดาห์ Krasang League Cup U12 2026 — กองฟางเกาะจ่าฝูง ยังไม่แพ้ใคร</h3>
+  <div class="nm-meta">ข่าวสโมสร · 27 ส.ค. 2569</div>
+  <p>ผ่านมาแล้ว 2 สัปดาห์กับการแข่งขันฟุตบอลเยาวชนอำเภอกระสัง 8 ทีม บรรยากาศคึกคักตลอดทุกนัด</p>
+  <h4>ตารางคะแนนล่าสุด</h4>
+  <ul>
+    <li>1. หนองพลวง เอฟซี — 10 คะแนน (จ่าฝูง)</li>
+    <li>2. กองฟาง ยูไนเต็ด — 8 คะแนน (ยังไม่แพ้ใคร)</li>
+    <li>3. NKS บัวถนน — 7 คะแนน</li>
+    <li>4. โรงเรียนบ้านหนองขอน — 6 คะแนน</li>
+    <li>5. ศิษย์หลวงปู่เหลือ สวายสอ อะคาเดมี่ — 4 คะแนน</li>
+    <li>6. กันทรารมย์ อคาเดมี่ — 3 คะแนน</li>
+    <li>7. ตาราม เอฟซี — 1 คะแนน</li>
+    <li>8. โรงเรียนลำปลายมาศ — 0 คะแนน</li>
+  </ul>
+  <p>กองฟาง ยูไนเต็ด เก็บ 8 คะแนนจาก 4 นัด ไม่แพ้ใครตั้งแต่เปิดฤดูกาล ห่างจ่าฝูงเพียง 2 แต้ม</p>
+  <h4>สัปดาห์ที่ 3 · เสาร์ 29 ส.ค. 69</h4>
+  <p>กองฟาง ยูไนเต็ด ลงเล่น 2 นัดรวด — 14:00 น. พบ หนองพลวง เอฟซี (จ่าฝูงตาราง) ศึกชิงตำแหน่งที่แท้จริง และ 16:00 น. พบ โรงเรียนบ้านหนองขอน หากผลออกมาดีมีลุ้นขยับขึ้นเป็นจ่าฝูง</p>
+  <p>ขอบคุณผู้ปกครอง กองเชียร์ และทุกกำลังใจที่ส่งให้เด็ก ๆ ตลอดฤดูกาล — RESPECT · PLAY · ENJOY</p>
+</template>
+<template id="news-2">
+  <img src="images/bla_logo.jpg" alt="Buriram League Academy 2026" style="max-width:170px;margin:0 0 10px;display:block;">
+  <h3>BURIRAM LEAGUE ACADEMY 2026 เปิดฉากศึกลูกหนังเยาวชนบุรีรัมย์ 12 สโมสร 4 รุ่นอายุ</h3>
+  <div class="nm-meta">ข่าวลีก · 28 ส.ค. 2569</div>
+  <p>ฤดูกาลใหม่ของฟุตบอลเยาวชนบุรีรัมย์กำลังจะเริ่มต้นขึ้น กับ Buriram League Academy 2026 (BLA) ที่รวบรวม 12 สโมสรจากบุรีรัมย์และนครราชสีมา ประชันฝีเท้าใน 4 รุ่นอายุ — U8 · U10 · U12 · U14 เพื่อเป็นเวทีพัฒนาเยาวชนนักเตะไทยสู่วงการลูกหนังระดับสูง</p>
+  <h4>รูปแบบการแข่งขัน</h4>
+  <p>ใช้ระบบพบกันหมด (Round Robin) ทั้ง 12 ทีมพบกันครบทุกคู่ รวม 66 นัดต่อรุ่นอายุ · รูปแบบแข่ง 3 ควอเตอร์ นับผลอย่างเป็นทางการ 2 ควอเตอร์ (รุ่น U12–U14 ครึ่งละ 20 นาที / U8–U10 ครึ่งละ 15 นาที) · จัดสรรเจ้าภาพให้เท่ากันทุกทีม (4–5 นัด/ทีม) และคำนึงถึงระยะทางเดินทางเพื่อความเป็นธรรม</p>
+  <p>แข่งทุก 2 สัปดาห์ในวันอาทิตย์ เริ่มนัดแรก 4 ตุลาคม 2569 ถึงนัดปิดฤดูกาล 7 มีนาคม 2570 รวม 11 สัปดาห์ 66 นัดต่อรุ่น · เว้นสัปดาห์สุดท้ายของเดือนธันวาคม นัดที่ 6 แข่ง 13 ธ.ค. 2569 แล้วนัดที่ 7 เลื่อนไปเป็น 10 ม.ค. 2570 ข้ามช่วงปีใหม่</p>
+  <p>แต่ละสัปดาห์ ทั้ง 4 รุ่นอายุลงสนามวันเดียวกัน ณ สนามเจ้าภาพเดียวกัน — U14 เวลา 10:00 น. · U12 เวลา 11:00 น. · U10 เวลา 13:00 น. · U8 เวลา 14:00 น.</p>
+  <p>นัดที่ 6 (13 ธ.ค. 2569) และนัดปิดฤดูกาลสัปดาห์ที่ 11 (7 มี.ค. 2570) ทุกคู่ย้ายไปเล่นที่สนามกีฬาจังหวัดบุรีรัมย์ (สนามกลาง) โดยเลือกจากคู่ทีมที่เดินทางไกลที่สุดในฤดูกาล</p>
+  <p>ดูรายชื่อ 12 สโมสร และโปรแกรมกองฟาง ยูไนเต็ด เต็มฤดูกาล ได้ที่หัวข้อ "บุรีรัมย์ลีก" ด้านบน</p>
+  <p><em>อัปเดตตารางแข่งขันอย่างเป็นทางการ (เริ่ม 4 ต.ค. 2569) · ข้อมูล ณ วันที่ 3 กันยายน 2569</em></p>
+</template>
+<template id="news-3">
+  <h3>สรุปผลสัปดาห์ที่ 3 · Krasang League Cup U12 2026</h3>
+  <div class="nm-meta">ข่าวสโมสร · เสาร์ 29 ส.ค. 2569</div>
+  <p>สัปดาห์ที่ 3 กองฟาง ยูไนเต็ด ลงเล่น 2 นัดในวันเดียว — เปิดหัวพ่ายจ่าฝูงหนองพลวง เอฟซี 0–2 ซึ่งเป็นความพ่ายแพ้นัดแรกของฤดูกาล แต่กลับมาตั้งหลักถล่มโรงเรียนบ้านหนองขอน 3–0 ในนัดที่สอง ปิดสัปดาห์ด้วยการรั้งอันดับ 2 ตามหลังจ่าฝูง 5 แต้ม</p>
+  <h4>หนองพลวง เอฟซี 2–0 กองฟาง ยูไนเต็ด</h4>
+  <img src="images/result_w3_nongpluang.jpg" alt="ผลการแข่งขัน หนองพลวง เอฟซี 2-0 กองฟาง" loading="lazy">
+  <h4>กองฟาง ยูไนเต็ด 3–0 โรงเรียนบ้านหนองขอน</h4>
+  <img src="images/result_w3_nongkhon.jpg" alt="ผลการแข่งขัน กองฟาง 3-0 โรงเรียนบ้านหนองขอน" loading="lazy">
+  <h4>ผลคู่อื่น · สัปดาห์ที่ 3</h4>
+  <ul>
+    <li>กันทรารมย์ อคาเดมี่ 0–3 NKS บัวถนน</li>
+    <li>ตาราม เอฟซี 1–3 โรงเรียนบ้านหนองขอน</li>
+    <li>โรงเรียนลำปลายมาศ 1–3 ศิษย์หลวงปู่เหลือ สวายสอ</li>
+    <li>หนองพลวง เอฟซี 3–1 NKS บัวถนน</li>
+    <li>กันทรารมย์ อคาเดมี่ 1–0 ศิษย์หลวงปู่เหลือ สวายสอ</li>
+    <li>ตาราม เอฟซี 0–5 โรงเรียนลำปลายมาศ</li>
+  </ul>
+  <p>RESPECT · PLAY · ENJOY</p>
+</template>
+<script>
+(function(){
+  var m=document.getElementById('newsModal'); if(!m) return;
+  var body=document.getElementById('nmBody');
+  function openNews(id){ var t=document.getElementById('news-'+id); if(!t) return; body.innerHTML=t.innerHTML; m.hidden=false; document.body.style.overflow='hidden'; m.querySelector('.news-modal-panel').scrollTop=0; }
+  function closeNews(){ m.hidden=true; body.innerHTML=''; document.body.style.overflow=''; }
+  document.querySelectorAll('[data-open-news]').forEach(function(el){
+    el.addEventListener('click',function(){ openNews(el.getAttribute('data-open-news')); });
+    el.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openNews(el.getAttribute('data-open-news')); } });
+  });
+  m.querySelectorAll('[data-close]').forEach(function(el){ el.addEventListener('click',closeNews); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && !m.hidden) closeNews(); });
+})();
+</script>
+<div id="siteToast" style="display:none;position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:3000;background:#123B7A;color:#fff;border:1px solid #4DA3FF;border-radius:10px;padding:14px 22px;font-family:'Kanit',sans-serif;font-size:14px;box-shadow:0 20px 50px rgba(0,0,0,.5);max-width:90vw;text-align:center;"></div>
+<script>(function(){try{var q=new URLSearchParams(location.search),m='';if(q.get('ordered')==='1')m='\u2705 ส่งคำสั่งซื้อเรียบร้อยแล้ว ทีมงานจะติดต่อกลับเพื่อยืนยัน ขอบคุณครับ';else if(q.get('registered')==='1')m='\u2705 ส่งใบสมัครเรียบร้อยแล้ว ทีมงานจะติดต่อกลับเพื่อนัดหมาย ขอบคุณครับ';if(m){var t=document.getElementById('siteToast');t.textContent=m;t.style.display='block';setTimeout(function(){t.style.transition='opacity .6s';t.style.opacity='0';setTimeout(function(){t.style.display='none';},700);},7000);}}catch(e){}})();</script>
+</body>
+</html>

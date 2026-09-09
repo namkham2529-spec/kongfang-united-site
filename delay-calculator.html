@@ -1,0 +1,693 @@
+<title>คำนวณเวลาดีเลย์</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap">
+
+<style>
+  /* ---------- Tokens : light is the base ---------- */
+  :root {
+    --bg:        #faf8f3;
+    --surface:   #ffffff;
+    --surface-2: #f0ebe0;
+    --border:    #e2dac9;
+    --border-2:  #d3c9b3;
+    --text:      #211c14;
+    --muted:     #6f6656;
+    --accent:    #bd7412;
+    --accent-strong: #9d5f08;
+    --accent-soft: rgba(189,116,18,.12);
+    --cool:      #2c7d8a;
+    --good:      #3c8b57;
+
+    /* the readout modules are physical "screens" — dark in both themes */
+    --screen-bg:    #15120c;
+    --screen-edge:  #322a1c;
+    --screen-num:   #f4b451;
+    --screen-num-dim: #8a6a30;
+    --screen-sub:   #7fd6c4;
+    --screen-line:  rgba(244,180,81,.10);
+
+    --shadow: 0 1px 2px rgba(30,22,8,.05), 0 8px 24px -12px rgba(30,22,8,.18);
+    --radius: 14px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg:        #16130e;
+      --surface:   #1f1b14;
+      --surface-2: #262117;
+      --border:    #382f22;
+      --border-2:  #4a3f2d;
+      --text:      #f0eade;
+      --muted:     #a79d8a;
+      --accent:    #f0a83f;
+      --accent-strong: #f8be66;
+      --accent-soft: rgba(240,168,63,.14);
+      --cool:      #77c6d3;
+      --good:      #6cc389;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 14px 34px -14px rgba(0,0,0,.6);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg:        #16130e;
+    --surface:   #1f1b14;
+    --surface-2: #262117;
+    --border:    #382f22;
+    --border-2:  #4a3f2d;
+    --text:      #f0eade;
+    --muted:     #a79d8a;
+    --accent:    #f0a83f;
+    --accent-strong: #f8be66;
+    --accent-soft: rgba(240,168,63,.14);
+    --cool:      #77c6d3;
+    --good:      #6cc389;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 14px 34px -14px rgba(0,0,0,.6);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "IBM Plex Sans Thai", system-ui, -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: clamp(1.5rem, 4vw, 3.5rem) clamp(1rem, 4vw, 2rem) 4rem;
+  }
+
+  /* ---------- Header ---------- */
+  .eyebrow {
+    font-family: "Chakra Petch", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .22em;
+    font-size: .72rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 0 0 .9rem;
+  }
+
+  h1 {
+    font-family: "Chakra Petch", sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.1rem, 7vw, 3.4rem);
+    line-height: 1.02;
+    letter-spacing: -.01em;
+    margin: 0;
+    text-wrap: balance;
+    /* an echo, offset and fading — the subject drawn in the type */
+    text-shadow:
+      .14em .1em 0 var(--accent-soft),
+      .28em .2em 0 var(--accent-soft);
+  }
+
+  .lede {
+    color: var(--muted);
+    max-width: 46ch;
+    margin: 1rem 0 0;
+    font-size: 1.02rem;
+  }
+
+  /* ---------- Console ---------- */
+  .console {
+    margin-top: clamp(1.8rem, 5vw, 2.8rem);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: clamp(1.1rem, 3.5vw, 1.7rem);
+  }
+
+  .bpm-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.3rem;
+  }
+
+  .bpm-field { display: flex; align-items: baseline; gap: .55rem; }
+
+  .bpm-input {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 600;
+    font-size: clamp(3rem, 12vw, 4.6rem);
+    line-height: 1;
+    width: 3.4ch;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    -moz-appearance: textfield;
+  }
+  .bpm-input::-webkit-outer-spin-button,
+  .bpm-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .bpm-input:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+
+  .bpm-unit {
+    font-family: "Chakra Petch", sans-serif;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    font-size: .9rem;
+    color: var(--muted);
+  }
+
+  .steppers { display: flex; gap: .5rem; }
+
+  button {
+    font-family: "Chakra Petch", sans-serif;
+    cursor: pointer;
+    color: var(--text);
+    background: var(--surface-2);
+    border: 1px solid var(--border-2);
+    border-radius: 9px;
+    transition: background .13s ease, border-color .13s ease, transform .06s ease;
+  }
+  button:hover { border-color: var(--accent); }
+  button:active { transform: translateY(1px); }
+  button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .step-btn {
+    width: 46px; height: 46px;
+    font-size: 1.5rem; font-weight: 500;
+    display: grid; place-items: center;
+  }
+
+  .tap-btn {
+    padding: 0 1.15rem; height: 46px;
+    font-weight: 600; letter-spacing: .04em;
+    display: inline-flex; align-items: center; gap: .5rem;
+  }
+  .tap-btn[data-armed="true"] {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #1a1206;
+  }
+  .tap-hint {
+    font-size: .82rem; color: var(--muted);
+    font-family: "IBM Plex Sans Thai", sans-serif;
+  }
+
+  .slider {
+    -webkit-appearance: none; appearance: none;
+    width: 100%; height: 6px; margin: 1.4rem 0 .2rem;
+    background: linear-gradient(to right, var(--accent) 0%, var(--accent) var(--pct,33%), var(--surface-2) var(--pct,33%), var(--surface-2) 100%);
+    border-radius: 999px;
+    border: 1px solid var(--border);
+  }
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--surface); border: 2px solid var(--accent);
+    box-shadow: var(--shadow); cursor: grab;
+  }
+  .slider::-moz-range-thumb {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--surface); border: 2px solid var(--accent); cursor: grab;
+  }
+  .slider:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+  .scale-marks {
+    display: flex; justify-content: space-between;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: .72rem; color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .presets {
+    display: flex; flex-wrap: wrap; gap: .45rem;
+    margin-top: 1.3rem;
+  }
+  .preset {
+    padding: .34rem .7rem;
+    font-size: .84rem; font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    border-radius: 999px;
+  }
+  .preset[aria-pressed="true"] {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent-strong);
+  }
+
+  .options {
+    display: flex; flex-wrap: wrap; align-items: center;
+    gap: .6rem 1rem;
+    margin-top: 1.4rem; padding-top: 1.3rem;
+    border-top: 1px dashed var(--border-2);
+  }
+  .options .label {
+    font-family: "Chakra Petch", sans-serif;
+    text-transform: uppercase; letter-spacing: .14em;
+    font-size: .7rem; font-weight: 600; color: var(--muted);
+  }
+  .seg { display: inline-flex; border: 1px solid var(--border-2); border-radius: 9px; overflow: hidden; }
+  .seg button {
+    border: none; border-radius: 0;
+    padding: .4rem .85rem; font-size: .82rem; font-weight: 500;
+    background: var(--surface);
+  }
+  .seg button + button { border-left: 1px solid var(--border-2); }
+  .seg button[aria-pressed="true"] { background: var(--accent); color: #1a1206; }
+
+  select {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: .82rem;
+    padding: .4rem 1.9rem .4rem .6rem;
+    border: 1px solid var(--border-2);
+    border-radius: 9px;
+    background: var(--surface)
+      url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")
+      no-repeat right .7rem center;
+    color: var(--text);
+    -webkit-appearance: none; appearance: none;
+  }
+  select:disabled { opacity: .4; }
+  select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* ---------- Grid of readouts ---------- */
+  .grid-scroll { overflow-x: auto; margin-top: 1.6rem; }
+
+  table { border-collapse: separate; border-spacing: 6px; width: 100%; min-width: 480px; }
+
+  thead th {
+    font-family: "Chakra Petch", sans-serif;
+    font-size: .74rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .1em;
+    color: var(--muted);
+    text-align: center;
+    padding: .3rem .2rem .5rem;
+  }
+  thead th:first-child { text-align: left; }
+  thead th b { color: var(--text); font-weight: 600; }
+  thead th span { display: block; font-size: .66rem; letter-spacing: .06em; color: var(--muted); font-weight: 500; }
+
+  tbody th {
+    text-align: left;
+    padding: .4rem .7rem .4rem .3rem;
+    white-space: nowrap;
+  }
+  .note-frac {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 600; font-size: 1.05rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .note-name { display: block; font-size: .76rem; color: var(--muted); font-weight: 400; }
+
+  .cell {
+    width: 30%;
+    background: var(--screen-bg);
+    border: 1px solid var(--screen-edge);
+    border-radius: 10px;
+    padding: .6rem .5rem .55rem;
+    text-align: center;
+    cursor: copy;
+    position: relative;
+    background-image: repeating-linear-gradient(0deg, transparent 0 3px, var(--screen-line) 3px 4px);
+    transition: box-shadow .14s ease, border-color .14s ease;
+  }
+  .cell:hover { border-color: var(--screen-num); box-shadow: 0 0 0 1px var(--screen-num), 0 0 22px -6px var(--screen-num); }
+  .cell:focus-visible { outline: 2px solid var(--screen-num); outline-offset: 2px; }
+  .cell .ms {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 600;
+    font-size: clamp(1.05rem, 3.6vw, 1.4rem);
+    color: var(--screen-num);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: .01em;
+    line-height: 1.1;
+  }
+  .cell .ms::after { content: " ms"; font-size: .62em; color: var(--screen-num-dim); }
+  .cell .sub {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: .74rem;
+    color: var(--screen-sub);
+    font-variant-numeric: tabular-nums;
+    margin-top: .15rem;
+  }
+  .cell.flash { animation: flash .5s ease; }
+  @keyframes flash {
+    0% { box-shadow: 0 0 0 2px var(--good), 0 0 26px -4px var(--good); border-color: var(--good); }
+    100% { box-shadow: none; }
+  }
+
+  /* ---------- Notes ---------- */
+  .notes {
+    margin-top: 2.4rem;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+  .note-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.1rem;
+  }
+  .note-card h3 {
+    font-family: "Chakra Petch", sans-serif;
+    font-size: .8rem; text-transform: uppercase; letter-spacing: .1em;
+    margin: 0 0 .4rem; color: var(--accent);
+  }
+  .note-card p { margin: 0; font-size: .9rem; color: var(--muted); }
+  .note-card code {
+    font-family: "IBM Plex Mono", monospace;
+    background: var(--surface-2);
+    padding: .08em .4em; border-radius: 5px;
+    font-size: .86em; color: var(--text);
+  }
+
+  footer {
+    margin-top: 2.6rem;
+    display: flex; flex-wrap: wrap; gap: 1rem;
+    align-items: center; justify-content: space-between;
+    font-size: .82rem; color: var(--muted);
+  }
+  .theme-btn { padding: .45rem .9rem; font-size: .8rem; font-weight: 500; display: inline-flex; gap: .4rem; align-items: center; }
+
+  /* ---------- Toast ---------- */
+  #toast {
+    position: fixed; left: 50%; bottom: 1.6rem;
+    transform: translate(-50%, 140%);
+    background: var(--text); color: var(--bg);
+    font-family: "Chakra Petch", sans-serif; font-weight: 600;
+    font-size: .86rem; letter-spacing: .02em;
+    padding: .6rem 1.1rem; border-radius: 999px;
+    box-shadow: var(--shadow);
+    transition: transform .28s cubic-bezier(.2,.9,.3,1.3);
+    pointer-events: none; z-index: 50;
+  }
+  #toast.show { transform: translate(-50%, 0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+    #toast { transition: opacity .2s; transform: translate(-50%,0); opacity: 0; }
+    #toast.show { opacity: 1; }
+  }
+
+  @media (max-width: 520px) {
+    .bpm-row { gap: .8rem 1rem; }
+    .step-btn, .tap-btn { height: 42px; }
+  }
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Delay Time · BPM Tool</p>
+    <h1>คำนวณเวลาดีเลย์</h1>
+    <p class="lede">แปลงค่า BPM เป็นเวลาดีเลย์เป็นมิลลิวินาที พร้อมความถี่และจำนวนแซมเปิล ใช้ตั้ง delay, pre-delay ของ reverb และอัตรา LFO ให้เข้าจังหวะเพลง</p>
+  </header>
+
+  <section class="console" aria-label="ตัวควบคุมจังหวะ">
+    <div class="bpm-row">
+      <div class="bpm-field">
+        <input id="bpm" class="bpm-input" type="number" inputmode="numeric"
+               min="40" max="300" step="1" value="120" aria-label="ค่า BPM">
+        <span class="bpm-unit">BPM</span>
+      </div>
+      <div class="steppers">
+        <button class="step-btn" data-delta="-1" aria-label="ลด BPM">&minus;</button>
+        <button class="step-btn" data-delta="1" aria-label="เพิ่ม BPM">+</button>
+      </div>
+      <button id="tap" class="tap-btn" data-armed="false">
+        <span aria-hidden="true">&#9679;</span> แตะจังหวะ
+      </button>
+      <span class="tap-hint" id="tapHint">แตะตามจังหวะ 4 ครั้ง</span>
+    </div>
+
+    <input id="slider" class="slider" type="range" min="40" max="300" step="1" value="120" aria-label="ปรับ BPM">
+    <div class="scale-marks"><span>40</span><span>100</span><span>160</span><span>220</span><span>300</span></div>
+
+    <div class="presets" id="presets" role="group" aria-label="ค่า BPM สำเร็จรูป"></div>
+
+    <div class="options">
+      <span class="label">แถวล่างแสดง</span>
+      <div class="seg" id="unitSeg" role="group" aria-label="หน่วยรอง">
+        <button data-unit="hz" aria-pressed="true">ความถี่ (Hz)</button>
+        <button data-unit="samp" aria-pressed="false">แซมเปิล</button>
+      </div>
+      <label class="label" for="sr" style="letter-spacing:.1em">Sample rate</label>
+      <select id="sr" disabled>
+        <option value="44100">44.1 kHz</option>
+        <option value="48000">48 kHz</option>
+        <option value="88200">88.2 kHz</option>
+        <option value="96000">96 kHz</option>
+      </select>
+    </div>
+
+    <div class="grid-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">โน้ต</th>
+            <th scope="col"><b>ปกติ</b><span>Straight</span></th>
+            <th scope="col"><b>ประจุด</b><span>Dotted &times;1.5</span></th>
+            <th scope="col"><b>สามพยางค์</b><span>Triplet &times;⅔</span></th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="notes" aria-label="คำแนะนำ">
+    <div class="note-card">
+      <h3>เลือกโน้ตยังไง</h3>
+      <p>ดีเลย์ <strong>ประจุด 1/8</strong> (dotted eighth) ให้กรูฟแบบเพลงป็อป/ร็อกยุคใหม่ ส่วน <strong>1/8 ปกติ</strong> เหมาะกับ slapback และ ambience บางๆ</p>
+    </div>
+    <div class="note-card">
+      <h3>Pre-delay ของ reverb</h3>
+      <p>ตั้ง pre-delay ที่ค่า <strong>1/64</strong> หรือ <strong>1/32</strong> ช่วยแยกเสียงต้นทางออกจากหางเสียง ทำให้เสียงร้องยังชัด</p>
+    </div>
+    <div class="note-card">
+      <h3>สูตรที่ใช้</h3>
+      <p><code>โน้ตดำ ms = 60000 ÷ BPM</code> · ประจุด <code>&times;1.5</code> · สามพยางค์ <code>&times;2÷3</code> · <code>Hz = 1000 ÷ ms</code></p>
+    </div>
+  </section>
+
+  <footer>
+    <span>แตะที่ช่องตัวเลขเพื่อคัดลอกค่า</span>
+    <button class="theme-btn" id="themeBtn" aria-label="สลับธีมสว่าง/มืด">
+      <span id="themeIcon" aria-hidden="true">◐</span> <span id="themeLabel">ธีม</span>
+    </button>
+  </footer>
+</div>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  var MIN = 40, MAX = 300;
+  var DIVS = [
+    { frac: "1/1",  name: "โน้ตกลม",        base: 4 },
+    { frac: "1/2",  name: "โน้ตขาว",        base: 2 },
+    { frac: "1/4",  name: "โน้ตดำ",         base: 1 },
+    { frac: "1/8",  name: "เขบ็ตหนึ่งชั้น", base: 0.5 },
+    { frac: "1/16", name: "เขบ็ตสองชั้น",   base: 0.25 },
+    { frac: "1/32", name: "เขบ็ตสามชั้น",   base: 0.125 },
+    { frac: "1/64", name: "เขบ็ตสี่ชั้น",   base: 0.0625 }
+  ];
+  var MODS = [1, 1.5, 2 / 3];
+
+  var state = { bpm: 120, unit: "hz", sr: 44100 };
+
+  var $ = function (id) { return document.getElementById(id); };
+  var bpmInput = $("bpm"), slider = $("slider"), rows = $("rows"),
+      presetsEl = $("presets"), srSel = $("sr"), toast = $("toast");
+
+  /* ---- storage (best-effort only) ---- */
+  try {
+    var savedT = localStorage.getItem("delaycalc-theme");
+    if (savedT) document.documentElement.setAttribute("data-theme", savedT);
+    var savedB = parseFloat(localStorage.getItem("delaycalc-bpm"));
+    if (savedB >= MIN && savedB <= MAX) state.bpm = Math.round(savedB);
+  } catch (e) {}
+
+  function save() {
+    try {
+      localStorage.setItem("delaycalc-bpm", String(state.bpm));
+      var t = document.documentElement.getAttribute("data-theme");
+      if (t) localStorage.setItem("delaycalc-theme", t);
+    } catch (e) {}
+  }
+
+  function fmtMs(ms) {
+    if (ms >= 1000) return ms.toFixed(1);
+    if (ms >= 100) return ms.toFixed(1);
+    if (ms >= 10) return ms.toFixed(2);
+    return ms.toFixed(3);
+  }
+  function fmtSub(ms) {
+    if (state.unit === "hz") return (1000 / ms).toFixed(2) + " Hz";
+    return Math.round(ms / 1000 * state.sr).toLocaleString("en-US") + " smp";
+  }
+
+  function buildRows() {
+    var html = "";
+    for (var i = 0; i < DIVS.length; i++) {
+      var d = DIVS[i];
+      html += '<tr><th scope="row"><span class="note-frac">' + d.frac +
+              '</span><span class="note-name">' + d.name + '</span></th>';
+      for (var m = 0; m < MODS.length; m++) {
+        html += '<td class="cell" tabindex="0" role="button" data-base="' + d.base +
+                '" data-mod="' + m + '" aria-label="' + d.frac + '"><span class="ms"></span><span class="sub"></span></td>';
+      }
+      html += '</tr>';
+    }
+    rows.innerHTML = html;
+  }
+
+  function render() {
+    state.bpm = Math.min(MAX, Math.max(MIN, Math.round(state.bpm)));
+    var quarter = 60000 / state.bpm;
+
+    if (document.activeElement !== bpmInput) bpmInput.value = state.bpm;
+    slider.value = state.bpm;
+    slider.style.setProperty("--pct", ((state.bpm - MIN) / (MAX - MIN) * 100) + "%");
+
+    var cells = rows.querySelectorAll(".cell");
+    for (var i = 0; i < cells.length; i++) {
+      var c = cells[i];
+      var ms = quarter * parseFloat(c.dataset.base) * MODS[parseInt(c.dataset.mod, 10)];
+      c.dataset.ms = ms;
+      c.querySelector(".ms").textContent = fmtMs(ms);
+      c.querySelector(".sub").textContent = fmtSub(ms);
+    }
+
+    var chips = presetsEl.querySelectorAll(".preset");
+    for (var p = 0; p < chips.length; p++) {
+      chips[p].setAttribute("aria-pressed", parseInt(chips[p].dataset.bpm, 10) === state.bpm);
+    }
+  }
+
+  function setBpm(v) { state.bpm = v; render(); save(); }
+
+  /* ---- presets ---- */
+  [90, 100, 110, 120, 128, 140, 150, 174].forEach(function (b) {
+    var btn = document.createElement("button");
+    btn.className = "preset";
+    btn.type = "button";
+    btn.dataset.bpm = b;
+    btn.textContent = b;
+    btn.setAttribute("aria-pressed", "false");
+    btn.addEventListener("click", function () { setBpm(b); });
+    presetsEl.appendChild(btn);
+  });
+
+  /* ---- inputs ---- */
+  bpmInput.addEventListener("input", function () {
+    var v = parseFloat(bpmInput.value);
+    if (!isNaN(v)) { state.bpm = v; render(); }
+  });
+  bpmInput.addEventListener("blur", function () { setBpm(state.bpm); });
+  slider.addEventListener("input", function () { setBpm(parseFloat(slider.value)); });
+
+  document.querySelectorAll(".step-btn").forEach(function (b) {
+    b.addEventListener("click", function () { setBpm(state.bpm + parseInt(b.dataset.delta, 10)); });
+  });
+
+  /* ---- unit toggle ---- */
+  $("unitSeg").addEventListener("click", function (e) {
+    var b = e.target.closest("button");
+    if (!b) return;
+    state.unit = b.dataset.unit;
+    $("unitSeg").querySelectorAll("button").forEach(function (x) {
+      x.setAttribute("aria-pressed", x === b);
+    });
+    srSel.disabled = state.unit !== "samp";
+    render();
+  });
+  srSel.addEventListener("change", function () { state.sr = parseInt(srSel.value, 10); render(); });
+
+  /* ---- tap tempo ---- */
+  var taps = [], tapTimer = null, tapBtn = $("tap"), tapHint = $("tapHint");
+  tapBtn.addEventListener("click", function () {
+    var now = performance.now();
+    if (taps.length && now - taps[taps.length - 1] > 2000) taps = [];
+    taps.push(now);
+    if (taps.length > 8) taps.shift();
+    tapBtn.dataset.armed = "true";
+
+    if (taps.length >= 2) {
+      var sum = 0;
+      for (var i = 1; i < taps.length; i++) sum += taps[i] - taps[i - 1];
+      var bpm = 60000 / (sum / (taps.length - 1));
+      if (bpm >= MIN && bpm <= MAX) {
+        setBpm(bpm);
+        tapHint.textContent = "ตรวจพบ " + Math.round(bpm) + " BPM (" + taps.length + " ครั้ง)";
+      }
+    } else {
+      tapHint.textContent = "แตะต่อ…";
+    }
+
+    clearTimeout(tapTimer);
+    tapTimer = setTimeout(function () {
+      taps = [];
+      tapBtn.dataset.armed = "false";
+      tapHint.textContent = "แตะตามจังหวะ 4 ครั้ง";
+    }, 2400);
+  });
+
+  /* ---- copy ---- */
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(showToast._t);
+    showToast._t = setTimeout(function () { toast.classList.remove("show"); }, 1500);
+  }
+  function copyCell(c) {
+    var val = fmtMs(parseFloat(c.dataset.ms));
+    var done = function () {
+      c.classList.remove("flash"); void c.offsetWidth; c.classList.add("flash");
+      showToast("คัดลอก " + val + " ms");
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(val).then(done, function () { done(); });
+    } else {
+      var ta = document.createElement("textarea");
+      ta.value = val; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(ta); done();
+    }
+  }
+  rows.addEventListener("click", function (e) {
+    var c = e.target.closest(".cell"); if (c) copyCell(c);
+  });
+  rows.addEventListener("keydown", function (e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    var c = e.target.closest(".cell"); if (c) { e.preventDefault(); copyCell(c); }
+  });
+
+  /* ---- theme ---- */
+  var themeBtn = $("themeBtn"), themeLabel = $("themeLabel"), themeIcon = $("themeIcon");
+  function syncThemeLabel() {
+    var t = document.documentElement.getAttribute("data-theme");
+    var dark = t ? t === "dark"
+                 : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    themeLabel.textContent = dark ? "ธีมมืด" : "ธีมสว่าง";
+    themeIcon.textContent = dark ? "☾" : "☀";
+  }
+  themeBtn.addEventListener("click", function () {
+    var cur = document.documentElement.getAttribute("data-theme");
+    var dark = cur ? cur === "dark"
+                   : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    document.documentElement.setAttribute("data-theme", dark ? "light" : "dark");
+    syncThemeLabel(); save();
+  });
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", syncThemeLabel);
+
+  /* ---- go ---- */
+  buildRows();
+  render();
+  syncThemeLabel();
+})();
+</script>

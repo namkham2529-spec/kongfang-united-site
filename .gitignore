@@ -1,0 +1,15 @@
+# secrets — never commit
+netlify-token.txt
+
+# build artifacts / zips
+deploy.zip
+*.zip
+netlify-upload/
+
+# backups / scratch
+index.backup.html
+scratchpad/
+
+# OS
+.DS_Store
+Thumbs.db

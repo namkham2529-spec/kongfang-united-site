@@ -1,0 +1,12 @@
+{
+  "brand": "กองฟาง ยูไนเต็ด",
+  "eyebrow": "ช่องทางติดตามอย่างเป็นทางการ",
+  "title": "ติดตามข่าวสารกองฟาง",
+  "rows": [
+    { "tag": "FACEBOOK", "name": "เพจ Facebook", "val": "facebook.com/Kogfang", "color": "24,119,242" },
+    { "tag": "WEBSITE",  "name": "เว็บไซต์ทางการ", "val": "kongfang-united.netlify.app", "color": "228,161,27" },
+    { "tag": "LINE",     "name": "LINE ทางการ", "val": "@889mucdr", "color": "6,199,85" }
+  ],
+  "qrCaption": "สแกนเพิ่มเพื่อน LINE",
+  "foot": "สอบถามโดยตรง โทร 093-909-1602"
+}
