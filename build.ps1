@@ -45,6 +45,12 @@ if(Test-Path $dep){ Remove-Item $dep -Recurse -Force }
 New-Item -ItemType Directory -Path $dep | Out-Null
 [System.IO.File]::WriteAllText((Join-Path $dep 'index.html'),$c,$U)
 Copy-Item $img (Join-Path $dep 'images') -Recurse
+
+# externalize any base64 blobs still inline (Node-free; was: node externalize-inline.js)
+& (Join-Path $root 'externalize-inline.ps1')
+
 # keep single-file copy fresh too
-Copy-Item $p (Join-Path $root 'netlify-upload\index.html') -Force
+$nu = Join-Path $root 'netlify-upload'
+if(-not (Test-Path $nu)){ New-Item -ItemType Directory -Path $nu | Out-Null }
+Copy-Item $p (Join-Path $nu 'index.html') -Force
 Write-Host ("_deploy rebuilt: index.html + images/ (" + (Get-ChildItem (Join-Path $dep 'images') -File).Count + " files)")
