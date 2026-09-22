@@ -366,8 +366,13 @@ footer{background:var(--bg-3);color:var(--muted);padding:66px 0 28px;border-top:
 .club-chip{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 16px;font-family:var(--font-display);font-weight:600;font-size:14px;color:var(--text);line-height:1.3;}
 .club-chip span{display:block;font-family:var(--font-body);font-weight:400;font-size:11.5px;color:var(--muted);margin-top:4px;}
 .club-chip.me{border-color:var(--blue-bright);background:linear-gradient(135deg,rgba(77,163,255,.16),transparent);color:var(--white);}
-@media (max-width:980px){ .bla-stats{grid-template-columns:repeat(2,1fr);} .club-grid{grid-template-columns:repeat(2,1fr);} }
-@media (max-width:560px){ .club-grid{grid-template-columns:1fr;} }
+.md1-summary{width:100%;max-width:480px;border-radius:12px;border:1px solid var(--line);margin:0 auto 24px;display:block;}
+.poster-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:20px;}
+.poster-tile{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;aspect-ratio:4/5;transition:border-color .25s ease,transform .25s ease;}
+.poster-tile:hover{border-color:var(--blue-bright);transform:translateY(-3px);}
+.poster-tile img{width:100%;height:100%;object-fit:cover;display:block;}
+@media (max-width:980px){ .bla-stats{grid-template-columns:repeat(2,1fr);} .club-grid{grid-template-columns:repeat(2,1fr);} .poster-grid{grid-template-columns:repeat(3,1fr);} }
+@media (max-width:560px){ .club-grid{grid-template-columns:1fr;} .poster-grid{grid-template-columns:repeat(2,1fr);} }
 
 /* ---------- NEWS MODAL ---------- */
 .news-readmore{display:inline-block;margin-top:12px;font-family:var(--font-cond);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-bright);font-weight:700;cursor:pointer;}
@@ -944,6 +949,34 @@ footer{background:var(--bg-3);color:var(--muted);padding:66px 0 28px;border-top:
     </div>
 
     <div class="table-note wrap" style="margin-bottom:16px;">รูปแบบการแข่งขัน (มติที่ประชุม): แข่ง 3 ควอเตอร์ นับผลอย่างเป็นทางการ 2 ควอเตอร์ · รุ่น U12–U14 ครึ่งละ 20 นาที / U8–U10 ครึ่งละ 15 นาที · เวลาลงสนามแต่ละรุ่น U14 10:00 · U12 11:00 · U10 13:00 · U8 14:00 น. · ค่าสมัคร 500 บาท/สโมสร · รุ่น U14 อนุญาตนักกีฬาอายุ 15 ปีได้ไม่เกิน 2 คน</div>
+
+    <h3 class="bla-subhead">นัดเปิดฤดูกาล 2026 · รอบที่ 1 ครบ 6 คู่</h3>
+    <img class="md1-summary reveal" src="images/bla-md1-summary.jpg" alt="สรุปนัดเปิดฤดูกาล BLA 2026 รอบที่ 1 ครบ 6 คู่ · วันอาทิตย์ที่ 4 ตุลาคม 2569">
+    <div class="table-card reveal">
+      <table>
+        <thead>
+          <tr><th>นัด</th><th>คู่แข่งขัน</th><th>สนาม</th><th class="center">U14</th><th class="center">U12</th><th class="center">รุ่นผู้ปกครอง</th><th class="center">U10</th><th class="center">U8</th></tr>
+        </thead>
+        <tbody>
+          <tr class="highlight"><td class="rank">1</td><td class="team-cell">กองฟาง ยูไนเต็ด <span style="color:var(--muted)">(เหย้า)</span> vs อีเลฟเว่น อะคาเดมี่</td><td>กองฟาง สเตเดียม อ.กระสัง <span style="color:var(--muted)">(2 สนาม)</span></td><td class="center mono">15:00</td><td class="center mono">15:00</td><td class="center mono">16:00</td><td class="center mono">16:30</td><td class="center mono">16:30</td></tr>
+          <tr><td class="rank">2</td><td class="team-cell">เบส <span style="color:var(--muted)">(เหย้า)</span> vs บัวหลวง อะคาเดมี่</td><td>ฟันธุ์พงศ์ อารีน่า</td><td class="center mono">10:00</td><td class="center mono">11:00</td><td class="center mono">ระหว่างกลาง</td><td class="center mono">13:00</td><td class="center mono">14:00</td></tr>
+          <tr><td class="rank">3</td><td class="team-cell">แสงเพชร <span style="color:var(--muted)">(เหย้า)</span> vs ราชสีมา อะคาเดมี่</td><td>แสงเพชร สเตเดี้ยม</td><td class="center mono">10:00</td><td class="center mono">11:00</td><td class="center mono">ระหว่างกลาง</td><td class="center mono">13:00</td><td class="center mono">14:00</td></tr>
+          <tr><td class="rank">4</td><td class="team-cell">ยูจิน x เอแมน <span style="color:var(--muted)">(เหย้า)</span> vs เกรียรัมย์</td><td>ยูจินอารีน่า</td><td class="center mono">10:00</td><td class="center mono">11:00</td><td class="center mono">ระหว่างกลาง</td><td class="center mono">13:00</td><td class="center mono">14:00</td></tr>
+          <tr><td class="rank">5</td><td class="team-cell">ชัยกร อะคาเดมี่ <span style="color:var(--muted)">(เหย้า)</span> vs โซล</td><td>เทศบาลนาโพธิ์</td><td class="center mono">14:00</td><td class="center mono">15:00</td><td class="center mono">16:00</td><td class="center mono">17:00</td><td class="center mono">18:00</td></tr>
+          <tr><td class="rank">6</td><td class="team-cell">เซเว่น <span style="color:var(--muted)">(เหย้า)</span> vs ลำปลายมาศ</td><td>เซเว่น อะคาเดมี่</td><td class="center mono">10:00</td><td class="center mono">11:00</td><td class="center mono">ระหว่างกลาง</td><td class="center mono">13:00</td><td class="center mono">14:00</td></tr>
+        </tbody>
+      </table>
+      <div class="table-note wrap" style="padding-left:20px;padding-right:20px;">ทุกคู่แข่งวันอาทิตย์ที่ 4 ตุลาคม 2569 · เพิ่มการแข่งขัน &quot;รุ่นผู้ปกครอง&quot; คั่นระหว่างโปรแกรมเยาวชนในนัดเปิดฤดูกาลนี้ทุกสนาม (คู่ 1 และคู่ 5 มีเวลาลงสนามกำหนดชัดเจน ส่วนคู่อื่นแข่งช่วงระหว่างกลางโปรแกรม) · คู่กองฟาง ยูไนเต็ด vs อีเลฟเว่น อะคาเดมี่ ใช้ 2 สนามพร้อมกัน</div>
+    </div>
+    <div class="poster-grid reveal">
+      <div class="poster-tile"><img src="images/bla-md1-01-kongfang-vs-eleven.jpg" alt="กองฟาง ยูไนเต็ด vs อีเลฟเว่น อะคาเดมี่"></div>
+      <div class="poster-tile"><img src="images/bla-md1-02-best-vs-bualuang.jpg" alt="เบส vs บัวหลวง อะคาเดมี่"></div>
+      <div class="poster-tile"><img src="images/bla-md1-03-saengphet-vs-ratchasima.jpg" alt="แสงเพชร vs ราชสีมา อะคาเดมี่"></div>
+      <div class="poster-tile"><img src="images/bla-md1-04-yujin-vs-kriram.jpg" alt="ยูจิน x เอแมน vs เกรียรัมย์"></div>
+      <div class="poster-tile"><img src="images/bla-md1-05-chaikorn-vs-soul.jpg" alt="ชัยกร อะคาเดมี่ vs โซล"></div>
+      <div class="poster-tile"><img src="images/bla-md1-06-seven-vs-lamplaimat.jpg" alt="เซเว่น vs ลำปลายมาศ"></div>
+    </div>
+
     <h3 class="bla-subhead">โปรแกรมกองฟาง ยูไนเต็ด ตลอดฤดูกาล</h3>
     <div class="table-card reveal">
       <table>
