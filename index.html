@@ -365,9 +365,12 @@ footer{background:var(--bg-3);color:var(--muted);padding:66px 0 28px;border-top:
 .bla td.mono{white-space:nowrap;color:var(--text-soft);}
 .bla tbody tr.highlight td{color:var(--white);}
 .club-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
-.club-chip{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 16px;font-family:var(--font-display);font-weight:600;font-size:14px;color:var(--text);line-height:1.3;}
+.club-chip{display:block;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 16px;font-family:var(--font-display);font-weight:600;font-size:14px;color:var(--text);line-height:1.3;}
 .club-chip span{display:block;font-family:var(--font-body);font-weight:400;font-size:11.5px;color:var(--muted);margin-top:4px;}
 .club-chip.me{border-color:var(--blue-bright);background:linear-gradient(135deg,rgba(77,163,255,.16),transparent);color:var(--white);}
+a.club-chip{transition:border-color .2s ease,transform .2s ease;}
+a.club-chip:hover{border-color:var(--blue-bright);transform:translateY(-2px);}
+a.club-chip span::after{content:" · เพจ Facebook";color:var(--blue-bright);}
 .md1-summary{width:100%;max-width:480px;border-radius:12px;border:1px solid var(--line);margin:0 auto 24px;display:block;}
 .poster-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:20px;}
 .poster-tile{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;aspect-ratio:4/5;transition:border-color .25s ease,transform .25s ease;}
@@ -1005,14 +1008,14 @@ footer{background:var(--bg-3);color:var(--muted);padding:66px 0 28px;border-top:
     <h3 class="bla-subhead">12 สโมสรที่ร่วมแข่งขัน</h3>
     <div class="club-grid reveal">
       <div class="club-chip">ราชสีมา อะคาเดมี่<span>อ.ลำทะเมนชัย · นครราชสีมา</span></div>
-      <div class="club-chip">เซเว่น<span>อ.เมือง · บุรีรัมย์</span></div>
-      <div class="club-chip">อีเลเว่น<span>อ.เมือง · บุรีรัมย์</span></div>
-      <div class="club-chip me">กองฟาง ยูไนเต็ด<span>อ.กระสัง · บุรีรัมย์</span></div>
-      <div class="club-chip">โซล<span>อ.เมือง · บุรีรัมย์</span></div>
-      <div class="club-chip">บัวหลวง อะคาเดมี่<span>บ้านบัว อ.เมือง · บุรีรัมย์</span></div>
-      <div class="club-chip">ยูจิน x เอแมน<span>อ.นางรอง · บุรีรัมย์</span></div>
+      <a class="club-chip" href="https://www.facebook.com/p/SEVEN-Academy-100070551600359/" target="_blank" rel="noopener">เซเว่น<span>อ.เมือง · บุรีรัมย์</span></a>
+      <a class="club-chip" href="https://www.facebook.com/p/Eleven-Academy-Buriram-100057031106907/" target="_blank" rel="noopener">อีเลเว่น<span>อ.เมือง · บุรีรัมย์</span></a>
+      <a class="club-chip me" href="https://www.facebook.com/Kogfang" target="_blank" rel="noopener">กองฟาง ยูไนเต็ด<span>อ.กระสัง · บุรีรัมย์</span></a>
+      <a class="club-chip" href="https://www.facebook.com/p/Soul-Academy-100088697600537/" target="_blank" rel="noopener">โซล<span>อ.เมือง · บุรีรัมย์</span></a>
+      <a class="club-chip" href="https://www.facebook.com/p/Bualuang-Academy-U18-61550354710966/" target="_blank" rel="noopener">บัวหลวง อะคาเดมี่<span>บ้านบัว อ.เมือง · บุรีรัมย์</span></a>
+      <a class="club-chip" href="https://www.facebook.com/p/Yujin-Arena-%E0%B8%AA%E0%B8%99%E0%B8%B2%E0%B8%A1%E0%B8%9F%E0%B8%B8%E0%B8%95%E0%B8%9A%E0%B8%AD%E0%B8%A5%E0%B8%AB%E0%B8%8D%E0%B9%89%E0%B8%B2%E0%B9%80%E0%B8%97%E0%B8%B5%E0%B8%A2%E0%B8%A1%E0%B9%83%E0%B8%99%E0%B8%A3%E0%B9%88%E0%B8%A1-%E0%B8%99%E0%B8%B2%E0%B8%87%E0%B8%A3%E0%B8%AD%E0%B8%87-61573373040378/" target="_blank" rel="noopener">ยูจิน x เอแมน<span>อ.นางรอง · บุรีรัมย์</span></a>
       <div class="club-chip">ลำปลายมาศ<span>อ.ลำปลายมาศ · บุรีรัมย์</span></div>
-      <div class="club-chip">แสงเพชร<span>อ.ห้วยแถลง · นครราชสีมา</span></div>
+      <a class="club-chip" href="https://www.facebook.com/p/%E0%B9%81%E0%B8%AA%E0%B8%87%E0%B9%80%E0%B8%9E%E0%B8%8A%E0%B8%A3-%E0%B8%AD%E0%B8%84%E0%B8%B2%E0%B9%80%E0%B8%94%E0%B8%A1%E0%B8%B5%E0%B9%88-100083305959231/" target="_blank" rel="noopener">แสงเพชร<span>อ.ห้วยแถลง · นครราชสีมา</span></a>
       <div class="club-chip">เบส<span>อ.คูเมือง · บุรีรัมย์</span></div>
       <div class="club-chip">เกรียรัมย์<span>อ.เมือง · บุรีรัมย์</span></div>
       <div class="club-chip">ชัยกร อะคาเดมี่<span>อ.พุทไธสง · บุรีรัมย์</span></div>
