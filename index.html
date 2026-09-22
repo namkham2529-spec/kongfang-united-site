@@ -353,7 +353,9 @@ footer{background:var(--bg-3);color:var(--muted);padding:66px 0 28px;border-top:
 @media (max-width:560px){.sponsor-grid{grid-template-columns:repeat(2,1fr);}}
 
 /* ---------- BURIRAM LEAGUE ACADEMY ---------- */
-.bla{background:var(--bg-2);}
+.bla{background:var(--bg-2);position:relative;overflow:hidden;}
+.bla::before{content:"";position:absolute;inset:0;background:url('images/bg-watermark-castle.png') no-repeat top center;background-size:min(1400px,150%) auto;opacity:.12;pointer-events:none;z-index:0;}
+.bla>.wrap{position:relative;z-index:1;}
 .bla-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:44px;}
 .bla-stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:22px;text-align:center;}
 .bla-stat b{display:block;font-family:var(--font-cond);font-weight:700;font-size:34px;color:var(--blue-bright);line-height:1;}
