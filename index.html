@@ -371,13 +371,8 @@ footer{background:var(--bg-3);color:var(--muted);padding:66px 0 28px;border-top:
 a.club-chip{transition:border-color .2s ease,transform .2s ease;}
 a.club-chip:hover{border-color:var(--blue-bright);transform:translateY(-2px);}
 a.club-chip span::after{content:" · เพจ Facebook";color:var(--blue-bright);}
-.md1-summary{width:100%;max-width:480px;border-radius:12px;border:1px solid var(--line);margin:0 auto 24px;display:block;}
-.poster-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:20px;}
-.poster-tile{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;aspect-ratio:4/5;transition:border-color .25s ease,transform .25s ease;}
-.poster-tile:hover{border-color:var(--blue-bright);transform:translateY(-3px);}
-.poster-tile img{width:100%;height:100%;object-fit:cover;display:block;}
-@media (max-width:980px){ .bla-stats{grid-template-columns:repeat(2,1fr);} .club-grid{grid-template-columns:repeat(2,1fr);} .poster-grid{grid-template-columns:repeat(3,1fr);} }
-@media (max-width:560px){ .club-grid{grid-template-columns:1fr;} .poster-grid{grid-template-columns:repeat(2,1fr);} }
+@media (max-width:980px){ .bla-stats{grid-template-columns:repeat(2,1fr);} .club-grid{grid-template-columns:repeat(2,1fr);} }
+@media (max-width:560px){ .club-grid{grid-template-columns:1fr;} }
 
 /* ---------- NEWS MODAL ---------- */
 .news-readmore{display:inline-block;margin-top:12px;font-family:var(--font-cond);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-bright);font-weight:700;cursor:pointer;}
@@ -955,33 +950,6 @@ a.club-chip span::after{content:" · เพจ Facebook";color:var(--blue-bright
 
     <div class="table-note wrap" style="margin-bottom:16px;">รูปแบบการแข่งขัน (มติที่ประชุม): แข่ง 3 ควอเตอร์ นับผลอย่างเป็นทางการ 2 ควอเตอร์ · รุ่น U12–U14 ครึ่งละ 20 นาที / U8–U10 ครึ่งละ 15 นาที · เวลาลงสนามแต่ละรุ่น U14 10:00 · U12 11:00 · U10 13:00 · U8 14:00 น. · ค่าสมัคร 500 บาท/สโมสร · รุ่น U14 อนุญาตนักกีฬาอายุ 15 ปีได้ไม่เกิน 2 คน</div>
 
-    <h3 class="bla-subhead">นัดเปิดฤดูกาล 2026 · รอบที่ 1 ครบ 6 คู่</h3>
-    <img class="md1-summary reveal" src="images/bla-md1-summary.jpg" alt="สรุปนัดเปิดฤดูกาล BLA 2026 รอบที่ 1 ครบ 6 คู่ · วันอาทิตย์ที่ 4 ตุลาคม 2569">
-    <div class="table-card reveal">
-      <table>
-        <thead>
-          <tr><th>นัด</th><th>คู่แข่งขัน</th><th>สนาม</th><th class="center">U14</th><th class="center">U12</th><th class="center">รุ่นผู้ปกครอง</th><th class="center">U10</th><th class="center">U8</th></tr>
-        </thead>
-        <tbody>
-          <tr class="highlight"><td class="rank">1</td><td class="team-cell">กองฟาง ยูไนเต็ด <span style="color:var(--muted)">(เหย้า)</span> vs อีเลฟเว่น อะคาเดมี่</td><td>กองฟาง สเตเดียม อ.กระสัง <span style="color:var(--muted)">(2 สนาม)</span></td><td class="center mono">15:00</td><td class="center mono">15:00</td><td class="center mono">16:00</td><td class="center mono">16:30</td><td class="center mono">16:30</td></tr>
-          <tr><td class="rank">2</td><td class="team-cell">เบส <span style="color:var(--muted)">(เหย้า)</span> vs บัวหลวง อะคาเดมี่</td><td>ฟันธุ์พงศ์ อารีน่า</td><td class="center mono">10:00</td><td class="center mono">11:00</td><td class="center mono">ระหว่างกลาง</td><td class="center mono">13:00</td><td class="center mono">14:00</td></tr>
-          <tr><td class="rank">3</td><td class="team-cell">แสงเพชร <span style="color:var(--muted)">(เหย้า)</span> vs ราชสีมา อะคาเดมี่</td><td>แสงเพชร สเตเดี้ยม</td><td class="center mono">10:00</td><td class="center mono">11:00</td><td class="center mono">ระหว่างกลาง</td><td class="center mono">13:00</td><td class="center mono">14:00</td></tr>
-          <tr><td class="rank">4</td><td class="team-cell">ยูจิน x เอแมน <span style="color:var(--muted)">(เหย้า)</span> vs เกรียรัมย์</td><td>ยูจินอารีน่า</td><td class="center mono">10:00</td><td class="center mono">11:00</td><td class="center mono">ระหว่างกลาง</td><td class="center mono">13:00</td><td class="center mono">14:00</td></tr>
-          <tr><td class="rank">5</td><td class="team-cell">ชัยกร อะคาเดมี่ <span style="color:var(--muted)">(เหย้า)</span> vs โซล</td><td>เทศบาลนาโพธิ์</td><td class="center mono">14:00</td><td class="center mono">15:00</td><td class="center mono">16:00</td><td class="center mono">17:00</td><td class="center mono">18:00</td></tr>
-          <tr><td class="rank">6</td><td class="team-cell">เซเว่น <span style="color:var(--muted)">(เหย้า)</span> vs ลำปลายมาศ</td><td>เซเว่น อะคาเดมี่</td><td class="center mono">10:00</td><td class="center mono">11:00</td><td class="center mono">ระหว่างกลาง</td><td class="center mono">13:00</td><td class="center mono">14:00</td></tr>
-        </tbody>
-      </table>
-      <div class="table-note wrap" style="padding-left:20px;padding-right:20px;">ทุกคู่แข่งวันอาทิตย์ที่ 4 ตุลาคม 2569 · เพิ่มการแข่งขัน &quot;รุ่นผู้ปกครอง&quot; คั่นระหว่างโปรแกรมเยาวชนในนัดเปิดฤดูกาลนี้ทุกสนาม (คู่ 1 และคู่ 5 มีเวลาลงสนามกำหนดชัดเจน ส่วนคู่อื่นแข่งช่วงระหว่างกลางโปรแกรม) · คู่กองฟาง ยูไนเต็ด vs อีเลฟเว่น อะคาเดมี่ ใช้ 2 สนามพร้อมกัน</div>
-    </div>
-    <div class="poster-grid reveal">
-      <div class="poster-tile"><img src="images/bla-md1-01-kongfang-vs-eleven.jpg" alt="กองฟาง ยูไนเต็ด vs อีเลฟเว่น อะคาเดมี่"></div>
-      <div class="poster-tile"><img src="images/bla-md1-02-best-vs-bualuang.jpg" alt="เบส vs บัวหลวง อะคาเดมี่"></div>
-      <div class="poster-tile"><img src="images/bla-md1-03-saengphet-vs-ratchasima.jpg" alt="แสงเพชร vs ราชสีมา อะคาเดมี่"></div>
-      <div class="poster-tile"><img src="images/bla-md1-04-yujin-vs-kriram.jpg" alt="ยูจิน x เอแมน vs เกรียรัมย์"></div>
-      <div class="poster-tile"><img src="images/bla-md1-05-chaikorn-vs-soul.jpg" alt="ชัยกร อะคาเดมี่ vs โซล"></div>
-      <div class="poster-tile"><img src="images/bla-md1-06-seven-vs-lamplaimat.jpg" alt="เซเว่น vs ลำปลายมาศ"></div>
-    </div>
-
     <h3 class="bla-subhead">โปรแกรมกองฟาง ยูไนเต็ด ตลอดฤดูกาล</h3>
     <div class="table-card reveal">
       <table>
@@ -1019,31 +987,6 @@ a.club-chip span::after{content:" · เพจ Facebook";color:var(--blue-bright
       <div class="club-chip">เบส<span>อ.คูเมือง · บุรีรัมย์</span></div>
       <div class="club-chip">เกรียรัมย์<span>อ.เมือง · บุรีรัมย์</span></div>
       <div class="club-chip">ชัยกร อะคาเดมี่<span>อ.พุทไธสง · บุรีรัมย์</span></div>
-    </div>
-
-    <h3 class="bla-subhead">เครือข่ายสนามแข่งขัน · สนามกลาง &amp; 12 สนามเหย้า</h3>
-    <img class="md1-summary reveal" src="images/bla-venue-network.jpg" alt="เครือข่ายสนามแข่งขัน BLA 2026 สนามกลางและ 12 สนามเหย้า">
-    <div class="table-card reveal">
-      <table>
-        <thead>
-          <tr><th>สโมสร</th><th>สนามเหย้า</th><th>ที่ตั้ง</th></tr>
-        </thead>
-        <tbody>
-          <tr class="highlight"><td class="team-cell">กองฟาง ยูไนเต็ด</td><td>กองฟาง สเตเดียม</td><td>อ.กระสัง · บุรีรัมย์</td></tr>
-          <tr><td class="team-cell">อีเลฟเว่น อะคาเดมี่</td><td>กูสปอร์ต</td><td>อ.เมือง · บุรีรัมย์</td></tr>
-          <tr><td class="team-cell">เบส</td><td>สนามพงศ์พันธุ์อารีน่า</td><td>อ.คูเมือง · บุรีรัมย์</td></tr>
-          <tr><td class="team-cell">บัวหลวง อะคาเดมี่</td><td>สนามบัวหลวง อะคาเดมี่</td><td>บ้านบัว อ.เมือง · บุรีรัมย์</td></tr>
-          <tr><td class="team-cell">แสงเพชร</td><td>แสงเพชร สเตเดี้ยม</td><td>อ.ห้วยแถลง · นครราชสีมา</td></tr>
-          <tr><td class="team-cell">ราชสีมา อะคาเดมี่</td><td>สนามราชสีมา อะคาเดมี่</td><td>อ.ลำทะเมนชัย · นครราชสีมา</td></tr>
-          <tr><td class="team-cell">ยูจิน x เอแมน</td><td>ยูจินอารีน่า</td><td>อ.นางรอง · บุรีรัมย์</td></tr>
-          <tr><td class="team-cell">เกรียรัมย์</td><td>สนามเกรียรัมย์ แลนด์</td><td>อ.เมือง (สามแวง) · บุรีรัมย์</td></tr>
-          <tr><td class="team-cell">ชัยกร อะคาเดมี่</td><td>สนามเทศบาลนาโพธิ์</td><td>อ.พุทไธสง · บุรีรัมย์</td></tr>
-          <tr><td class="team-cell">โซล</td><td>สนามโซล</td><td>อ.เมือง · บุรีรัมย์</td></tr>
-          <tr><td class="team-cell">เซเว่น</td><td>เซเว่น อะคาเดมี่</td><td>อ.เมือง · บุรีรัมย์</td></tr>
-          <tr><td class="team-cell">ลำปลายมาศ</td><td>ทอฝัน สเตเดี้ยม</td><td>อ.ลำปลายมาศ · บุรีรัมย์</td></tr>
-        </tbody>
-      </table>
-      <div class="table-note wrap" style="padding-left:20px;padding-right:20px;">12 สโมสร · 8 อำเภอ · 2 จังหวัด · สนามกลางของฤดูกาลคือ <b>สนามแฝดเขากระโดง</b> (อบจ. บุรีรัมย์) ใช้แข่งขันรอบที่ 6 และรอบที่ 11</div>
     </div>
   </div>
 </section>
